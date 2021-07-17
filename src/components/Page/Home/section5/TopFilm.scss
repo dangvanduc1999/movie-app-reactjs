@@ -1,0 +1,67 @@
+@import "../../../../style/base.scss";
+$max: 100%;
+.home__topFilm {
+  position: relative;
+  margin: 2rem 0;
+  height: $max;
+  width: $max;
+}
+.home__topFilm-container {
+  @include position();
+}
+.home__topFilm-background {
+  position: relative;
+  padding-top: 56.2%;
+  height: $max;
+  width: $max;
+  z-index: 10;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $max;
+    height: $max;
+    object-fit: cover;
+    display: block;
+    filter: brightness(50%);
+    border-radius: 2rem;
+    background-color: $color-text;
+  }
+}
+.home__topFilm-wrapper {
+  width: $max;
+  max-width: 1400px;
+}
+.home__topFilm-small {
+  height: $max;
+  .slick-slider.slick-vertical.slick-initialized {
+    height: $max;
+    .slick-list {
+      height: 78% !important ;
+      .slick-track {
+        .slick-slide.slick-active:not(:first-child) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    .slick-arrow {
+      display: none !important;
+    }
+  }
+  width: 20%;
+  height: $max;
+  @include position(absolute, 50%, 5%);
+  @include css3-compatible(transform, translateY(-40%));
+}
+.home__topFilm-title {
+  @include textStyle("Poppins", 3rem, $color-text, 500);
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+@media screen and(max-width: 940px) {
+  .home__topFilm-small {
+    display: none;
+  }
+}

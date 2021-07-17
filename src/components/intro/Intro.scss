@@ -1,0 +1,138 @@
+.intro {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.intro-content {
+  width: 80%;
+  z-index: 2001;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .text {
+    margin-right: 2rem;
+    p {
+      font-family: "Poppins";
+      color: white;
+      font-size: 20rem;
+      font-weight: 500;
+
+      -webkit-text-fill-color: white;
+      -webkit-text-stroke-width: 10px;
+      -webkit-text-stroke-color: white;
+    }
+  }
+}
+
+.intro-slider {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgb(88, 94, 97);
+  z-index: 2002;
+  transform: translateY(100%);
+}
+@media screen and (max-width: 1239px) {
+  .intro-content {
+    .text {
+      margin-right: 1.5rem;
+      p {
+        font-size: 16rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+@media screen and (max-width: 940px) {
+  .intro-content {
+    .text {
+      margin-right: 1rem;
+      p {
+        font-size: 13rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
+@media screen and (max-width: 739px) {
+  .intro-content {
+    width: 100%;
+    flex-wrap: wrap;
+
+    .text {
+      display: inline;
+      margin-right: 0.8rem;
+      p {
+        font-family: "Poppins";
+        color: white;
+        font-size: 10rem;
+        font-weight: 400;
+
+        -webkit-text-fill-color: white;
+        -webkit-text-stroke-width: 15px;
+        -webkit-text-stroke-color: white;
+      }
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .intro-content {
+    width: 100%;
+    flex-wrap: wrap;
+    .text {
+      margin-right: 1rem;
+      &:nth-child(3) {
+        padding-right: 10rem;
+        margin-right: 0;
+      }
+      &:nth-child(4) {
+        padding-left: 5rem;
+      }
+      p {
+        font-size: 14rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .intro-content {
+    .text {
+      &:nth-child(4) {
+        padding-left: 0rem;
+      }
+      p {
+        font-size: 11rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .intro-content {
+    .text {
+      &:nth-child(3) {
+        padding-right: 11rem;
+      }
+      &:nth-child(4) {
+        padding-left: 1rem;
+      }
+      p {
+        font-size: 8rem;
+        font-weight: 500;
+        -webkit-text-stroke-width: 10px;
+      }
+    }
+  }
+}

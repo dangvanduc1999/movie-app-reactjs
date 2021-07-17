@@ -1,0 +1,200 @@
+@import "../../../../style/base.scss";
+$currentlenght: 3rem;
+.container-main {
+  @include position();
+  padding-top: 56.2%;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  img {
+    @include position(absolute);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+  }
+
+  .main__infor {
+    position: absolute;
+    top: 38%;
+    @include css3-compatible(transform, translateY(-50%));
+    z-index: 2500;
+    .main__tag {
+      position: relative;
+      padding: 0.5rem;
+      width: 25rem;
+      max-width: 30rem;
+      display: flex;
+      margin-bottom: $currentlenght;
+      background: rgb(219, 219, 57);
+      background: linear-gradient(
+        90deg,
+        #e7bd5194 35%,
+        rgba(241, 241, 241, 0.575) 78%,
+        transparent 100%
+      );
+      &::before {
+        content: "";
+        height: 100%;
+        width: 4px;
+        background-color: #e7bd51;
+        @include position(absolute);
+      }
+      i {
+        font-size: $currentlenght;
+        color: white;
+      }
+      p {
+        @include textStyle("Lobster", 3.2rem, $color-text);
+        margin-left: 1rem;
+      }
+    }
+    .main__tittle {
+      @include textStyle("Poppins", 7rem, rgb(248, 245, 226), 500);
+      @include LineandClaim(2);
+      max-width: 1000px;
+      margin-bottom: 2rem;
+      -webkit-text-fill-color: white;
+      -webkit-text-stroke-width: 3px;
+      -webkit-text-stroke-color: white;
+      text-transform: uppercase;
+    }
+    .main__describer {
+      display: block;
+      @include textStyle("Poppins", 2rem, $color-text);
+      @include LineandClaim(3);
+      max-width: 70rem;
+      margin-bottom: 2rem;
+      line-height: 2.2rem;
+      letter-spacing: 1px;
+    }
+  }
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  &::after {
+    content: "";
+    @include position(absolute);
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #14141463 30%, transparent);
+  }
+}
+@media screen and (max-width: 1239px) {
+  .container-main {
+    .main__infor {
+      margin-left: 2rem;
+      .main__tittle {
+        font-size: 6rem;
+        max-width: 100rem;
+      }
+      .main__describer {
+        max-width: 52rem;
+        font-size: 2rem;
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+}
+@media screen and (max-width: 940px) and (orientation: portrait) {
+  .container-main {
+    .main__infor {
+      margin-left: 0;
+      .main__tittle {
+        font-size: 6rem;
+        max-width: 100rem;
+      }
+      .main__describer {
+        max-width: 52rem;
+        font-size: 2rem;
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+}
+@media screen and (max-width: 940px) and (orientation: landscape) {
+  .container-main {
+    .main__infor {
+      position: absolute;
+      top: 47%;
+      margin-left: 0rem;
+      margin-top: 1rem;
+      .main__tag {
+        margin-left: 0rem;
+        padding: 8px;
+        margin-bottom: 1.4rem;
+        i,
+        p {
+          font-size: 2rem;
+        }
+      }
+      .main__btn {
+        margin-left: 0rem;
+      }
+      .main__tittle {
+        padding-left: 0rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: normal;
+        -webkit-text-stroke-width: 1.5px;
+      }
+      .main__describer {
+        display: block;
+        padding-left: 0rem;
+        padding-right: 1rem;
+        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        @include LineandClaim(3);
+      }
+    }
+  }
+}
+@media screen and (max-width: 739px) and (orientation: portrait) {
+  .container-main {
+    img {
+      filter: brightness(80%);
+    }
+    .main__infor {
+      position: absolute;
+      top: 55%;
+      margin-left: 1rem;
+      .main__tag {
+        margin-left: 1rem;
+        padding: 8px;
+        margin-bottom: $currentlenght;
+        i,
+        p {
+          font-size: $currentlenght;
+        }
+      }
+      .main__btn {
+        margin-left: 1rem;
+        display: block;
+        text-decoration: none;
+      }
+      .main__tittle {
+        padding-left: 1rem;
+        font-size: 4rem;
+        margin-bottom: 2.5rem;
+        color: #e7bc51;
+        font-weight: normal;
+        -webkit-text-stroke-width: 2.5px;
+      }
+      .main__describer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 1.4rem;
+        @include LineandClaim(4);
+      }
+    }
+  }
+  .wrapper {
+    &::after {
+      content: "";
+      background-image: linear-gradient(to bottom, transparent, #141414 90%);
+    }
+  }
+}

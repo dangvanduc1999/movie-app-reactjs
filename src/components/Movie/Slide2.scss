@@ -1,0 +1,119 @@
+@import "../../style/base.scss";
+$max: 100%;
+.contaner__slide2-item {
+  position: relative;
+  height: 100%;
+  border-radius: $border-radius;
+  overflow: visible;
+  cursor: pointer;
+  margin: 0 1rem;
+  overflow: hidden;
+
+  .slide2__image {
+    width: $max;
+    img {
+      width: $max;
+      height: $max;
+      object-fit: cover;
+      border-radius: $border-radius;
+      background-color: $color-text;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
+    border-radius: 3px;
+  }
+}
+.contaner__slide2-item:hover > .over__item {
+  opacity: 1;
+  visibility: visible;
+}
+.slide2__content {
+  position: absolute;
+  top: 50%;
+  margin-left: 2rem;
+  transform: translateY(-50%);
+  z-index: 500;
+  h2 {
+    @include textStyle("Poppins", 2rem, $color-text, 600);
+    display: block;
+    max-width: 19rem;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+  p {
+    color: $color-text;
+    font-size: 1.4rem;
+  }
+}
+.over__item-background {
+  @include position(absolute);
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.616);
+  @include flexBox(flex-end, center);
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  &::before {
+    content: "";
+    @include position(absolute);
+    width: 4px;
+    height: 100%;
+    background-color: $primary;
+    z-index: 2000;
+  }
+  .over__item-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    @include flexBox(center, center);
+    border: 1px solid #ccc;
+    margin-right: 3rem;
+    &:first-child {
+      margin-right: 3rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+.contaner__slide2-item:hover > .over__item-background {
+  opacity: 1;
+  visibility: visible;
+}
+.over__item {
+  @include position(absolute);
+  width: $max;
+  height: $max;
+
+  background-color: rgba(0, 0, 0, 0.616);
+  @include flexBox(center, center);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  &-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    @include flexBox(center, center);
+    border: 1px solid #ccc;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+    i {
+      font-size: 1.5rem;
+      color: #fff;
+      text-align: center;
+      .active {
+        color: red;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1239px) {
+}

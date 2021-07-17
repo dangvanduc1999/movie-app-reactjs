@@ -1,0 +1,45 @@
+$primary: #e7bc51;
+$color-text: #fff;
+$border-radius: 5px;
+$pad-mer: 2rem;
+//============== MIXIN =========================
+@mixin position($position: relative, $top: 0, $left: 0) {
+  position: $position;
+  top: $top;
+  left: $left;
+}
+@mixin LineandClaim($webkit-line-clamp: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $webkit-line-clamp;
+}
+@mixin flexBox($align-items, $justify-content) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+@mixin textStyle($family, $size, $color: #fff, $weight: normal) {
+  font-family: $family, sans-serif;
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+@mixin css3-compatible($atribute, $params) {
+  #{$atribute}: #{$params};
+  -webkit-#{$atribute}: #{$params};
+  -khtml-#{$atribute}: #{$params};
+  -moz-#{$atribute}: #{$params};
+  -ms-#{$atribute}: #{$params};
+  -o-#{$atribute}: #{$params};
+}
+@keyframes growth {
+  from {
+    transform: scale(var(--growth-from));
+  }
+  to {
+    transform: scale(var(--growth-to));
+  }
+}

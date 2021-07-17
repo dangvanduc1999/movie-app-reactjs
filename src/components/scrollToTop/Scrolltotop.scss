@@ -1,0 +1,37 @@
+html {
+  scroll-behavior: smooth;
+}
+.toTop__btn {
+  z-index: 1000;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  background-color: #e7bc51;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 0.625em #e7bc51;
+  }
+  .icon {
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    animation: jumping 1s infinite ease-in-out;
+    transition: all ease-in-out;
+  }
+}
+@keyframes jumping {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}

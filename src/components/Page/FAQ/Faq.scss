@@ -1,0 +1,143 @@
+@import "../../../style/base.scss";
+.Faq {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  .Faq__title {
+    background-image: url("../../../image/bgr.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    max-height: 42rem;
+    height: 420px;
+    position: relative;
+    z-index: 1;
+    @include flexBox(center, center);
+    &:before {
+      content: "";
+      @include position(absolute, 0, 0);
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+    h2 {
+      z-index: 20;
+      text-transform: capitalize;
+      @include textStyle("Poppins", 5rem, $color-text, 600);
+    }
+  }
+}
+.Faq__QA-container {
+  width: 100%;
+  margin-top: 5rem;
+  &:last-child {
+    margin-bottom: 5rem;
+  }
+}
+.Faq__QA-wrapper {
+  width: 100%;
+  background-color: rgb(25, 25, 25);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.Faq__QA-quetion {
+  width: 100%;
+  padding: 2.5rem 3rem 2.8rem;
+  @include flexBox(center, space-between);
+  .Faq__QA-quetion-title {
+    @include textStyle("Poppins", 2.5rem);
+    text-transform: capitalize;
+  }
+
+  .Faq__QA-quetion-btn {
+    padding: 1rem 1.2rem;
+    background: $primary;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      color: $color-text;
+    }
+    &:hover {
+      background: rgba(231, 189, 81, 0.596);
+    }
+  }
+}
+.Faq__Qa-answers {
+  width: 100%;
+  padding: 0;
+  height: 0;
+  border: none;
+  transform-origin: top top;
+  transition: all 0.8s ease-in-out;
+  overflow: hidden;
+  p {
+    opacity: 0;
+    transition: all 1s ease;
+    width: 100%;
+    @include textStyle("Poppins", 1.4rem, $color-text);
+    letter-spacing: 1px;
+    line-height: 2rem;
+  }
+  &.active p {
+    opacity: 1;
+  }
+
+  &.active {
+    height: 100%;
+    padding: 5.2rem 5.9rem 3.6rem 3rem;
+    border-top: 1px solid;
+    border-color: $primary;
+  }
+}
+@media screen and (max-width: 550px) {
+  .Faq__QA-container {
+    margin-top: 2rem;
+    &:last-child {
+      margin-bottom: 3rem;
+    }
+  }
+  .Faq__QA-quetion {
+    padding: 2rem 2rem 2.8rem;
+    .Faq__QA-quetion-title {
+      font-size: 2rem;
+    }
+  }
+  .Faq__Qa-answers {
+    width: 100%;
+    padding: 0;
+    height: 0;
+    border: none;
+    transform-origin: top top;
+    transition: all 0.8s ease-in-out;
+    overflow: hidden;
+    p {
+      opacity: 0;
+      font-size: 1.2rem;
+    }
+    &.active p {
+      opacity: 1;
+    }
+
+    &.active {
+      height: 100%;
+      padding: 2.4rem 1rem 2rem 2rem;
+      border-top: 1px solid;
+      border-color: #e7bc51;
+    }
+  }
+}
+@media (hover: hover) {
+  .Faq__QA-quetion {
+    .Faq__QA-quetion-btn {
+      &:hover {
+        background: rgba(231, 189, 81, 0.596);
+      }
+    }
+  }
+}

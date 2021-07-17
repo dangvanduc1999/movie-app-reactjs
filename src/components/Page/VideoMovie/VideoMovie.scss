@@ -1,0 +1,155 @@
+@import "../../../style/base.scss";
+
+.videoMovie {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 42rem;
+    height: 420px;
+    background-image: url("../../../image/bgr.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -2;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-height: 42rem;
+    height: 420px;
+    z-index: -1;
+  }
+}
+.videoMovie__video-wrapper {
+  z-index: 1;
+  border-radius: $border-radius;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    outline: none;
+  }
+}
+.videoMovie__content {
+  padding-top: 3rem;
+  .videoMovie__content-title {
+    @include textStyle("Poppins", 5rem, $color-text, 600);
+    font-style: italic;
+  }
+  .videoMovie__content-point {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    @include textStyle("Poppins", 1.4rem, $color-text);
+  }
+  .videoMovie__content-info {
+    @include flexBox(center, flex-start);
+    margin-bottom: 2rem;
+    span {
+      display: block;
+    }
+    span,
+    p {
+      display: block;
+      @include textStyle("Poppins", 1.5rem, $color-text);
+      margin-right: 2rem;
+    }
+  }
+  .videoMovie__content-describer {
+    display: block;
+    @include textStyle("Poppins", 1.5rem, $color-text);
+    letter-spacing: 0.8px;
+    line-height: 2rem;
+  }
+}
+@media screen and (max-width: 940px) {
+  .videoMovie {
+    &::before {
+      content: "";
+      max-height: 30rem;
+      height: 300px;
+    }
+    &::after {
+      content: "";
+      max-height: 20rem;
+      height: 300px;
+    }
+  }
+  .videoMovie__video-wrapper {
+    padding-bottom: 2rem;
+  }
+  .videoMovie__content {
+    .videoMovie__content-point {
+      @include textStyle("Poppins", 1.6rem, $color-text);
+    }
+    .videoMovie__content-info {
+      @include flexBox(center, flex-start);
+      span,
+      p {
+        @include textStyle("Poppins", 1.6rem, $color-text);
+      }
+    }
+    .videoMovie__content-describer {
+      @include textStyle("Poppins", 1.6rem, $color-text);
+      letter-spacing: 1.2px;
+      line-height: 2.2rem;
+    }
+  }
+}
+@media screen and (max-width: 739px) {
+  .videoMovie {
+    &::before {
+      content: "";
+      max-height: 20rem;
+      height: 200px;
+    }
+    &::after {
+      content: "";
+      max-height: 20rem;
+      height: 200px;
+    }
+  }
+  .videoMovie__video-wrapper {
+    padding-bottom: 1.5rem;
+  }
+  .videoMovie__content {
+    padding-left: 1rem;
+    .videoMovie__content-title {
+      @include textStyle("Poppins", 4.2rem, $color-text, 600);
+      @include LineandClaim(2);
+    }
+    .videoMovie__content-point {
+      @include textStyle("Poppins", 1.6rem, $color-text);
+    }
+    .videoMovie__content-info {
+      @include flexBox(center, flex-start);
+      margin-bottom: 2rem;
+      span,
+      p {
+        @include textStyle("Poppins", 1.6rem, $color-text);
+      }
+    }
+    .videoMovie__content-describer {
+      @include textStyle("Poppins", 1.8rem, $color-text);
+      letter-spacing: 1px;
+      line-height: 2.2rem;
+    }
+  }
+}

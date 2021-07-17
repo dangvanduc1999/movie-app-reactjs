@@ -1,0 +1,29 @@
+$max: 100%;
+* {
+  box-sizing: border-box;
+}
+.favorite__container {
+  padding-top: 5.7rem;
+  background-color: #141414;
+  width: $max;
+  height: $max;
+  min-height: 100vh;
+  .favorite__list {
+    width: $max;
+    height: $max;
+  }
+  .favorite__item {
+    margin-top: 24px;
+  }
+  .contaner__slide2-item {
+    margin: 0;
+  }
+}
+.favorite__noitem {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.486);
+  font-style: italic;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 5rem;
+}
