@@ -36,7 +36,9 @@ class Home extends React.Component {
       <>
         <MovieContextConsumer>
           {(props) => {
-            let formatData = props.data.filter((data) => data.type === "home");
+            let formatData = props.state.data.filter(
+              (data) => data.type === "home"
+            );
             return (
               <MovieInforConsumer>
                 {(props) => {

@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import { MovieContext } from "../../../../context/Context";
 import "./Suggested.scss";
 function Suggested() {
-  const { data } = useContext(MovieContext);
-  const fomatData = data
+  const { state } = useContext(MovieContext);
+  const fomatData = state.data
     .filter((movie) => {
       return movie.vote_average >= 8;
     })

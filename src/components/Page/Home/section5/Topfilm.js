@@ -15,7 +15,7 @@ function Slider1({ props: { backdrop_path } }) {
 }
 
 function Topfilm() {
-  const { data, query } = useContext(MovieContext);
+  const { state } = useContext(MovieContext);
 
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
@@ -23,9 +23,9 @@ function Topfilm() {
   let slider1 = useMemo(() => [], []);
   let slider2 = useMemo(() => [], []);
 
-  const fomatData = data
+  const fomatData = state.data
     .filter((movie) => {
-      return movie.type !== query && movie.vote_count >= 8;
+      return movie.type !== state.query && movie.vote_count >= 8;
     })
     .sort((a, b) => {
       return b.vote_count - a.vote_count;

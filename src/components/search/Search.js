@@ -8,7 +8,8 @@ import Loading from "../loading/Loading";
 
 function Search() {
   // loading data context
-  const { data, query } = useContext(MovieContext);
+  const { state } = useContext(MovieContext);
+  const { data, query } = state;
   const { currentMovie, play } = useContext(MovieInforContext);
 
   const [loading, setLoading] = useState(false);
@@ -35,8 +36,11 @@ function Search() {
                 <div className="row">
                   {formatDataSearch.map((movie, index) => {
                     return (
-                      <div className="search__item col l-2 m-3 c-6">
-                        <Slide2 key={index} props={movie} isChangeSize={true} />
+                      <div
+                        key={movie.id}
+                        className="search__item col l-2 m-3 c-6"
+                      >
+                        <Slide2 props={movie} isChangeSize={true} />
                       </div>
                     );
                   })}

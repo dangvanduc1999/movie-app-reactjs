@@ -1,12 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { MovieContext } from "../../context/Context";
 import { MovieInforContext } from "../../context/MovieinforContext";
+import { GET_ID_LIKES } from "../../Reducer/type";
 
 import "./Slide2.scss";
 
 const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   // loading Context
-  const { getFavoriteMovie } = useContext(MovieContext);
+  const { dispatch } = useContext(MovieContext);
   const { getPlay, getMovie } = useContext(MovieInforContext);
   const [active, setActive] = useState(false);
   const [changeSize, setChangeSize] = useState(false);
@@ -17,7 +18,8 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   //  handle event and submit data to state
   function activeClick() {
     setActive(!active);
-    getFavoriteMovie({ id });
+    // getFavoriteMovie({ id });
+    dispatch({ type: GET_ID_LIKES, payload: id });
   }
   function activePlay() {
     getPlay();

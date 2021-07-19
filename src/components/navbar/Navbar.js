@@ -6,10 +6,11 @@ import Button from "../buttton/Button";
 import "./Navbar.scss";
 
 import { Link } from "react-router-dom";
+import { GET_QUERY } from "../../Reducer/type";
 
 const NavBar = () => {
   // loading context
-  const { getQueryString } = useContext(MovieContext);
+  const { dispatch } = useContext(MovieContext);
   const { islogin, handleLogin } = useContext(AuthenContext);
   const { getHeader } = useContext(AnimationContext);
 
@@ -21,7 +22,11 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
   const handleChange = (e) => {
     if (e.keyCode === 13) {
-      getQueryString(e.target.value);
+      // getQueryString(e.target.value);
+      dispatch({
+        type: GET_QUERY,
+        payload: e.target.value,
+      });
       e.target.value = "";
     }
   };

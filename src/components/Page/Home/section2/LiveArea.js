@@ -35,7 +35,7 @@ function LiveArea() {
         ],
         start: "top 50%",
         end: "top 30%",
-        toggleActions: "play restart none  none",
+        toggleActions: "play none none  none",
         // invalidateOnRefresh: true,
       },
     });

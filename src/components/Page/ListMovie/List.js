@@ -8,11 +8,11 @@ import { settings } from "./setting";
 import "./List.scss";
 
 function List() {
-  const { data } = useContext(MovieContext);
+  const { state } = useContext(MovieContext);
   const { currentMovie, play } = useContext(MovieInforContext);
-  let homeData = data.filter((data) => data.type === "home");
-  let theaterData = data.filter((data) => data.type === "theater");
-  let DrammaData = data.filter((data) => data.type === "dramma");
+  let homeData = state.data.filter((data) => data.type === "home");
+  let theaterData = state.data.filter((data) => data.type === "theater");
+  let DrammaData = state.data.filter((data) => data.type === "dramma");
 
   return (
     <>
@@ -26,8 +26,8 @@ function List() {
           <Slider className=" list__movie " {...settings}>
             {homeData.map(function (movie, index) {
               return (
-                <div className="">
-                  <Slide2 key={movie.id} props={movie} isChangeSize={true} />
+                <div key={movie.id} className="">
+                  <Slide2 props={movie} isChangeSize={true} />
                 </div>
               );
             })}
@@ -40,8 +40,8 @@ function List() {
           <Slider className=" list__movie " {...settings}>
             {theaterData.map(function (movie, index) {
               return (
-                <div className="">
-                  <Slide2 key={index} props={movie} isChangeSize={true} />
+                <div key={movie.id} className="">
+                  <Slide2 props={movie} isChangeSize={true} />
                 </div>
               );
             })}
@@ -54,8 +54,8 @@ function List() {
           <Slider className=" list__movie " {...settings}>
             {DrammaData.map(function (movie, index) {
               return (
-                <div className="">
-                  <Slide2 key={index} props={movie} isChangeSize={true} />
+                <div key={movie.id} className="">
+                  <Slide2 props={movie} isChangeSize={true} />
                 </div>
               );
             })}

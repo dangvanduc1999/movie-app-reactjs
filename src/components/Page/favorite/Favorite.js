@@ -11,7 +11,8 @@ import { AuthenContext } from "../../../context/authencontext";
 
 function Favorite(props) {
   // loading contextdata
-  const { data } = useContext(MovieContext);
+  const { state } = useContext(MovieContext);
+  const { data } = state;
   const { currentMovie, play } = useContext(MovieInforContext);
   const { islogin } = useContext(AuthenContext);
   const [faroviteMovie, setFavoriteMovie] = useState([]);
