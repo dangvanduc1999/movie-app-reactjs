@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Footer.scss"
-import CHplay from "../../image/CHplay.png"
-import Applestore from "../../image/Applestore.png"
+import CHplay from "../../asset/image/CHplay.png"
+import Applestore from "../../asset/image/Applestore.png"
 
 function Footer() {
    return (

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Button from "../../../buttton/Button";
-import Live from "../../../../image/live_img.png";
+import Live from "../../../../asset/image/live_img.png";
 import CountUp from "react-countup";
 import "./LiveArea.scss";
 
@@ -12,15 +12,13 @@ function LiveArea() {
   let HomeLive = useRef(null);
   let image = useRef(null);
   let content = useRef(null);
-
   useEffect(() => {
-    const subTitle = content.children[0];
-    const Title = content.children[1];
-    const ContentP = content.children[2].children[0];
-    const Resolution = content.children[2].children[1].children[0];
-    const activeCustomer = content.children[2].children[1].children[1];
-    const BTN = content.children[2].children[2];
-
+    const subTitle = content?.children[0];
+    const Title = content?.children[1];
+    const ContentP = content?.children[2].children[0];
+    const Resolution = content?.children[2].children[1].children[0];
+    const activeCustomer = content?.children[2].children[1].children[1];
+    const BTN = content?.children[2].children[2];
     let tl = new TimelineLite({
       scrollTrigger: {
         trigger: [
@@ -35,32 +33,25 @@ function LiveArea() {
         ],
         start: "top 50%",
         end: "top 30%",
-        toggleActions: "play none none  none",
-        // invalidateOnRefresh: true,
       },
     });
 
     TweenMax.to(HomeLive, 0, { css: { visibility: "visible" } });
 
-    tl.from(
-      image,
-      1.2,
-      { y: 1000, opacity: 0, ease: Power3.easeOut },
-      "start"
-    ).from(
-      image.firstElementChild,
-      2,
-      { scale: 1.4, ease: Power3.easeOut },
-      0.2
-    );
-
-    tl.staggerFrom(
-      subTitle,
-      1,
-      { y: 44, opacity: 0, ease: Power3.easeOut, delay: 0.8 },
-      0.15,
-      "start"
-    )
+    tl.from(image, 1.2, { y: 1000, opacity: 0, ease: Power3.easeOut }, "start")
+      .from(
+        image.firstElementChild,
+        2,
+        { scale: 1.4, ease: Power3.easeOut },
+        0.2
+      )
+      .from(
+        subTitle,
+        1,
+        { y: 44, opacity: 0, ease: Power3.easeOut, delay: 0.8 },
+        0.15,
+        "start"
+      )
       .from(
         Title,
         1,

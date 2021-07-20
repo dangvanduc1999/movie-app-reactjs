@@ -1,4 +1,4 @@
-import REplace from "../image/REplace.jpg";
+import REplace from "../asset/image/REplace.jpg";
 const API__IMG = "https://image.tmdb.org/t/p/w500";
 export default async function getMovie(url, type, search = "non-active") {
   try {

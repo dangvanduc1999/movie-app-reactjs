@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthenContext } from "../../../context/authencontext";
-import rightImage from "../../../image/rightImage.png";
-import wrong from "../../../image/wrong.png";
+import rightImage from "../../../asset/image/rightImage.png";
+import wrong from "../../../asset/image/wrong.png";
 import "./FormMessage.scss";
 
 function FormMessage({ handlePopup }) {

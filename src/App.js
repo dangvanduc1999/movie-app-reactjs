@@ -3,8 +3,8 @@ import MovieContextProvider from "./context/Context";
 import AuthenProvider from "./context/authencontext";
 import MovieInforProvider from "./context/MovieinforContext";
 import AnimationContextProvider from "./context/AnimationContext";
-import "../src/style/grid.css";
-import "../src/style/reset.css";
+import "../src/asset/style/grid.css";
+import "../src/asset/style/reset.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // components

@@ -1,4 +1,4 @@
-@import "../../../style/base.scss";
+@import "../../../asset/style/base.scss";
 
 .videoMovie {
   position: relative;
@@ -13,7 +13,7 @@
     width: 100%;
     max-height: 42rem;
     height: 420px;
-    background-image: url("../../../image/bgr.jpg");
+    background-image: url("../../../asset/image/bgr.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

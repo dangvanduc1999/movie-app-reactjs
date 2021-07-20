@@ -1,0 +1,34 @@
+$Large-pc: large-pc;
+$laptop: laptop;
+$tablet: tablet;
+$small_tablet: small_tablet;
+$phablet: phablet;
+$hover: hover;
+
+@mixin responsive($type, $view: poitrait) {
+  @if $type == Large-pc {
+    @media screen and (max-width: 1239px) {
+      @content;
+    }
+  } @else if $type == laptop {
+    @media screen and (max-width: 960px) {
+      @content;
+    }
+  } @else if $type == tablet {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  } @else if $type == small_tablet {
+    @media screen and (max-width: 550px) {
+      @content;
+    }
+  } @else if $type == phablet {
+    @media screen and (max-width: 480px) {
+      @content;
+    }
+  } @else if $type == hover {
+    @media (hover: hover) {
+      @content;
+    }
+  }
+}

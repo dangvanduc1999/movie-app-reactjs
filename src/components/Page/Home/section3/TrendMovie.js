@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Button from "../../../buttton/Button";
-import image1 from "../../../../image/image1.jpg";
+import image1 from "../../../../asset/image/image1.jpg";
 import "./TrendMovie.scss";
 import { TimelineLite, Power3, gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

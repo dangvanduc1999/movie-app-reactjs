@@ -1,5 +1,5 @@
 import React from "react";
-import power from "../../../image/power.mp4";
+import power from "../../../asset/image/power.mp4";
 import { useLocation } from "react-router-dom";
 import "./VideoMovie.scss";
 
