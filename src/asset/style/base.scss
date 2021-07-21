@@ -1,4 +1,5 @@
 @import "./pattern/responsive";
+@import "./pattern/animation";
 $primary: #e7bc51;
 $color-text: #fff;
 $border-radius: 5px;
@@ -35,12 +36,4 @@ $pad-mer: 2rem;
   -moz-#{$atribute}: #{$params};
   -ms-#{$atribute}: #{$params};
   -o-#{$atribute}: #{$params};
-}
-@keyframes growth {
-  from {
-    transform: scale(var(--growth-from));
-  }
-  to {
-    transform: scale(var(--growth-to));
-  }
 }

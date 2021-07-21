@@ -1,6 +1,4 @@
-html {
-  height: 100%;
-}
+@import "../../../asset/style/base.scss";
 body {
   overflow-x: hidden;
 }
@@ -29,6 +27,11 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
+  @include responsive($tablet) {
+    width: 90%;
+    padding: 20px;
+    top: 55%;
+  }
 }
 
 .login-box h2 {
@@ -97,14 +100,5 @@ body {
     margin: 20px 5px;
     text-decoration: none;
     text-transform: capitalize;
-  }
-}
-
-@media screen and (max-width: 739px) {
-  .login-box {
-    position: absolute;
-    width: 90%;
-    padding: 20px;
-    top: 55%;
   }
 }

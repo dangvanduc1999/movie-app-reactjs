@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../../context/Context";
 import { AuthenContext } from "../../context/authencontext";
-import { AnimationContext } from "../../context/AnimationContext";
 import Button from "../buttton/Button";
 import "./Navbar.scss";
 
@@ -12,7 +11,6 @@ const NavBar = () => {
   // loading context
   const { dispatch } = useContext(MovieContext);
   const { islogin, handleLogin } = useContext(AuthenContext);
-  const { getHeader } = useContext(AnimationContext);
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -54,7 +52,6 @@ const NavBar = () => {
     <>
       <header
         className={nav ? "navBar__container active" : "navBar__container"}
-        ref={getHeader}
       >
         <div className="grid wide  ">
           <div className="row no-gutters ">

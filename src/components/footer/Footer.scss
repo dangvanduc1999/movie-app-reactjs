@@ -1,5 +1,6 @@
 @import "../../asset/style/base.scss";
 $margin: 3rem;
+$magin940px: 1.5rem;
 .footer {
   position: relative;
   bottom: 0;
@@ -7,12 +8,16 @@ $margin: 3rem;
   font-family: "Poppins", sans-serif;
   color: white;
   padding: 6.5rem 0 2rem;
+  @include responsive($laptop) {
+    padding: 2.5rem 1rem 2rem;
+  }
+  @include responsive($small_tablet) {
+    padding: 3rem 1rem 2rem;
+  }
 }
 .footer__content {
   width: 100%;
   &-link {
-    display: flex;
-    align-items: center;
     margin-bottom: $margin;
     @include flexBox(center, flex-start);
     a {
@@ -23,6 +28,17 @@ $margin: 3rem;
       @include css3-compatible(transition, all 0.3s ease);
       &:hover {
         color: $primary;
+        @include responsive($hover) {
+          color: $primary;
+        }
+      }
+    }
+    @include responsive($small_tablet) {
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      a {
+        font-size: 1.4rem;
+        margin: 1rem 1.5rem 0 0;
       }
     }
   }
@@ -30,6 +46,29 @@ $margin: 3rem;
     font-size: 1.2rem;
     letter-spacing: 0.8px;
     line-height: 1.4rem;
+  }
+
+  @include responsive($laptop) {
+    margin-bottom: $magin940px;
+    &-link {
+      margin-bottom: $magin940px;
+      a {
+        font-size: 1.8rem;
+        margin-right: 2rem;
+      }
+    }
+    .footer__content-info {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
+  }
+  @include responsive($tablet) {
+    &-link {
+      justify-content: center;
+    }
+    .footer__content-info {
+      text-align: center;
+    }
   }
 }
 .footer__social {
@@ -45,61 +84,38 @@ $margin: 3rem;
       display: inline-block;
       text-decoration: none;
       color: white;
+      padding-top: 1rem;
     }
     .icon {
       $lenght: 5rem;
       @include flexBox(center, center);
-      margin-right: 1.2rem;
+      background-color: rgb(37, 37, 37);
+      background: rgba(41, 41, 41, 0.76);
+      margin: 0 1.2rem 1rem 0;
+
       width: $lenght;
       height: $lenght;
-      background-color: rgb(37, 37, 37);
+
       text-align: center;
-      margin-bottom: 1rem;
       font-size: 2rem;
       border-radius: 50%;
       @include css3-compatible(transition, all 0.4s ease 0s);
-      background: rgba(41, 41, 41, 0.76);
+
       &:hover {
         color: $primary;
         @include css3-compatible(text-shadow, 0 0 0.125em $primary);
         @include css3-compatible(text-shadow, 0 0 0.125em $primary);
         @include css3-compatible(transition, all 0.4s ease);
+        @include responsive($hover) {
+          color: $primary;
+          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
+          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
+          @include css3-compatible(transition, all 0.4s ease);
+        }
       }
     }
   }
-}
-.footer__app {
-  width: 100%;
-  p {
-    text-transform: capitalize;
-    color: inherit;
-    font-size: 1.5rem;
-    margin-bottom: $margin;
-  }
-  .footer__app-img {
-    @include flexBox(center, space-between);
-  }
-}
-@media screen and (max-width: 940px) {
-  $magin940px: 1.5rem;
-  .footer {
-    padding: 2.5rem 1rem 2rem;
-  }
-  .footer__content {
-    margin-bottom: $magin940px;
-    &-link {
-      margin-bottom: $magin940px;
-      a {
-        font-size: 1.8rem;
-        margin-right: 2rem;
-      }
-    }
-    .footer__content-info {
-      font-size: 1.4rem;
-      line-height: 1.8rem;
-    }
-  }
-  .footer__social {
+  @include responsive($laptop) {
     margin-bottom: 2rem;
     p {
       text-transform: capitalize;
@@ -116,127 +132,63 @@ $margin: 3rem;
       }
     }
   }
-  .footer__app {
-    p {
-      font-size: 2rem;
-    }
-    .footer__app-img {
-      justify-content: space-around;
-      img {
-        margin: 0 5px;
-      }
-    }
-  }
-}
-@media screen and (max-width: 739px) {
-  .footer__content {
-    margin-bottom: 1.5rem;
-    &-link {
-      justify-content: center;
-    }
-    .footer__content-info {
-      text-align: center;
-    }
-  }
-  .footer__social {
-    margin-bottom: 2rem;
+  @include responsive($tablet) {
     p {
       text-align: center;
       font-size: 2.2rem;
-      margin-bottom: 1.8rem;
     }
     &-icon {
       @include flexBox(center, center);
     }
   }
-  .footer__app {
-    width: 100%;
+  @include responsive($small_tablet) {
     p {
-      text-transform: capitalize;
-      color: inherit;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    &-icon {
+      @include flexBox(center, space-around);
+    }
+  }
+}
+.footer__app {
+  width: 100%;
+  p {
+    text-transform: capitalize;
+    color: inherit;
+    font-size: 1.5rem;
+    margin-bottom: $margin;
+  }
+  .footer__app-img {
+    @include flexBox(center, space-between);
+  }
+  @include responsive($laptop) {
+    p {
       font-size: 2rem;
-      margin-bottom: 3rem;
-      text-align: center;
     }
     .footer__app-img {
-      justify-content: center;
+      justify-content: space-around;
       img {
         margin: 0 5px;
       }
     }
   }
-}
-@media screen and (max-width: 550px) {
-  .footer {
-    padding: 3rem 1rem 2rem;
-  }
-  .footer__content {
-    margin-bottom: 1.5rem;
-    &-link {
-      margin-bottom: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      a {
-        font-size: 1.8rem;
-        margin-right: 1.5rem;
-        margin-top: 1rem;
-      }
-    }
-    .footer__content-info {
-      font-size: 1.4rem;
-      line-height: 1.8rem;
-    }
-  }
-  .footer__social {
-    margin-bottom: 2rem;
+  @include responsive($tablet) {
     p {
-      text-transform: capitalize;
-      color: inherit;
-      font-size: 2rem;
-      margin-bottom: 1.8rem;
-    }
-    &-icon {
-      @include flexBox(center, space-around);
-      a {
-        display: inline-block;
-        text-decoration: none;
-        color: white;
-      }
-    }
-  }
-  .footer__app {
-    width: 100%;
-    p {
-      text-transform: capitalize;
-      color: inherit;
-      font-size: 2rem;
       margin-bottom: 3rem;
+      text-align: center;
+    }
+    .footer__app-img {
+      justify-content: center;
+    }
+  }
+  @include responsive($small_tablet) {
+    p {
+      font-size: 1.8rem;
+      margin-bottom: 1.8rem;
     }
     .footer__app-img {
       justify-content: space-around;
-    }
-  }
-}
-@media (hover: hover) {
-  .footer__content {
-    &-link {
-      a {
-        &:hover {
-          color: $primary;
-        }
-      }
-    }
-  }
-  .footer__social {
-    &-icon {
-      .icon {
-        &:hover {
-          color: $primary;
-          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
-          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
-          @include css3-compatible(transition, all 0.4s ease);
-        }
-      }
     }
   }
 }

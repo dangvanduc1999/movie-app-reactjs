@@ -4,10 +4,15 @@ $tablet: tablet;
 $small_tablet: small_tablet;
 $phablet: phablet;
 $hover: hover;
+$small-pc: small-pc;
 
 @mixin responsive($type, $view: poitrait) {
   @if $type == Large-pc {
     @media screen and (max-width: 1239px) {
+      @content;
+    }
+  } @else if $type == small-pc {
+    @media screen and (max-width: 1025px) {
       @content;
     }
   } @else if $type == laptop {
@@ -28,6 +33,10 @@ $hover: hover;
     }
   } @else if $type == hover {
     @media (hover: hover) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $type) {
       @content;
     }
   }
