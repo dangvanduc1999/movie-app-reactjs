@@ -4,6 +4,9 @@ $primary: #e7bc51;
 $color-text: #fff;
 $border-radius: 5px;
 $pad-mer: 2rem;
+html {
+  font-size: 62.5%;
+}
 //============== MIXIN =========================
 @mixin position($position: relative, $top: 0, $left: 0) {
   position: $position;

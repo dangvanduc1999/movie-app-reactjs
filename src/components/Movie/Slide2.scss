@@ -21,8 +21,12 @@ $max: 100%;
   }
 
   &:hover {
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
+    @include css3-compatible(box-shadow, 0px 0px 12px rgba(0, 0, 0, 0.9));
     border-radius: 3px;
+    @include responsive($hover) {
+      @include css3-compatible(box-shadow, 0px 0px 12px rgba(0, 0, 0, 0.9));
+      border-radius: 3px;
+    }
   }
 }
 .contaner__slide2-item:hover > .over__item {
@@ -33,8 +37,8 @@ $max: 100%;
   position: absolute;
   top: 50%;
   margin-left: 2rem;
-  transform: translateY(-50%);
   z-index: 500;
+  @include css3-compatible(transform, translateY(-50%));
   h2 {
     @include textStyle("Poppins", 2rem, $color-text, 600);
     display: block;
@@ -113,7 +117,4 @@ $max: 100%;
       }
     }
   }
-}
-
-@media screen and (max-width: 1239px) {
 }

@@ -6,12 +6,26 @@ $max: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  max-height: 61.6rem;
+  // max-height: 61.6rem;
   width: $max;
   padding: 10rem 0;
   margin: 10rem 0 3rem;
   position: relative;
   z-index: 100;
+  @include responsive($Large-pc) {
+    // max-height: $max;
+    height: $max;
+    padding: 3rem 1rem;
+    margin: 5rem 0 0;
+  }
+  @include responsive($laptop) {
+    margin: 3rem 0 0;
+    padding: 1.2rem;
+  }
+  @include orientation() {
+    margin: 0 0 3rem 0;
+    padding: 3rem 2rem 2rem;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -31,7 +45,11 @@ $max: 100%;
 .home__siteMovie-content {
   z-index: 101;
   padding-top: 1rem;
+  @include orientation {
+    padding-top: 0rem;
+  }
   .home__siteMovie-tittle {
+    margin-top: 2rem;
     @include textStyle("Poppins", 8rem, $color-text, 500);
     text-transform: uppercase;
     margin-bottom: 1.6rem;
@@ -39,6 +57,9 @@ $max: 100%;
     -webkit-text-fill-color: white;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: white;
+    @include orientation {
+      font-size: 5rem;
+    }
   }
 
   span {
@@ -57,6 +78,9 @@ $max: 100%;
       margin-left: 0;
       text-align: center;
       text-transform: uppercase;
+      @include orientation {
+        font-size: 1rem;
+      }
     }
     p {
       display: block;
@@ -64,12 +88,19 @@ $max: 100%;
       line-height: 2rem;
       text-align: center;
       margin-left: 1.2rem;
+      @include orientation {
+        font-size: 1.6rem;
+      }
     }
   }
   h3 {
     @include textStyle("Poppins", 3rem, $color-text, 500);
     text-transform: capitalize;
     margin-bottom: 2rem;
+    @include orientation {
+      font-size: 2.5rem;
+      margin-bottom: 1.6rem;
+    }
   }
   .home__siteMovie-describer {
     display: block;
@@ -78,6 +109,10 @@ $max: 100%;
     letter-spacing: 1px;
     line-height: 2rem;
     margin-bottom: 3rem;
+    @include orientation {
+      font-size: 1.6rem;
+      margin-bottom: 2.4rem;
+    }
   }
 }
 .home__siteMovie-imgcontainer {
@@ -100,52 +135,7 @@ $max: 100%;
     }
   }
 }
-@media screen and (max-width: 1239px) {
-  .home__siteMovie {
-    max-height: $max;
-    height: $max;
-    padding: 3rem 1rem;
-    margin: 5rem 0 0;
-  }
-}
-@media screen and( max-width: 940px) {
-  .home__siteMovie {
-    margin: 3rem 0 0;
-  }
-}
-@media screen and (max-width: 940px) and (orientation: landscape) {
-  .home__siteMovie {
-    margin: 5rem 0 0;
-  }
-  .home__siteMovie-content {
-    padding-top: 0rem;
-    .home__siteMovie-tittle {
-      font-size: 5rem;
-    }
-    .home__siteMovie-tagPoint {
-      .home__siteMovie-tag {
-        font-size: 1rem;
-      }
-      p {
-        font-size: 1.6rem;
-      }
-    }
-    h3 {
-      font-size: 2.5rem;
-      margin-bottom: 1.6rem;
-    }
-    .home__siteMovie-describer {
-      max-width: 62.5rem;
-      font-size: 1.6rem;
-      margin-bottom: 2.4rem;
-    }
-  }
-  .home__siteMovie-imgcontainer {
-    z-index: 101;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-}
+
 @media screen and(max-width: 550px) {
   .home__siteMovie {
     margin: 3rem 0 0;

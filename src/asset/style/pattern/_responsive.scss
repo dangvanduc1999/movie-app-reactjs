@@ -5,6 +5,7 @@ $small_tablet: small_tablet;
 $phablet: phablet;
 $hover: hover;
 $small-pc: small-pc;
+$landscape: landscape;
 
 @mixin responsive($type, $view: poitrait) {
   @if $type == Large-pc {
@@ -39,5 +40,10 @@ $small-pc: small-pc;
     @media screen and (max-width: $type) {
       @content;
     }
+  }
+}
+@mixin orientation() {
+  @media all and (orientation: landscape) {
+    @content;
   }
 }

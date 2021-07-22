@@ -3,9 +3,20 @@ $growth-to: 1;
 
 @keyframes growth {
   from {
-    transform: scale(var($growth-from));
+    transform: scale($growth-from);
   }
   to {
-    transform: scale(var($growth-to));
+    transform: scale($growth-to);
+  }
+}
+@keyframes loading2 {
+  50% {
+    transform: rotate(200deg);
+  }
+  75% {
+    transform: rotate(160deg);
+  }
+  100% {
+    transform: rotate(180deg);
   }
 }
