@@ -20,7 +20,6 @@ const NavBar = () => {
   const closeMobileMenu = () => setClick(false);
   const handleChange = (e) => {
     if (e.keyCode === 13) {
-      // getQueryString(e.target.value);
       dispatch({
         type: GET_QUERY,
         payload: e.target.value,
@@ -56,17 +55,11 @@ const NavBar = () => {
         <div className="grid wide  ">
           <div className="row no-gutters ">
             <div className="col l-12 m-12 c-12">
-              <div className={nav ? "navBar active" : "navBar"}>
+              <nav className={nav ? "navBar active" : "navBar"}>
                 <Link to="/" className="navBar__logo" onClick={closeMobileMenu}>
                   <p>TopMovie</p>
                   <i className="fab navBar__logo-icon fa-typo3"></i>
                 </Link>
-                <div
-                  className={nav ? "menu-icon" : "menu-icon active"}
-                  onClick={handleClick}
-                >
-                  <i className={click ? "fas fa-times" : "fas fa-bars"} />
-                </div>
                 <div className="navBar__menu">
                   <ul
                     className={click ? "navBar__list active" : "navBar__list"}
@@ -137,7 +130,10 @@ const NavBar = () => {
                     </Link>
                   )}
                 </div>
-              </div>
+                <div className="menu-icon" onClick={handleClick}>
+                  <i className={click ? "fas fa-times" : "fas fa-bars"} />
+                </div>
+              </nav>
             </div>
           </div>
         </div>

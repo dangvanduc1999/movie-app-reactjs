@@ -1,19 +1,60 @@
-import REplace from "../asset/image/REplace.jpg";
-const API__IMG = "https://image.tmdb.org/t/p/w500";
-export default async function getMovie(url, type, search = "non-active") {
+import movieApi from "../api/movie";
+
+const API__KEY = "api_key=7973b4eac4de19d61157e9fb0edfae5f";
+export async function getHome(search = "non-active") {
   try {
-    const res = await fetch(url);
-    const data = await res.json();
-    const formatData = await data.results.map((fomatData) => {
-      const imgPoster = fomatData.poster_path;
-      const imgBack = fomatData.backdrop_path;
+    const results = await movieApi.getHome();
+    const formatData = await results.map((fomatData) => {
       return {
         ...fomatData,
-        poster_path: API__IMG + imgPoster,
-        backdrop_path: imgBack ? API__IMG + imgBack : REplace,
-        isLiked: false,
-        type: type,
+        type: "home",
         search: search,
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getTheater(search = "non-active") {
+  try {
+    const results = await movieApi.getTheater();
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: "theater",
+        search: search,
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getDramma(search = "non-active") {
+  try {
+    const results = await movieApi.getDramma();
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: "dramma",
+        search: search,
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getSearch(query) {
+  try {
+    const results = await movieApi.getSearch(query);
+    console.log(results);
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: query,
+        search: "active",
       };
     });
     return formatData;

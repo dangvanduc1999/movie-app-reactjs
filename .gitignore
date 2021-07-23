@@ -6,7 +6,7 @@
 .pnp.js
 /image
 /naruto.mp4
-
+.env
 # testing
 /coverage
 

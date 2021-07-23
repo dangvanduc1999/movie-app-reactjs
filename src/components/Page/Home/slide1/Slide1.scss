@@ -20,7 +20,7 @@ $currentlenght: 3rem;
   .main__infor {
     position: absolute;
     top: 38%;
-    @include css3-compatible(transform, translateY(-50%));
+    @include css3-compatible(transform, translateY(-70%));
     z-index: 2500;
     @include responsive($Large-pc) {
       margin-left: 2rem;
@@ -116,11 +116,11 @@ $currentlenght: 3rem;
         -webkit-text-stroke-width: 2.5px;
       }
       @include orientation() {
-        padding-left: 0rem;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        font-weight: normal;
-        -webkit-text-stroke-width: 1.5px;
+        // padding-left: 0rem;
+        // font-size: 2.5rem;
+        // margin-bottom: 1rem;
+        // font-weight: normal;
+        // -webkit-text-stroke-width: 1.5px;
       }
     }
     .main__describer {

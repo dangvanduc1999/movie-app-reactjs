@@ -23,18 +23,19 @@ input {
   }
 
   &__logo {
-    background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
-
     display: flex;
     text-decoration: none;
+    flex-grow: 10;
     @include textStyle("Lobster", 3.4rem, rgba(157, 255, 0, 0.603), 500);
     @include css3-compatible(appearance, none);
-    @include css3-compatible(background-clip, text);
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-
+    @supports (-webkit-background-clip: text) or (background-clip: text) {
+      & {
+        background: -webkit-linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: rgba (0, 0, 0, 0.0001);
+      }
+    }
     @include responsive($tablet) {
       font-size: 2.8rem;
     }
@@ -138,28 +139,10 @@ input {
 
   @include responsive($laptop) {
     display: block;
-
-    position: absolute;
-    top: 0;
-    right: 50px;
-
-    @include css3-compatible(transform, translate(-100%, 135%));
-    @include css3-compatible(transition, all 0.3s ease-out);
-
+    margin-right: 7px;
     font-size: 1.8rem;
     cursor: pointer;
-    &.active {
-      position: absolute;
-      top: 10px;
-      right: 50px;
-    }
-  }
-  @include responsive($tablet) {
-    right: 0px;
-    &.active {
-      top: 9px;
-      right: 0px;
-    }
+    @include css3-compatible(transition, all 0.3s ease-out);
   }
 }
 .fa-bars {
@@ -203,9 +186,9 @@ input {
   }
   @include responsive($tablet) {
     display: block;
-    margin-right: 40px;
     background: #2f3640;
     height: 40px;
+    margin-right: 15px;
     border-radius: 40px;
     padding: 10px;
     &:hover > .search-txt {

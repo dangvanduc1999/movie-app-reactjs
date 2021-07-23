@@ -1,16 +1,14 @@
 import React, { useEffect, useReducer } from "react";
-import { API__KEY, API__URL, API__URL1, API__URL2 } from "./APIS";
-import getMovie from "./FetchApi";
+
 import reducerMovie from "../Reducer/reducerMovie";
 import { CHANGE_FAVORITE, GET_MOVIE } from "../Reducer/type";
+import { getDramma, getHome, getSearch, getTheater } from "./FetchApi";
 export const MovieContext = React.createContext();
 
 const MovieContextProvider = ({ children }) => {
   const initialState = { likes: { id: "" }, data: [], query: "" };
   const [state, dispatch] = useReducer(reducerMovie, initialState);
   const { likes, data, query } = state;
-
-  const API__URL3 = `https://api.themoviedb.org/3/search/movie?${API__KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
   // ==== data favoriet movie with id
   const updateFavoriteMovie = async (data) => {
     let wait = await likes;
@@ -29,23 +27,20 @@ const MovieContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getMovie(API__URL, "home").then((newData) =>
+    getHome().then((newData) => {
+      console.log(newData);
+      dispatch({
+        type: GET_MOVIE,
+        payload: newData,
+      });
+    });
+    getTheater().then((newData) =>
       dispatch({
         type: GET_MOVIE,
         payload: newData,
       })
     );
-  }, []);
-  useEffect(() => {
-    getMovie(API__URL1, "theater").then((newData) =>
-      dispatch({
-        type: GET_MOVIE,
-        payload: newData,
-      })
-    );
-  }, []);
-  useEffect(() => {
-    getMovie(API__URL2, "dramma").then((newData) =>
+    getDramma().then((newData) =>
       dispatch({
         type: GET_MOVIE,
         payload: newData,
@@ -74,14 +69,14 @@ const MovieContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (query.length > 0) {
-      getMovie(API__URL3, query, "active").then((data) => {
+      getSearch(query).then((data) => {
         dispatch({
           type: GET_MOVIE,
           payload: data,
         });
       });
     }
-  }, [query, API__URL3]);
+  }, [query]);
   // ========== Get favorite movie with id=====================
   useEffect(() => {
     updateFavoriteMovie(data).then((data) =>
