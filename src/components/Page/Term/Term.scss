@@ -1,3 +1,4 @@
+@import "../../../asset/style//base.scss";
 .term {
   width: 100%;
   height: 100%;
@@ -9,19 +10,17 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    @include flexBox(center, center);
     width: 100%;
     max-height: 42rem;
     height: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
     position: relative;
     z-index: 1;
     &:before {
       content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
+      @include position(absolute);
+
       background-color: rgba(0, 0, 0, 0.3);
       width: 100%;
       height: 100%;
@@ -29,51 +28,43 @@
     }
 
     h2 {
-      font-family: "Poppins", sans-serif;
-      font-size: 5rem;
-      color: white;
-      z-index: 20;
+      @include textStyle("Poppins", 5rem, $color-text);
       text-transform: capitalize;
+      z-index: 20;
+      @include responsive($small_tablet) {
+        font-size: 4.5rem;
+      }
     }
   }
 }
 .term__content {
   padding: 10rem 0;
+  @include responsive($small_tablet) {
+    padding: 4rem 0;
+  }
   h2 {
-    font-family: "Poppins", sans-serif;
-    font-size: 2.8rem;
-    color: white;
     text-transform: capitalize;
     margin-bottom: 3rem;
+
+    @include textStyle("Poppins", 2.8rem, $color-text);
+    @include responsive($small_tablet) {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
   }
   p {
-    font-family: "Poppins", sans-serif;
-    font-size: 1.4rem;
+    @include textStyle("Poppins", 1.4rem, $color-text);
+
     line-height: 2.1rem;
     letter-spacing: 0.8px;
-    color: whitesmoke;
     margin-bottom: 2rem;
   }
   ul {
     li {
-      font-family: "Poppins", sans-serif;
-      font-size: 1.4rem;
+      @include textStyle("Poppins", 1.4rem, whitesmoke);
       line-height: 2.1rem;
       letter-spacing: 0.8px;
-      color: whitesmoke;
     }
     margin-bottom: 2rem;
-  }
-}
-@media screen and (max-width: 550px) {
-  .term .term__title h2 {
-    font-size: 4.5rem;
-  }
-  .term__content {
-    padding: 4rem 0;
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-    }
   }
 }

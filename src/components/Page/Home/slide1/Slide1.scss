@@ -12,6 +12,9 @@ $currentlenght: 3rem;
     height: 100%;
     object-fit: cover;
     filter: brightness(70%);
+    @include responsive($tablet) {
+      filter: brightness(80%);
+    }
   }
 
   .main__infor {
@@ -19,6 +22,30 @@ $currentlenght: 3rem;
     top: 38%;
     @include css3-compatible(transform, translateY(-50%));
     z-index: 2500;
+    @include responsive($Large-pc) {
+      margin-left: 2rem;
+    }
+    @include responsive($laptop) {
+      margin-left: 0;
+    }
+    @include responsive($tablet) {
+      margin-left: 1rem;
+      top: 55%;
+      .main__btn {
+        margin-left: 1rem;
+        display: block;
+        text-decoration: none;
+      }
+    }
+    @include orientation() {
+      position: absolute;
+      top: 47%;
+      margin-left: 0rem;
+      margin-top: 1rem;
+      .main__btn {
+        margin-left: 0rem;
+      }
+    }
     .main__tag {
       position: relative;
       padding: 0.5rem;
@@ -33,6 +60,24 @@ $currentlenght: 3rem;
         rgba(241, 241, 241, 0.575) 78%,
         transparent 100%
       );
+      @include responsive($tablet) {
+        margin-left: 1rem;
+        padding: 8px;
+        margin-bottom: $currentlenght;
+        i,
+        p {
+          font-size: $currentlenght;
+        }
+      }
+      @include orientation() {
+        margin-left: 0rem;
+        padding: 8px;
+        margin-bottom: 1.4rem;
+        i,
+        p {
+          font-size: 2rem;
+        }
+      }
       &::before {
         content: "";
         height: 100%;
@@ -58,6 +103,25 @@ $currentlenght: 3rem;
       -webkit-text-stroke-width: 3px;
       -webkit-text-stroke-color: white;
       text-transform: uppercase;
+      @include responsive($Large-pc) {
+        font-size: 6rem;
+        min-width: 100rem;
+      }
+      @include responsive($tablet) {
+        padding-left: 1rem;
+        font-size: 4rem;
+        margin-bottom: 2.5rem;
+        color: #e7bc51;
+        font-weight: normal;
+        -webkit-text-stroke-width: 2.5px;
+      }
+      @include orientation() {
+        padding-left: 0rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: normal;
+        -webkit-text-stroke-width: 1.5px;
+      }
     }
     .main__describer {
       display: block;
@@ -67,6 +131,25 @@ $currentlenght: 3rem;
       margin-bottom: 2rem;
       line-height: 2.2rem;
       letter-spacing: 1px;
+      @include responsive($Large-pc) {
+        max-width: 52rem;
+        font-size: 2rem;
+        -webkit-line-clamp: 3;
+      }
+      @include responsive($tablet) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 1.4rem;
+        @include LineandClaim(4);
+      }
+      @include orientation() {
+        display: block;
+        padding-left: 0rem;
+        padding-right: 1rem;
+        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        @include LineandClaim(3);
+      }
     }
   }
 }
@@ -81,119 +164,7 @@ $currentlenght: 3rem;
     width: 100%;
     height: 100%;
     background-image: linear-gradient(to right, #14141463 30%, transparent);
-  }
-}
-@media screen and (max-width: 1239px) {
-  .container-main {
-    .main__infor {
-      margin-left: 2rem;
-      .main__tittle {
-        font-size: 6rem;
-        max-width: 100rem;
-      }
-      .main__describer {
-        max-width: 52rem;
-        font-size: 2rem;
-        -webkit-line-clamp: 3;
-      }
-    }
-  }
-}
-@media screen and (max-width: 940px) and (orientation: portrait) {
-  .container-main {
-    .main__infor {
-      margin-left: 0;
-      .main__tittle {
-        font-size: 6rem;
-        max-width: 100rem;
-      }
-      .main__describer {
-        max-width: 52rem;
-        font-size: 2rem;
-        -webkit-line-clamp: 3;
-      }
-    }
-  }
-}
-@media screen and (max-width: 940px) and (orientation: landscape) {
-  .container-main {
-    .main__infor {
-      position: absolute;
-      top: 47%;
-      margin-left: 0rem;
-      margin-top: 1rem;
-      .main__tag {
-        margin-left: 0rem;
-        padding: 8px;
-        margin-bottom: 1.4rem;
-        i,
-        p {
-          font-size: 2rem;
-        }
-      }
-      .main__btn {
-        margin-left: 0rem;
-      }
-      .main__tittle {
-        padding-left: 0rem;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        font-weight: normal;
-        -webkit-text-stroke-width: 1.5px;
-      }
-      .main__describer {
-        display: block;
-        padding-left: 0rem;
-        padding-right: 1rem;
-        margin-bottom: 2rem;
-        font-size: 1.4rem;
-        @include LineandClaim(3);
-      }
-    }
-  }
-}
-@media screen and (max-width: 739px) and (orientation: portrait) {
-  .container-main {
-    img {
-      filter: brightness(80%);
-    }
-    .main__infor {
-      position: absolute;
-      top: 55%;
-      margin-left: 1rem;
-      .main__tag {
-        margin-left: 1rem;
-        padding: 8px;
-        margin-bottom: $currentlenght;
-        i,
-        p {
-          font-size: $currentlenght;
-        }
-      }
-      .main__btn {
-        margin-left: 1rem;
-        display: block;
-        text-decoration: none;
-      }
-      .main__tittle {
-        padding-left: 1rem;
-        font-size: 4rem;
-        margin-bottom: 2.5rem;
-        color: #e7bc51;
-        font-weight: normal;
-        -webkit-text-stroke-width: 2.5px;
-      }
-      .main__describer {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        font-size: 1.4rem;
-        @include LineandClaim(4);
-      }
-    }
-  }
-  .wrapper {
-    &::after {
-      content: "";
+    @include responsive($tablet) {
       background-image: linear-gradient(to bottom, transparent, #141414 90%);
     }
   }

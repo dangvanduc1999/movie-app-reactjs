@@ -12,26 +12,22 @@
     position: relative;
     margin: 3rem 0;
     text-align: center;
-    color: white;
-    font-size: 2rem;
     z-index: 3;
+    @include textStyle("Poppins", 2rem, $color-text);
     &::after {
       content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
       width: 200px;
       height: 100%;
       background-color: transparent;
-      transform: translate(-50%, -50%);
+      @include position(absolute, 50%, 50%);
       z-index: 3;
+      @include css3-compatible(transform, translate(-50%, -50%));
     }
     &::before {
       content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
+      @include position(absolute, 50%, 0);
+      @include css3-compatible(transform, translateY(-50%));
+
       height: 1px;
       width: 100%;
       border-radius: 2px;
@@ -49,15 +45,14 @@
   }
 }
 .slick-slider {
-  // position: relative;
   .slick-arrow.slick-next {
     position: absolute;
-    right: 6px;
+    right: 0;
     display: none;
   }
   .slick-arrow.slick-prev {
     position: absolute;
-    left: 10px;
+    left: 0;
     z-index: 99;
   }
 }
@@ -82,14 +77,10 @@
 [dir="rtl"] .slick-next {
   left: -5px;
   top: 70px;
-  // right: auto;
 }
 .slick-next:before {
   content: "›";
 }
 [dir="rtl"] .slick-next:before {
   content: "‹";
-}
-
-@media screen and (max-width: 940px) {
 }

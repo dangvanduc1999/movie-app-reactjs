@@ -38,6 +38,13 @@
           scale3d(1.1, 1.1, 1) translate3d(-5%, -2%, 0) perspective(700px)
         );
         @include css3-compatible(transition, transform 0.3s ease);
+        @include responsive($hover) {
+          @include css3-compatible(
+            transform,
+            scale3d(1.1, 1.1, 1) translate3d(-5%, -2%, 0) perspective(700px)
+          );
+          @include css3-compatible(transition, transform 0.3s ease);
+        }
       }
     }
   }

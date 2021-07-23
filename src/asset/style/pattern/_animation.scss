@@ -20,3 +20,14 @@ $growth-to: 1;
     transform: rotate(180deg);
   }
 }
+@keyframes jumping {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}

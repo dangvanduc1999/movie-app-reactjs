@@ -5,11 +5,22 @@
   width: 100%;
   height: 100%;
   min-height: 100vh;
+  @include responsive($tablet) {
+    &::before {
+      content: "";
+      max-height: 20rem;
+      height: 200px;
+    }
+    &::after {
+      content: "";
+      max-height: 20rem;
+      height: 200px;
+    }
+  }
   &::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include position(absolute);
+
     width: 100%;
     max-height: 42rem;
     height: 420px;
@@ -18,17 +29,25 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -2;
+
+    @include responsive($laptop) {
+      max-height: 30rem;
+      height: 300px;
+    }
   }
   &::after {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include position(absolute);
+
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     max-height: 42rem;
     height: 420px;
     z-index: -1;
+    @include responsive($laptop) {
+      max-height: 20rem;
+      height: 300px;
+    }
   }
 }
 .videoMovie__video-wrapper {
@@ -39,6 +58,9 @@
   height: 100%;
   padding-top: 10rem;
   padding-bottom: 5rem;
+  @include responsive($laptop) {
+    padding-bottom: 2rem;
+  }
   video {
     display: block;
     width: 100%;
@@ -49,15 +71,25 @@
 }
 .videoMovie__content {
   padding-top: 3rem;
+  @include responsive($tablet) {
+    padding-left: 1rem;
+  }
   .videoMovie__content-title {
     @include textStyle("Poppins", 5rem, $color-text, 600);
     font-style: italic;
+    @include responsive($tablet) {
+      font-size: 4rem;
+      @include LineandClaim(2);
+    }
   }
   .videoMovie__content-point {
     display: block;
     margin-top: 2rem;
     margin-bottom: 2rem;
     @include textStyle("Poppins", 1.4rem, $color-text);
+    @include responsive($laptop) {
+      font-size: 1.6rem;
+    }
   }
   .videoMovie__content-info {
     @include flexBox(center, flex-start);
@@ -77,78 +109,8 @@
     @include textStyle("Poppins", 1.5rem, $color-text);
     letter-spacing: 0.8px;
     line-height: 2rem;
-  }
-}
-@media screen and (max-width: 940px) {
-  .videoMovie {
-    &::before {
-      content: "";
-      max-height: 30rem;
-      height: 300px;
-    }
-    &::after {
-      content: "";
-      max-height: 20rem;
-      height: 300px;
-    }
-  }
-  .videoMovie__video-wrapper {
-    padding-bottom: 2rem;
-  }
-  .videoMovie__content {
-    .videoMovie__content-point {
-      @include textStyle("Poppins", 1.6rem, $color-text);
-    }
-    .videoMovie__content-info {
-      @include flexBox(center, flex-start);
-      span,
-      p {
-        @include textStyle("Poppins", 1.6rem, $color-text);
-      }
-    }
-    .videoMovie__content-describer {
-      @include textStyle("Poppins", 1.6rem, $color-text);
+    @include responsive($laptop) {
       letter-spacing: 1.2px;
-      line-height: 2.2rem;
-    }
-  }
-}
-@media screen and (max-width: 739px) {
-  .videoMovie {
-    &::before {
-      content: "";
-      max-height: 20rem;
-      height: 200px;
-    }
-    &::after {
-      content: "";
-      max-height: 20rem;
-      height: 200px;
-    }
-  }
-  .videoMovie__video-wrapper {
-    padding-bottom: 1.5rem;
-  }
-  .videoMovie__content {
-    padding-left: 1rem;
-    .videoMovie__content-title {
-      @include textStyle("Poppins", 4.2rem, $color-text, 600);
-      @include LineandClaim(2);
-    }
-    .videoMovie__content-point {
-      @include textStyle("Poppins", 1.6rem, $color-text);
-    }
-    .videoMovie__content-info {
-      @include flexBox(center, flex-start);
-      margin-bottom: 2rem;
-      span,
-      p {
-        @include textStyle("Poppins", 1.6rem, $color-text);
-      }
-    }
-    .videoMovie__content-describer {
-      @include textStyle("Poppins", 1.8rem, $color-text);
-      letter-spacing: 1px;
       line-height: 2.2rem;
     }
   }
