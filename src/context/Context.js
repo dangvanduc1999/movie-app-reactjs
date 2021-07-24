@@ -59,7 +59,6 @@ const MovieContextProvider = ({ children }) => {
       }
       return arr;
     });
-    // setData(check);
     dispatch({
       type: GET_MOVIE,
       payload: check,

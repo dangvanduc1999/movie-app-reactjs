@@ -26,16 +26,20 @@ input {
     display: flex;
     text-decoration: none;
     flex-grow: 10;
-    @include textStyle("Lobster", 3.4rem, rgba(157, 255, 0, 0.603), 500);
+    @include textStyle("Lobster", 3.4rem, #f7a32e, 500);
     @include css3-compatible(appearance, none);
-    @supports (-webkit-background-clip: text) or (background-clip: text) {
-      & {
-        background: -webkit-linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: rgba (0, 0, 0, 0.0001);
-      }
-    }
+    // background: -webkit-linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
+    // -webkit-background-clip: text;
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // @supports (-webkit-background-clip: text) or (background-clip: text) {
+    //   & {
+    //     background: -webkit-linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
+    //     -webkit-background-clip: text;
+    //     background-clip: text;
+    //     color: rgba (0, 0, 0, 0.0001);
+    //   }
+    // }
     @include responsive($tablet) {
       font-size: 2.8rem;
     }
