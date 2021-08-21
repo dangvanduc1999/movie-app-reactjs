@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import MovieContextProvider from "./context/Context";
 import AuthenProvider from "./context/authencontext";
 import MovieInforProvider from "./context/MovieinforContext";
@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
 import Intro from "./components/intro/Intro";
 import NavBar from "./components/navbar/Navbar";
-// import Home from "./components/Page/Home/Home";
+import Home from "./components/Page/Home/Home";
 import Favorite from "./components/Page/favorite/Favorite";
 import List from "./components/Page/ListMovie/List";
 import SigninForm from "./components/Form/sign in/SigninForm";
@@ -21,7 +21,8 @@ import Policy from "./components/Page/policy/Policy";
 import Faq from "./components/Page/FAQ/Faq";
 import Scrolltotop from "./components/scrollToTop/Scrolltotop";
 import VideoMovie from "./components/Page/VideoMovie/VideoMovie";
-const Home = lazy(() => import("./components/Page/Home/Home"));
+import { Scrollbars } from "react-custom-scrollbars";
+
 function App() {
   return (
     <>
@@ -43,11 +44,9 @@ function App() {
                     return <Favorite {...props} />;
                   }}
                 />
-                <Suspense fallback={<div>Loading.....</div>}>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                </Suspense>
+                <Route exact path="/">
+                  <Home />
+                </Route>
                 <Route
                   exact
                   path="/Home"
@@ -74,6 +73,7 @@ function App() {
         </MovieContextProvider>
         <Footer />
       </Router>
+      {/* </Suspense> */}
     </>
   );
 }

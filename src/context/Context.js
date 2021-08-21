@@ -28,7 +28,6 @@ const MovieContextProvider = ({ children }) => {
 
   useEffect(() => {
     getHome().then((newData) => {
-      console.log(newData);
       dispatch({
         type: GET_MOVIE,
         payload: newData,

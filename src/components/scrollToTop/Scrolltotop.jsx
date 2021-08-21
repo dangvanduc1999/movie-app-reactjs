@@ -6,28 +6,32 @@ function Scrolltotop() {
 
    function handleToTop () {
       window.scrollTo({
-         behavior:"smooth",
          top:0,
-         left:0
+         // left:0,
+         behavior:"smooth",
       })
    }
 
    useEffect(() => {
-      window.onscroll=()=>{
-         if(window.scrollY > 80) {
-            setShow(true)
-         } else{
-            setShow(false)
+      const toggleVisibility = () => {
+         if (window.pageYOffset > 80) {
+           setShow(true);
+         } else {
+           setShow(false);
          }
-      }
+       };
+
+       window.addEventListener("scroll", toggleVisibility);
+
+       return () => window.removeEventListener("scroll", toggleVisibility);
    }, [])
 
    return (
       <>{
-         show ?
-      (<button className="toTop__btn" onClick={handleToTop}>
+         show &&
+      <button className="toTop__btn" onClick={handleToTop}>
       <i className="fas fa-arrow-to-top icon"></i>
-      </button>) : <></>
+      </button>
       }
       </>
    )

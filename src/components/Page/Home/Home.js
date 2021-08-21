@@ -45,7 +45,6 @@ class Home extends React.Component {
                   const { currentMovie, play } = props;
                   return (
                     <>
-                      {" "}
                       <section className="home__topmovie panel ">
                         {/* big slider  */}
                         <Slider

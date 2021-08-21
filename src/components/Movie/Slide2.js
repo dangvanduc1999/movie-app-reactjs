@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useStateIfMounted } from "use-state-if-mounted";
 import { MovieContext } from "../../context/Context";
 import { MovieInforContext } from "../../context/MovieinforContext";
 import { GET_ID_LIKES } from "../../Reducer/type";
@@ -10,7 +11,7 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   const { dispatch } = useContext(MovieContext);
   const { getPlay, getMovie } = useContext(MovieInforContext);
   const [active, setActive] = useState(false);
-  const [changeSize, setChangeSize] = useState(false);
+  const [changeSize, setChangeSize] = useStateIfMounted(false);
   let { id, poster_path, isLiked, backdrop_path, title } = props;
   let checkActive =
     isLiked || isTrue || active ? "fas active fa-heart" : "far fa-heart";
@@ -18,7 +19,6 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   //  handle event and submit data to state
   function activeClick() {
     setActive(!active);
-    // getFavoriteMovie({ id });
     dispatch({ type: GET_ID_LIKES, payload: id });
   }
   function activePlay() {
@@ -42,7 +42,9 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   useEffect(() => {
     changeSizeImg();
     handleHeightImg();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   window.addEventListener("resize", changeSizeImg);
   window.addEventListener("resize", handleHeightImg);
 

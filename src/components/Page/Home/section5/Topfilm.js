@@ -61,14 +61,13 @@ function Topfilm() {
               ref={(slider) => (slider1 = slider)}
               className="home__topFilm-wrapper"
             >
-              {fomatData.map((movie) => {
+              {fomatData.map(function (movie, index) {
                 return (
-                  <>
+                  <div key={index}>
                     <Slider1 key={movie.id} props={movie} />;
-                  </>
+                  </div>
                 );
               })}
-              {/* </div> */}
             </Slider>
             <div className="home__topFilm-small">
               <Slider
@@ -78,9 +77,15 @@ function Topfilm() {
                 focusOnSelect={true}
                 {...settings}
               >
-                {fomatData.map((movie) => {
+                {fomatData.map(function (movie, index) {
                   return (
-                    <Slide2 key={movie.id} props={movie} isChangeSize={false} />
+                    <div key={index}>
+                      <Slide2
+                        key={movie.id}
+                        props={movie}
+                        isChangeSize={false}
+                      />
+                    </div>
                   );
                 })}
               </Slider>
@@ -92,4 +97,4 @@ function Topfilm() {
   );
 }
 
-export default React.memo(Topfilm);
+export default Topfilm;

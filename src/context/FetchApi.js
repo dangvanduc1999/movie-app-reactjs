@@ -1,6 +1,5 @@
 import movieApi from "../api/movie";
 
-const API__KEY = "api_key=7973b4eac4de19d61157e9fb0edfae5f";
 export async function getHome(search = "non-active") {
   try {
     const results = await movieApi.getHome();
