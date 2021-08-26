@@ -12,7 +12,7 @@ $magin940px: 1.5rem;
     padding: 2.5rem 1rem 2rem;
   }
   @include responsive($small_tablet) {
-    padding: 3rem 1rem 2rem;
+    padding: 2rem 1rem 2rem;
   }
 }
 .footer__content {
@@ -53,12 +53,12 @@ $magin940px: 1.5rem;
     &-link {
       margin-bottom: $magin940px;
       a {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin-right: 2rem;
       }
     }
     .footer__content-info {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       line-height: 1.8rem;
     }
   }
@@ -120,7 +120,7 @@ $magin940px: 1.5rem;
     p {
       text-transform: capitalize;
       color: inherit;
-      font-size: 2rem;
+      font-size: 1.5rem;
       margin-bottom: 1.8rem;
     }
     &-icon {
@@ -143,8 +143,8 @@ $magin940px: 1.5rem;
   }
   @include responsive($small_tablet) {
     p {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
     }
     &-icon {
       @include flexBox(center, space-around);
@@ -184,7 +184,7 @@ $magin940px: 1.5rem;
   }
   @include responsive($small_tablet) {
     p {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       margin-bottom: 1.8rem;
     }
     .footer__app-img {

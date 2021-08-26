@@ -7,21 +7,23 @@ import "../src/asset/style/reset.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // components
-import Intro from "./components/intro/Intro";
-import NavBar from "./components/navbar/Navbar";
-import Home from "./components/Page/Home/Home";
-import Favorite from "./components/Page/favorite/Favorite";
-import List from "./components/Page/ListMovie/List";
-import SigninForm from "./components/Form/sign in/SigninForm";
-import SignUpForm from "./components/Form/sign up/SignUpForm";
-import Search from "./components/search/Search";
-import Term from "./components/Page/Term/Term";
-import Footer from "./components/footer/Footer";
-import Policy from "./components/Page/policy/Policy";
-import Faq from "./components/Page/FAQ/Faq";
-import Scrolltotop from "./components/scrollToTop/Scrolltotop";
-import VideoMovie from "./components/Page/VideoMovie/VideoMovie";
-import { Scrollbars } from "react-custom-scrollbars";
+
+import {
+  Home,
+  Footer,
+  NavBar,
+  Intro,
+  Favorite,
+  List,
+  SigninForm,
+  SignUpForm,
+  Search,
+  Term,
+  Policy,
+  Faq,
+  Scrolltotop,
+  VideoMovie,
+} from "./components/index";
 
 function App() {
   return (
@@ -64,7 +66,6 @@ function App() {
                 <Route path="/term" component={() => <Term />} />
                 <Route path="/Policy" component={() => <Policy />} />
                 <Route path="/FAQ" component={() => <Faq />} />
-
                 <Route path="/signin" component={() => <SigninForm />} />
                 <Route path="/signup" component={() => <SignUpForm />} />
               </MovieInforProvider>
