@@ -53,7 +53,6 @@ function Suggested() {
           <div className="row no-gutters">
             <div className="col l-12 m-12 c-12 suggest__header ">
               <h2 className="suggest__title">suggested for you</h2>
-              <p>view</p>
             </div>
           </div>
           <Slider {...settings}>

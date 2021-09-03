@@ -48,7 +48,6 @@ export async function getDramma(search = "non-active") {
 export async function getSearch(query) {
   try {
     const results = await movieApi.getSearch(query);
-    console.log(results);
     const formatData = await results.map((fomatData) => {
       return {
         ...fomatData,
@@ -57,6 +56,30 @@ export async function getSearch(query) {
       };
     });
     return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getTrailer(idMovie) {
+  try {
+    const results = await movieApi.getTrailer(idMovie);
+    return results;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getDetail(idMovie) {
+  try {
+    const results = await movieApi.getDetail(idMovie);
+    return results;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getCast(idMovie) {
+  try {
+    const results = await movieApi.getCast(idMovie);
+    return results;
   } catch (err) {
     console.log(err);
   }

@@ -1,4 +1,11 @@
-import { CHANGE_FAVORITE, GET_ID_LIKES, GET_MOVIE, GET_QUERY } from "./type";
+import {
+  CHANGE_FAVORITE,
+  CHANGE_PLAY,
+  GET_CURRENT_MOVIE,
+  GET_ID_LIKES,
+  GET_MOVIE,
+  GET_QUERY,
+} from "./type";
 
 const reducerMovie = (state, action) => {
   const { type, payload } = action;
@@ -24,6 +31,19 @@ const reducerMovie = (state, action) => {
         query: payload,
       };
       return newStateQuery;
+    case GET_CURRENT_MOVIE:
+      let newState = {
+        ...state,
+        currentMovie: payload,
+      };
+
+      return newState;
+    case CHANGE_PLAY:
+      let newPlayState = {
+        ...state,
+        play: !state.play,
+      };
+      return newPlayState;
     case CHANGE_FAVORITE:
       let newStateFavorite = { ...state, data: [...payload] };
       return newStateFavorite;

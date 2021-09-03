@@ -1,22 +1,24 @@
 import React, { useContext, useState, useEffect } from "react";
-import { MovieInforContext } from "../../../context/MovieinforContext";
+
+import { MovieContext } from "../../../context/Context";
 import { Link, useRouteMatch } from "react-router-dom";
 import Button from "../../buttton/Button";
 import "./MovieInfor.scss";
+import { CHANGE_PLAY } from "../../../Reducer/type";
 
 function MovieInfor({ props }) {
-  // destructuring props
-  let { id, poster_path, isLiked, backdrop_path, title, ...rest } = props;
+  const { state, dispatch } = useContext(MovieContext);
+  let { id, poster_path, isLiked, backdrop_path, title, ...rest } =
+    state.currentMovie;
 
-  // loading context
-
-  const { getPlay } = useContext(MovieInforContext);
   const [background, setBackground] = useState([]);
 
   let { url } = useRouteMatch();
   let fommatURL = url === "/" ? "/Home" : url;
   function activePlay() {
-    getPlay();
+    dispatch({
+      type: CHANGE_PLAY,
+    });
   }
   const handleBackground = () => {
     if (window.innerWidth <= 739) {
@@ -47,8 +49,7 @@ function MovieInfor({ props }) {
               <div className="movie__detail-btn">
                 <Link
                   to={{
-                    pathname: `${fommatURL}/${title}`,
-                    state: { ...props },
+                    pathname: `${fommatURL}/${id}`,
                   }}
                 >
                   <Button

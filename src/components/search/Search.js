@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { MovieContext } from "../../context/Context";
-import { MovieInforContext } from "../../context/MovieinforContext";
 import Slide2 from "../Movie/Slide2";
 import MovieInfor from "../Movie/MovieInfor/MovieInfor";
 import "./Search.scss";
@@ -10,8 +9,7 @@ function Search() {
   // loading data context
   const { state } = useContext(MovieContext);
   const { data, query } = state;
-  const { currentMovie, play } = useContext(MovieInforContext);
-
+  console.log(state.currentMovie);
   const [loading, setLoading] = useState(false);
   //loading before show result of searching moive
   useEffect(() => {
@@ -48,7 +46,7 @@ function Search() {
               </div>
             </div>
           </div>
-          {play ? <MovieInfor props={currentMovie} /> : <> </>}
+          {state.play ? <MovieInfor props={state.currentMovie} /> : <> </>}
         </>
       )}
     </>

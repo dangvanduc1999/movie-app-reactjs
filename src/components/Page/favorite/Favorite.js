@@ -6,14 +6,12 @@ import { Redirect } from "react-router-dom";
 import "./Favorite.scss";
 
 import { MovieContext } from "../../../context/Context";
-import { MovieInforContext } from "../../../context/MovieinforContext";
 import { AuthenContext } from "../../../context/authencontext";
 
 function Favorite(props) {
   // loading contextdata
   const { state } = useContext(MovieContext);
   const { data } = state;
-  const { currentMovie, play } = useContext(MovieInforContext);
   const { islogin } = useContext(AuthenContext);
   const [faroviteMovie, setFavoriteMovie] = useState([]);
   useEffect(() => {
@@ -44,7 +42,7 @@ function Favorite(props) {
               </div>
             </div>
           </div>
-          {play ? <MovieInfor props={currentMovie} /> : <> </>}
+          {state.play ? <MovieInfor props={state.currentMovie} /> : <> </>}
         </>
       ) : (
         <div className="favorite__container">

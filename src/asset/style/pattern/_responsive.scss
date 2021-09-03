@@ -43,7 +43,7 @@ $landscape: landscape;
   }
 }
 @mixin orientation() {
-  @media all and (orientation: landscape) {
+  @media (orientation: landscape) and (max-width: 960px) {
     @content;
   }
 }

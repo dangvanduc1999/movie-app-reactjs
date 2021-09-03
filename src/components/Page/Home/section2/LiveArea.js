@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import Button from "../../../buttton/Button";
 import Live from "../../../../asset/image/live_img.png";
 import CountUp from "react-countup";
 import "./LiveArea.scss";
@@ -18,7 +17,6 @@ function LiveArea() {
     const ContentP = content?.children[2].children[0];
     const Resolution = content?.children[2].children[1].children[0];
     const activeCustomer = content?.children[2].children[1].children[1];
-    const BTN = content?.children[2].children[2];
     let tl = new TimelineLite({
       scrollTrigger: {
         trigger: [
@@ -27,7 +25,6 @@ function LiveArea() {
           ContentP,
           Resolution.children,
           activeCustomer.children,
-          BTN,
           image,
           image.children,
         ],
@@ -69,8 +66,7 @@ function LiveArea() {
         activeCustomer.children,
         { y: 20, opacity: 0, ease: Power3.easeOut },
         1.6
-      )
-      .from(BTN, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.8);
+      );
   }, []);
 
   return (
@@ -110,11 +106,6 @@ function LiveArea() {
                     <p>active customer</p>
                   </div>
                 </div>
-                <Button
-                  text="WATCH NOW"
-                  buttonSize="btn--large"
-                  buttonStyle="btn--primary"
-                />
               </div>
             </div>
             <div className="col l-7 m-12 c-12" id="col-img">

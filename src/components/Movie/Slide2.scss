@@ -8,7 +8,23 @@ $max: 100%;
   cursor: pointer;
   margin: 0 1rem;
   overflow: hidden;
-
+  @include css3-compatible(transition, all ease);
+  backface-visibility: hidden;
+  &:hover {
+    @include css3-compatible(
+      transform,
+      scale3d(1.1, 1.1, 1) translate3d(-5%, -2%, 0) perspective(700px)
+    );
+    @include css3-compatible(transform-origin, 50% 50%);
+    @include css3-compatible(transition, transform 0.3s ease);
+    @include responsive($hover) {
+      @include css3-compatible(
+        transform,
+        scale3d(1.1, 1.1, 1) translate3d(0%, -2%, 0) perspective(700px)
+      );
+      @include css3-compatible(transition, transform 0.3s ease);
+    }
+  }
   .slide2__image {
     width: $max;
     img {
@@ -39,6 +55,7 @@ $max: 100%;
   margin-left: 2rem;
   z-index: 500;
   @include css3-compatible(transform, translateY(-50%));
+
   h2 {
     @include textStyle("Poppins", 2rem, $color-text, 600);
     display: block;

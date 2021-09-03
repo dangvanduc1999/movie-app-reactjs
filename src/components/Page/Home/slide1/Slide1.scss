@@ -1,26 +1,23 @@
 @import "../../../../asset/style/base.scss";
 $currentlenght: 3rem;
 .container-main {
-  @include position();
-  padding-top: 56.2%;
+  position: relative;
   width: 100%;
-  height: 100vh;
-  overflow-y: hidden;
-  img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  &::before {
+    content: "";
     @include position(absolute);
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: brightness(70%);
-    @include responsive($tablet) {
-      filter: brightness(80%);
-    }
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .main__infor {
     position: absolute;
     top: 38%;
-    @include css3-compatible(transform, translateY(-70%));
+    @include css3-compatible(transform, translateY(-30%));
     z-index: 2500;
     @include responsive($Large-pc) {
       margin-left: 2rem;
@@ -39,9 +36,10 @@ $currentlenght: 3rem;
     }
     @include orientation() {
       position: absolute;
-      top: 47%;
+      top: 60%;
       margin-left: 0rem;
       margin-top: 1rem;
+      transform: translateY(-70%);
       .main__btn {
         margin-left: 0rem;
       }
@@ -64,18 +62,19 @@ $currentlenght: 3rem;
         margin-left: 1rem;
         padding: 8px;
         margin-bottom: $currentlenght;
-        i,
-        p {
+        i.logo-icon,
+        p.logo-tag {
           font-size: $currentlenght;
         }
       }
       @include orientation() {
-        margin-left: 0rem;
-        padding: 8px;
-        margin-bottom: 1.4rem;
-        i,
-        p {
-          font-size: 2rem;
+        margin-left: 0;
+        margin-bottom: 1rem;
+        max-width: 20rem;
+        padding: 5px;
+        i.logo-icon,
+        p.logo-tag {
+          font-size: 1.9rem;
         }
       }
       &::before {
@@ -99,10 +98,20 @@ $currentlenght: 3rem;
       @include LineandClaim(2);
       max-width: 1000px;
       margin-bottom: 2rem;
-      -webkit-text-fill-color: white;
-      -webkit-text-stroke-width: 3px;
-      -webkit-text-stroke-color: white;
+      // -webkit-text-fill-color: white;
+      // -webkit-text-stroke-width: 3px;
+      // -webkit-text-stroke-color: white;
+      font-weight: 800;
+      background-repeat: repeat-x;
+      background-position: 100% 100%;
+      color: transparent;
+      // -webkit-font-smoothing: antialiased;
+      // -webkit-text-fill-color: transparent;
       text-transform: uppercase;
+      background: url(https://wordpress.iqonic.design/streamit_wp/wp-content/themes/streamit/assets/images/texure.jpg);
+      @include css3-compatible(background-clip, text);
+      @include css3-compatible(text-fill-color, transparent);
+      @include css3-compatible(font-smoothing, antialiased);
       @include responsive($Large-pc) {
         font-size: 6rem;
         min-width: 100rem;
@@ -113,27 +122,28 @@ $currentlenght: 3rem;
         margin-bottom: 2.5rem;
         color: #e7bc51;
         font-weight: normal;
-        -webkit-text-stroke-width: 2.5px;
+        // -webkit-text-stroke-width: 2.5px;
+        font-weight: 800;
       }
       @include orientation() {
-        // padding-left: 0rem;
-        // font-size: 2.5rem;
-        // margin-bottom: 1rem;
-        // font-weight: normal;
+        padding-left: 0rem;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: normal;
         // -webkit-text-stroke-width: 1.5px;
       }
     }
     .main__describer {
       display: block;
-      @include textStyle("Poppins", 2rem, $color-text);
+      @include textStyle("Poppins", 1.6rem, $color-text);
       @include LineandClaim(3);
-      max-width: 70rem;
+      max-width: 75rem;
       margin-bottom: 2rem;
       line-height: 2.2rem;
       letter-spacing: 1px;
       @include responsive($Large-pc) {
         max-width: 52rem;
-        font-size: 2rem;
+        font-size: 1.6rem;
         -webkit-line-clamp: 3;
       }
       @include responsive($tablet) {
@@ -148,6 +158,7 @@ $currentlenght: 3rem;
         padding-right: 1rem;
         margin-bottom: 2rem;
         font-size: 1.4rem;
+        max-width: 50rem;
         @include LineandClaim(3);
       }
     }

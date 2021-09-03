@@ -113,6 +113,12 @@ $max: 100%;
       font-size: 1.6rem;
       margin-bottom: 2.4rem;
     }
+    @include responsive($small_tablet) {
+      font-size: 1.4rem;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.8px;
+      line-height: 1.7rem;
+    }
   }
 }
 .home__siteMovie-imgcontainer {

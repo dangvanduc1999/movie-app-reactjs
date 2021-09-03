@@ -4,7 +4,7 @@ import { AuthenContext } from "../../context/authencontext";
 import Button from "../buttton/Button";
 import "./Navbar.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { GET_QUERY } from "../../Reducer/type";
 
 const NavBar = () => {
@@ -18,6 +18,7 @@ const NavBar = () => {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const history = useHistory();
   const handleChange = (e) => {
     if (e.keyCode === 13) {
       dispatch({
@@ -25,6 +26,7 @@ const NavBar = () => {
         payload: e.target.value,
       });
       e.target.value = "";
+      history.push("/yourserach");
     }
   };
   const showButton = () => {
@@ -96,7 +98,7 @@ const NavBar = () => {
                     </li>
                   </ul>
                   <div className="navBar__search">
-                    <Link to="/yourserach">
+                    <div to="/yourserach">
                       <div className="search-box">
                         <input
                           type="text"
@@ -115,7 +117,7 @@ const NavBar = () => {
                         placeholder="Search your movie"
                         onKeyUp={handleChange}
                       />
-                    </Link>
+                    </div>
                   </div>
                   {button && (
                     <Link to="/signin" className="button-link">

@@ -6,7 +6,13 @@ import { getDramma, getHome, getSearch, getTheater } from "./FetchApi";
 export const MovieContext = React.createContext();
 
 const MovieContextProvider = ({ children }) => {
-  const initialState = { likes: { id: "" }, data: [], query: "" };
+  const initialState = {
+    likes: { id: "" },
+    data: [],
+    query: "",
+    play: false,
+    currentMovie: [],
+  };
   const [state, dispatch] = useReducer(reducerMovie, initialState);
   const { likes, data, query } = state;
   // ==== data favoriet movie with id

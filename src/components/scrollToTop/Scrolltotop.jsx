@@ -1,4 +1,4 @@
-import React ,{useState, useEffect}from 'react'
+import React ,{useState}from 'react'
 import "./Scrolltotop.scss"
 
 function Scrolltotop() {
@@ -7,24 +7,24 @@ function Scrolltotop() {
    function handleToTop () {
       window.scrollTo({
          top:0,
-         // left:0,
          behavior:"smooth",
       })
    }
 
-   useEffect(() => {
+
       const toggleVisibility = () => {
-         if (window.pageYOffset > 80) {
-           setShow(true);
-         } else {
-           setShow(false);
+         const scrolled = document.documentElement.scrollTop;
+         if (scrolled > 300){
+            setShow(true)
+         }
+         else if (scrolled <= 300){
+            setShow(false)
          }
        };
 
        window.addEventListener("scroll", toggleVisibility);
 
-       return () => window.removeEventListener("scroll", toggleVisibility);
-   }, [])
+
 
    return (
       <>{

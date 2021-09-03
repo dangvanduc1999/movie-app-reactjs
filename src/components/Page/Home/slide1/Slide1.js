@@ -1,25 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
-import { MovieInforContext } from "../../../../context/MovieinforContext";
+import { MovieContext } from "../../../../context/Context";
 import Button from "../../../buttton/Button";
 
 import "./Slide1.scss";
+import { CHANGE_PLAY, GET_CURRENT_MOVIE } from "../../../../Reducer/type";
 
 function Slide1({ props }) {
-  const { getPlay, getMovie } = useContext(MovieInforContext);
-
+  const { dispatch } = useContext(MovieContext);
   const [background, setBackground] = useState(false);
-
   const { overview, title, backdrop_path, poster_path } = props;
 
   const activePlay = () => {
-    getPlay();
-    getMovie(props);
+    dispatch({
+      type: CHANGE_PLAY,
+    });
+    dispatch({
+      type: GET_CURRENT_MOVIE,
+      payload: props,
+    });
   };
   const handleBackground = () => {
     if (window.innerWidth <= 739) {
       setBackground(true);
-    } else {
-      setBackground(false);
     }
   };
   const handleHeight = () => {
@@ -34,19 +36,23 @@ function Slide1({ props }) {
   }, []);
   window.addEventListener("resize", handleBackground);
   window.addEventListener("resize", handleHeight);
+  const backgroundStyle = {
+    backgroundImage: background
+      ? `url(${poster_path})`
+      : `url(${backdrop_path})`,
+  };
   return (
     <>
       <div className="wrapper">
-        <div className="container-main">
-          <img src={background ? poster_path : backdrop_path} alt="" />
+        <div className="container-main" style={backgroundStyle}>
           <div className="grid wide">
             <div className="row">
               <div className="col l-12 m-12 c-12">
                 <div className="main  ">
                   <div className="main__infor">
                     <div className="main__tag">
-                      <i className="fab navBar__logo-icon fa-typo3"></i>
-                      <p>TopMovie</p>
+                      <i className="fab logo-icon fa-typo3"></i>
+                      <p className="logo-tag">TopMovie</p>
                     </div>
                     <h1 className="main__tittle">{title}</h1>
                     <p className="main__describer">{overview}</p>

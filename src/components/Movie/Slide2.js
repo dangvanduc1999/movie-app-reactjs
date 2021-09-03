@@ -1,15 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useStateIfMounted } from "use-state-if-mounted";
 import { MovieContext } from "../../context/Context";
-import { MovieInforContext } from "../../context/MovieinforContext";
-import { GET_ID_LIKES } from "../../Reducer/type";
+import {
+  CHANGE_PLAY,
+  GET_CURRENT_MOVIE,
+  GET_ID_LIKES,
+} from "../../Reducer/type";
 
 import "./Slide2.scss";
 
 const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   // loading Context
   const { dispatch } = useContext(MovieContext);
-  const { getPlay, getMovie } = useContext(MovieInforContext);
   const [active, setActive] = useState(false);
   const [changeSize, setChangeSize] = useStateIfMounted(false);
   let { id, poster_path, isLiked, backdrop_path, title } = props;
@@ -22,8 +24,13 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
     dispatch({ type: GET_ID_LIKES, payload: id });
   }
   function activePlay() {
-    getPlay();
-    getMovie(props);
+    dispatch({
+      type: CHANGE_PLAY,
+    });
+    dispatch({
+      type: GET_CURRENT_MOVIE,
+      payload: props,
+    });
   }
   function changeSizeImg() {
     let vw = window.innerWidth;

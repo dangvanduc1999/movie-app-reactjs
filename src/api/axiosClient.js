@@ -11,7 +11,7 @@ export const axiosClient = axios.create({
 
 axiosClient.interceptors.response.use(
   (response) => {
-    if (response && response.data) {
+    if (response && response.data.results) {
       const result = response.data.results.map((fomatData) => {
         const imgPoster = fomatData.poster_path;
         const imgBack = fomatData.backdrop_path;
@@ -22,6 +22,17 @@ axiosClient.interceptors.response.use(
           isLiked: false,
         };
       });
+      return result;
+    }
+    if (response && response.data) {
+      const imgPoster = response.data.poster_path;
+      const imgBack = response.data.backdrop_path;
+      const result = {
+        ...response.data,
+        poster_path: API__IMG + imgPoster,
+        backdrop_path: imgBack ? API__IMG + imgBack : REplace,
+        isLiked: false,
+      };
       return result;
     }
 

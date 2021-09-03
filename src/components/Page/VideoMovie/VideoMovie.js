@@ -1,35 +1,88 @@
-import React from "react";
-import power from "../../../asset/image/power.mp4";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getCast, getDetail, getTrailer } from "../../../context/FetchApi";
 import "./VideoMovie.scss";
 
-function VideoMovie() {
-  let location = useLocation();
-  const { title, overview, release_date } = location.state;
+function CastInMovie({ cast: { profile_path, name, character } }) {
+  return (
+    <div className="cast">
+      <div className="cast__image">
+        <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt="" />
+      </div>
+      <p className="cast__name">{name}</p>
+      <p className="cast__character">Character: {character}</p>
+    </div>
+  );
+}
 
+function VideoMovie() {
+  let { id } = useParams();
+  const [currentMovie, setCurrentMovie] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [dataVideo, setDataVideo] = useState({});
+  useEffect(() => {
+    getTrailer(id).then((data) => {
+      const length = data.length;
+      setDataVideo(data[length - 1]);
+    });
+    getDetail(id).then((data) => {
+      setCurrentMovie(data);
+    });
+    getCast(id).then((data) => {
+      data.cast && setCast(data.cast);
+    });
+  }, [id]);
+
+  const { key } = dataVideo;
+  const { runtime, title, overview, release_date, vote_average } = currentMovie;
+  const time =
+    runtime > 60
+      ? `${(runtime - (runtime % 60)) / 60}hr : ${runtime % 60}mins`
+      : `${runtime}hr`;
+  const formatCast = cast.splice(0, 6);
   return (
     <>
       <section className="videoMovie">
         <div className="videoMovie__video-wrapper ">
           <div className="grid wide abc">
             <div className="row">
-              <div className="col l-10 l-o-1 m-12 c-12">
-                <video controls>
-                  <source src={power} type="video/mp4" />
-                </video>
+              <div className="col l-12 m-12 c-12">
+                <div className="videoMovie__trailer">
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={
+                      dataVideo.key &&
+                      `${process.env.REACT_APP_URL_YOUTUBE}${key}`
+                    }
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
-              <div className="col l-10 l-o-1 m-12  c-12">
+              <div className="col l-12  m-12  c-12">
                 <div className="videoMovie__content">
                   <strong className="videoMovie__content-title">{title}</strong>
-                  <span className="videoMovie__content-point">4.2(imdb)</span>
+                  <span className="videoMovie__content-point">
+                    {vote_average}(imdb)
+                  </span>
                   <div className="videoMovie__content-info">
                     <span className="home__siteMovie-tag">15+</span>{" "}
-                    <p>2hr:30mins</p>
+                    <p>{time}</p>
                     <p>{release_date}</p>
                   </div>
                   <p className="videoMovie__content-describer">{overview}</p>
                 </div>
               </div>
+            </div>
+            <div className="row">
+              {formatCast.map((cast, id) => (
+                <div key={id} className="col l-2  m-3 c-4  ">
+                  <CastInMovie cast={cast} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
