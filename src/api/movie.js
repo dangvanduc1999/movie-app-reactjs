@@ -2,7 +2,7 @@ import { axiosClient, axiosSearch } from "./axiosClient";
 export const API__KEY = "api_key=7973b4eac4de19d61157e9fb0edfae5f";
 const movieApi = {
   getHome: () => {
-    const url = `/discover/movie?sort_by=popularity.desc&${API__KEY}`;
+    const url = `/trending/movie/day?${API__KEY}`;
     return axiosClient.get(url);
   },
   getTheater: () => {
