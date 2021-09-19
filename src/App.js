@@ -3,7 +3,7 @@ import MovieContextProvider from "./context/Context";
 import AuthenProvider from "./context/authencontext";
 import "../src/asset/style/grid.css";
 import "../src/asset/style/reset.css";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // components
 
@@ -27,7 +27,7 @@ import {
 function App() {
   return (
     <>
-      <Router>
+      <Router basename="/React">
         <MovieContextProvider>
           <AuthenProvider>
             <Intro />
