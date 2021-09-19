@@ -1,4 +1,4 @@
-import movieApi from "../api/movie";
+import movieApi from "../access/movie";
 
 export async function getHome(search = "non-active") {
   try {
