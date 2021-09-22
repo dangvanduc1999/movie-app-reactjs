@@ -27,7 +27,7 @@ import {
 function App() {
   return (
     <>
-      <Router basename="/React">
+      <Router basename="/">
         <MovieContextProvider>
           <AuthenProvider>
             <Intro />
