@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext, useCallback } from "react";
 import { MovieContext } from "../../../../context/Context";
 import Button from "../../../buttton/Button";
+import { useStateIfMounted } from "use-state-if-mounted";
 
 import "./Slide1.scss";
 import { CHANGE_PLAY, GET_CURRENT_MOVIE } from "../../../../Reducer/type";
 
 function Slide1({ props }) {
   const { dispatch } = useContext(MovieContext);
-  const [background, setBackground] = useState(false);
+  const [background, setBackground] = useStateIfMounted(false);
   const { overview, title, backdrop_path, poster_path } = props;
 
   const activePlay = () => {
@@ -19,21 +20,21 @@ function Slide1({ props }) {
       payload: props,
     });
   };
-  const handleBackground = () => {
+  const handleBackground = useCallback(() => {
     if (window.innerWidth <= 739) {
       setBackground(true);
     }
-  };
-  const handleHeight = () => {
+  }, [setBackground]);
+  const handleHeight = useCallback(() => {
     if (window.innerHeight < 610) {
       setBackground(false);
     }
-  };
+  }, [setBackground]);
 
   useEffect(() => {
     handleBackground();
     handleHeight();
-  }, []);
+  }, [handleBackground, handleHeight]);
   window.addEventListener("resize", handleBackground);
   window.addEventListener("resize", handleHeight);
   const backgroundStyle = {

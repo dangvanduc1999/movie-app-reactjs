@@ -49,7 +49,7 @@ const NavBar = () => {
   }, []);
   window.addEventListener("resize", showButton);
   window.addEventListener("scroll", changeBackground);
-  const loaded = () => import("../Page/ListMovie/List");
+  // const loaded = () => import("../Page/ListMovie/List");
   return (
     <>
       <header
@@ -81,7 +81,7 @@ const NavBar = () => {
                         to="/listmovie"
                         className={nav ? "navBar__link active" : "navBar__link"}
                         onClick={closeMobileMenu}
-                        onMouseEnter={loaded}
+                        // onMouseEnter={loaded}
                       >
                         List movie
                       </Link>
