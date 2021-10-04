@@ -1,4 +1,6 @@
+import useAsync from "hooks/useAsync";
 import React, { useState, useEffect } from "react";
+import { postAuthentication } from "./FetchApi";
 
 export const AuthenContext = React.createContext();
 
@@ -9,11 +11,11 @@ function AuthenProvider({ children }) {
   const [errors, setErrors] = useState("");
   const [users, setUsers] = useState([
     {
-      username: "vanduc123",
+      username: "vanduclipi",
       email: "vanduclipi@gmail.com",
-      password: "123456789",
-      password2: "123456789",
-    },
+      password: "0935973326",
+      password2: "0935973326"
+    }
   ]);
   const [currentuser, setCurrentuser] = useState({});
 
@@ -44,7 +46,7 @@ function AuthenProvider({ children }) {
     }
   };
   const handleLogin = () => {
-    setIslogin(false);
+    setIslogin(!islogin);
   };
   const handleSignUp = () => {
     setIsSignUp(!isSignUp);
@@ -59,19 +61,28 @@ function AuthenProvider({ children }) {
       setMessage("Sign Up Success");
     }
   }, [isSignUp]);
-
+  const request_token = localStorage.getItem("request_token");
+  const state = useAsync(
+    postAuthentication,
+    {
+      username: users[0].username,
+      password: users[0].password,
+      request_token: request_token
+    },
+    islogin
+  );
   const AuthenData = {
+    state,
     users,
     errors,
     message,
     islogin,
     isSignUp,
-    checkLoginForm,
     getValuesForm,
     handleLogin,
     signUpUser,
     handleSignUp,
-    setMessage,
+    setMessage
   };
   return (
     <AuthenContext.Provider value={AuthenData}>

@@ -7,7 +7,7 @@ export async function getHome(search = "non-active") {
       return {
         ...fomatData,
         type: "home",
-        search: search,
+        search: search
       };
     });
     return formatData;
@@ -22,7 +22,7 @@ export async function getTheater(search = "non-active") {
       return {
         ...fomatData,
         type: "theater",
-        search: search,
+        search: search
       };
     });
     return formatData;
@@ -37,7 +37,7 @@ export async function getDramma(search = "non-active") {
       return {
         ...fomatData,
         type: "dramma",
-        search: search,
+        search: search
       };
     });
     return formatData;
@@ -52,7 +52,7 @@ export async function getSearch(query) {
       return {
         ...fomatData,
         type: query,
-        search: "active",
+        search: "active"
       };
     });
     return formatData;
@@ -80,6 +80,24 @@ export async function getCast(idMovie) {
   try {
     const results = await movieApi.getCast(idMovie);
     return results;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getAuthorize() {
+  try {
+    const token = await movieApi.getRequestToken();
+    localStorage.setItem("request_token", token);
+    return token;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function postAuthentication(data) {
+  try {
+    const api = await movieApi.postAuthentication(data);
+    localStorage.setItem("request_token", api);
+    return api;
   } catch (err) {
     console.log(err);
   }

@@ -1,4 +1,4 @@
-@import "../../../../asset/style/base.scss";
+@import "style/base.scss";
 $currentlenght: 3rem;
 .container-main {
   position: relative;
@@ -17,22 +17,36 @@ $currentlenght: 3rem;
   .main__infor {
     position: absolute;
     top: 38%;
+    .main__btn {
+      margin-top: 2rem;
+    }
+
     @include css3-compatible(transform, translateY(-30%));
-    z-index: 2500;
+    z-index: 1;
     @include responsive($Large-pc) {
       margin-left: 2rem;
     }
     @include responsive($laptop) {
       margin-left: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
     @include responsive($tablet) {
-      margin-left: 1rem;
-      top: 55%;
+      // margin-left: 5px;
+      // top: 55%;
+      .star-ratings {
+        margin-left: 10px;
+      }
       .main__btn {
         margin-left: 1rem;
         display: block;
         text-decoration: none;
       }
+    }
+    @include responsive($phablet) {
+      margin-left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     @include orientation() {
       position: absolute;
@@ -59,6 +73,7 @@ $currentlenght: 3rem;
         transparent 100%
       );
       @include responsive($tablet) {
+        $currentlenght: 2rem;
         margin-left: 1rem;
         padding: 8px;
         margin-bottom: $currentlenght;
@@ -66,6 +81,9 @@ $currentlenght: 3rem;
         p.logo-tag {
           font-size: $currentlenght;
         }
+      }
+      @include responsive($small_moblie) {
+        width: 18rem;
       }
       @include orientation() {
         margin-left: 0;
@@ -94,24 +112,21 @@ $currentlenght: 3rem;
       }
     }
     .main__tittle {
-      @include textStyle("Poppins", 7rem, rgb(248, 245, 226), 500);
+      @include textStyle("Poppins", 8.05rem, rgb(248, 245, 226), 800);
       @include LineandClaim(2);
-      max-width: 1000px;
-      margin-bottom: 2rem;
-      // -webkit-text-fill-color: white;
-      // -webkit-text-stroke-width: 3px;
-      // -webkit-text-stroke-color: white;
-      font-weight: 800;
+      background: url(https://wordpress.iqonic.design/streamit_wp/wp-content/themes/streamit/assets/images/texure.jpg);
       background-repeat: repeat-x;
       background-position: 100% 100%;
+
+      max-width: 1200px;
+      margin-bottom: 1rem;
       color: transparent;
-      // -webkit-font-smoothing: antialiased;
-      // -webkit-text-fill-color: transparent;
       text-transform: uppercase;
-      background: url(https://wordpress.iqonic.design/streamit_wp/wp-content/themes/streamit/assets/images/texure.jpg);
+
       @include css3-compatible(background-clip, text);
       @include css3-compatible(text-fill-color, transparent);
       @include css3-compatible(font-smoothing, antialiased);
+      // responsive
       @include responsive($Large-pc) {
         font-size: 6rem;
         min-width: 100rem;
@@ -119,11 +134,19 @@ $currentlenght: 3rem;
       @include responsive($tablet) {
         padding-left: 1rem;
         font-size: 4rem;
-        margin-bottom: 2.5rem;
-        color: #e7bc51;
+        margin-bottom: 0.5rem;
+        // color: #e7bc51;
         font-weight: normal;
-        // -webkit-text-stroke-width: 2.5px;
         font-weight: 800;
+      }
+      @include responsive($phablet) {
+        font-size: 4rem;
+        max-width: 100%;
+        @include LineandClaim(3);
+      }
+      @include responsive($small_moblie) {
+        font-size: 2.5rem;
+        @include LineandClaim(3);
       }
       @include orientation() {
         padding-left: 0rem;
@@ -133,12 +156,39 @@ $currentlenght: 3rem;
         // -webkit-text-stroke-width: 1.5px;
       }
     }
+
+    .main-point,
+    .hours {
+      color: $color-text;
+      display: inline-block;
+      margin-left: 3rem;
+      @include textStyle("Poppins", 1.4rem);
+      transform: translateY(30%);
+      @include responsive($phablet) {
+        font-size: 1.2rem;
+        margin-left: 1.8rem;
+      }
+      @include responsive($small_moblie) {
+        font-size: 1rem;
+        margin-left: 1.5rem;
+      }
+    }
+    .gp {
+      margin-left: 3rem;
+      color: $color-text;
+      @include textStyle("Poppins", 1.5rem);
+      display: inline-block;
+      background-color: #565d63;
+      padding: 5px;
+      box-shadow: 1px 1px 5px #565d63;
+      transform: translateY(22%);
+    }
     .main__describer {
       display: block;
       @include textStyle("Poppins", 1.6rem, $color-text);
       @include LineandClaim(3);
       max-width: 75rem;
-      margin-bottom: 2rem;
+      margin: 1rem 0 2rem;
       line-height: 2.2rem;
       letter-spacing: 1px;
       @include responsive($Large-pc) {
@@ -150,6 +200,7 @@ $currentlenght: 3rem;
         padding-left: 1rem;
         padding-right: 1rem;
         font-size: 1.4rem;
+        max-width: 55rem;
         @include LineandClaim(4);
       }
       @include orientation() {
@@ -160,6 +211,22 @@ $currentlenght: 3rem;
         font-size: 1.4rem;
         max-width: 50rem;
         @include LineandClaim(3);
+      }
+    }
+    .text-primary {
+      @include textStyle("Poppins", 1.8rem, $primary);
+      margin-bottom: 1rem;
+      span {
+        @include textStyle("Poppins", 1.6rem, $color-text);
+      }
+      @include responsive($tablet) {
+        margin-left: 1rem;
+      }
+      @include responsive($phablet) {
+        font-size: 1.4rem;
+        span {
+          font-size: 1.4rem;
+        }
       }
     }
   }

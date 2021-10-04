@@ -7,26 +7,20 @@ import { AuthenContext } from "../../../context/authencontext";
 import { Link, Redirect } from "react-router-dom";
 import "./SigninForm.scss";
 import useForm from "../useForm";
+import Loading from "components/loading/Loading";
 
 function SignupForm() {
-  const { islogin, getValuesForm } = useContext(AuthenContext);
-  const [check, setCheck] = useState(false);
+  const { islogin, state, getValuesForm } = useContext(AuthenContext);
   const [redirect, setRedirect] = useState(false);
+  const { handleChange, values } = useForm();
+  const { isLoading, check } = state;
   const handleclick = (e) => {
     e.preventDefault();
-    setCheck(true);
     getValuesForm(values);
-  };
-  const { handleChange, values } = useForm();
-
-  const handlePopup = () => {
-    setCheck(false);
   };
   useEffect(() => {
     if (islogin) {
-      setCheck(true);
       setTimeout(() => {
-        setCheck(false);
         setRedirect(true);
       }, 1500);
     }
@@ -39,7 +33,7 @@ function SignupForm() {
       <div className="login">
         <div className="login-box">
           <h2 className="form__signin">SIGN IN</h2>
-          <form>
+          <form method="post">
             <div className="user-box">
               <input
                 type="text"
@@ -67,7 +61,6 @@ function SignupForm() {
               </Link>{" "}
               to register{" "}
             </p>
-
             <Button
               type="submit"
               text="Submit"
@@ -77,7 +70,8 @@ function SignupForm() {
             />
           </form>
         </div>
-        {check ? <FormMessage handlePopup={handlePopup} /> : <></>}
+        {isLoading && <Loading />}
+        {check ? <FormMessage /> : <></>}
       </div>
     </>
   );

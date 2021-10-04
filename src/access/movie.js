@@ -1,4 +1,9 @@
-import { axiosClient, axiosSearch } from "./axiosClient";
+import {
+  axiosAuthentication,
+  axiosClient,
+  axiosPostValidateWithLogin,
+  axiosSearch
+} from "./axiosClient";
 export const API__KEY = "api_key=7973b4eac4de19d61157e9fb0edfae5f";
 const movieApi = {
   getHome: () => {
@@ -33,6 +38,14 @@ const movieApi = {
     const url = `/movie/${idMovie}/credits?${API__KEY}&language=en-US`;
     return axiosClient.get(url);
   },
+  getRequestToken: () => {
+    const url = `/authentication/token/new?${API__KEY}`;
+    return axiosAuthentication.get(url);
+  },
+  postAuthentication: (data) => {
+    const url = `/authentication/token/validate_with_login?${API__KEY}`;
+    return axiosPostValidateWithLogin.post(url, data);
+  }
 };
 
 export default movieApi;

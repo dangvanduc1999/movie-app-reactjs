@@ -14,7 +14,7 @@ function FormMessage({ handlePopup }) {
   return (
     <>
       <div className="modal">
-        <div className="modal-layout" onClick={handleClick}></div>
+        <div className="modal-layout"></div>
         <div className="Form-message__container">
           <div className="Form-message__image">
             <img src={isSignUp || islogin ? rightImage : wrong} alt="" />
