@@ -1,0 +1,33 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.toTop__btn {
+  z-index: 1000;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  background-color: #e7bc51;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.toTop__btn:hover {
+  -webkit-box-shadow: 0 0 0.625em #e7bc51;
+          box-shadow: 0 0 0.625em #e7bc51;
+}
+
+.toTop__btn .icon {
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  -webkit-animation: jumping 1s infinite ease-in-out;
+          animation: jumping 1s infinite ease-in-out;
+  -webkit-transition: all ease-in-out;
+  transition: all ease-in-out;
+}
+/*# sourceMappingURL=Scrolltotop.css.map */

@@ -1,84 +1,42 @@
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "none" }}
-      onClick={onClick}
-    />
-  );
+  const { className, onClick } = props;
+  return <div className={className} onClick={onClick} />;
 }
-export const settings = {
-  dots: false,
-  infinite: true,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 6000,
-  pauseOnHover: true,
-  responsive: [
-    {
-      breakpoint: 1025,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-      },
-    },
-    {
-      breakpoint: 739,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
+function SamplePrevArrow(props) {
+  const { className, onClick } = props;
+  return <div className={className} onClick={onClick} />;
+}
+
 export const setting2 = {
-  fade: true,
+  dots: true,
   infinite: true,
-  speed: 600,
+  speed: 1000,
   slidesToShow: 1,
   slidesToScroll: 1,
   nextArrow: <SampleNextArrow />,
-  prevArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />,
   appendDots: (dots) => (
     <div>
       <ul style={{ margin: "0px" }}> {dots} </ul>
     </div>
   ),
+  customPaging: (i) => <div className="custom-dots"></div>,
   responsive: [
     {
       breakpoint: 1025,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
-      },
+        infinite: true
+      }
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 1,
-      },
+        initialSlide: 1
+      }
     },
     {
       breakpoint: 480,
@@ -86,9 +44,9 @@ export const setting2 = {
         dots: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SampleNextArrow />,
-      },
-    },
-  ],
+        nextArrow: null,
+        prevArrow: null
+      }
+    }
+  ]
 };

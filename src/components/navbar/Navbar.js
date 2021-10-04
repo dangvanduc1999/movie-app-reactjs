@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, memo } from "react";
 import { MovieContext } from "../../context/Context";
 import { AuthenContext } from "../../context/authencontext";
 import Button from "../buttton/Button";
 import "./Navbar.scss";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { GET_QUERY } from "../../Reducer/type";
+import { getAuthorize } from "context/FetchApi";
+import useAsync from "hooks/useAsync";
 
 const NavBar = () => {
   // loading context
@@ -15,15 +17,16 @@ const NavBar = () => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [nav, setNav] = useState(false);
-
+  // const location = useLocation();
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const history = useHistory();
+  console.log(window.location);
   const handleChange = (e) => {
     if (e.keyCode === 13) {
       dispatch({
         type: GET_QUERY,
-        payload: e.target.value,
+        payload: e.target.value
       });
       e.target.value = "";
       history.push("/yourserach");
@@ -44,12 +47,13 @@ const NavBar = () => {
       setNav(false);
     }
   };
+  const { data } = useAsync(getAuthorize, null, !islogin);
   useEffect(() => {
     showButton();
   }, []);
   window.addEventListener("resize", showButton);
   window.addEventListener("scroll", changeBackground);
-  // const loaded = () => import("../Page/ListMovie/List");
+
   return (
     <>
       <header
@@ -122,7 +126,16 @@ const NavBar = () => {
                     </div>
                   </div>
                   {button && (
-                    <Link to="/signin" className="button-link">
+                    <a
+                      href={
+                        islogin
+                          ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
+                              window.location.href + "signin"
+                            }`
+                          : "#"
+                      }
+                      className="button-link"
+                    >
                       <Button
                         buttonStyle="btn--outline"
                         buttonSize="btn--medium"
@@ -131,7 +144,7 @@ const NavBar = () => {
                           handleLogin();
                         }}
                       />
-                    </Link>
+                    </a>
                   )}
                 </div>
                 <div className="menu-icon" onClick={handleClick}>
@@ -145,4 +158,4 @@ const NavBar = () => {
     </>
   );
 };
-export default NavBar;
+export default memo(NavBar);

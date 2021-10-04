@@ -1,0 +1,86 @@
+@-webkit-keyframes growth {
+  from {
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes growth {
+  from {
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes loading2 {
+  50% {
+    -webkit-transform: rotate(200deg);
+            transform: rotate(200deg);
+  }
+  75% {
+    -webkit-transform: rotate(160deg);
+            transform: rotate(160deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@keyframes loading2 {
+  50% {
+    -webkit-transform: rotate(200deg);
+            transform: rotate(200deg);
+  }
+  75% {
+    -webkit-transform: rotate(160deg);
+            transform: rotate(160deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes jumping {
+  0% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  50% {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+}
+
+@keyframes jumping {
+  0% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  50% {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+}
+
+html {
+  font-size: 62.5%;
+}
+/*# sourceMappingURL=base.css.map */

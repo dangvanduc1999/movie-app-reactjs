@@ -1,28 +1,27 @@
 import React from "react";
 import MovieContextProvider from "./context/Context";
 import AuthenProvider from "./context/authencontext";
-import "../src/asset/style/grid.css";
-import "../src/asset/style/reset.css";
+import "style/grid.scss";
+import "style/reset.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // components
-
-import {
-  Home,
-  Footer,
-  NavBar,
-  Intro,
-  Favorite,
-  List,
-  SigninForm,
-  SignUpForm,
-  Search,
-  Term,
-  Policy,
-  Faq,
-  Scrolltotop,
-  VideoMovie,
-} from "./components/index";
+import Home from "components/Page/Home/Home";
+import Footer from "components/footer/Footer";
+import NavBar from "components/navbar/Navbar";
+import Intro from "components/intro/Intro";
+import Favorite from "components/Page/favorite/Favorite";
+import List from "components/Page/ListMovie/List";
+import SigninForm from "components/Form/signIn/SigninForm";
+import SignUpForm from "components/Form/signUp/SignUpForm";
+import Search from "components/search/Search";
+import Term from "components/Page/Term/Term";
+import Policy from "components/Page/policy/Policy";
+import Faq from "components/Page/FAQ/Faq";
+import Scrolltotop from "components/scrollToTop/Scrolltotop";
+import VideoMovie from "components/Page/VideoMovie/VideoMovie";
+// const List = lazy(() => import("./Page/ListMovie/List"));
+// const Home = lazy(() => import("./Page/Home/Home"));
 
 function App() {
   return (
@@ -30,7 +29,7 @@ function App() {
       <Router basename="/">
         <MovieContextProvider>
           <AuthenProvider>
-            <Intro />
+            {/* <Intro /> */}
             <NavBar />
             <Scrolltotop />
 

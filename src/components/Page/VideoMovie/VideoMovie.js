@@ -21,16 +21,20 @@ function VideoMovie() {
   const [cast, setCast] = useState([]);
   const [dataVideo, setDataVideo] = useState({});
   useEffect(() => {
-    getTrailer(id).then((data) => {
-      const length = data.length;
-      setDataVideo(data[length - 1]);
-    });
-    getDetail(id).then((data) => {
-      setCurrentMovie(data);
-    });
-    getCast(id).then((data) => {
-      data.cast && setCast(data.cast);
-    });
+    try {
+      getTrailer(id).then((data) => {
+        const length = data.length;
+        setDataVideo(data[length - 1]);
+      });
+      getDetail(id).then((data) => {
+        setCurrentMovie(data);
+      });
+      getCast(id).then((data) => {
+        data.cast && setCast(data.cast);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }, [id]);
 
   const { key } = dataVideo;

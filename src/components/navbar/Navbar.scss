@@ -1,10 +1,10 @@
-@import "../../asset/style/base.scss";
+@import "style/base.scss";
 input {
   border-color: none;
 }
 .navBar__container {
   @include position(fixed);
-  width: 100%;
+  width: 100vw;
   background: transparent;
   z-index: 999;
   &.active {
@@ -161,6 +161,9 @@ input {
     font-style: italic;
     color: #ccc;
   }
+  &:focus {
+    border-color: $color-text;
+  }
   @include responsive($tablet) {
     display: none;
   }
@@ -184,6 +187,9 @@ input {
     margin-right: 15px;
     border-radius: 40px;
     padding: 10px;
+    &:focus {
+      border-color: $color-text;
+    }
     &:hover > .search-txt {
       width: 10rem;
       padding: 0px 5px;
