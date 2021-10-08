@@ -4,7 +4,7 @@ $max: 100%;
   position: relative;
   margin: 2rem 0;
   height: $max;
-  width: $max;
+  width: 100vw;
   .home__topFilm-container {
     @include position();
   }

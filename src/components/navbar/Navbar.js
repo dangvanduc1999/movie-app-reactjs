@@ -4,7 +4,7 @@ import { AuthenContext } from "../../context/authencontext";
 import Button from "../buttton/Button";
 import "./Navbar.scss";
 
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { GET_QUERY } from "../../Reducer/type";
 import { getAuthorize } from "context/FetchApi";
 import useAsync from "hooks/useAsync";
@@ -13,15 +13,12 @@ const NavBar = () => {
   // loading context
   const { dispatch } = useContext(MovieContext);
   const { islogin, handleLogin } = useContext(AuthenContext);
-
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [nav, setNav] = useState(false);
-  // const location = useLocation();
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const history = useHistory();
-  console.log(window.location);
   const handleChange = (e) => {
     if (e.keyCode === 13) {
       dispatch({
@@ -53,14 +50,13 @@ const NavBar = () => {
   }, []);
   window.addEventListener("resize", showButton);
   window.addEventListener("scroll", changeBackground);
-
   return (
     <>
       <header
         className={nav ? "navBar__container active" : "navBar__container"}
       >
         <div className="grid wide  ">
-          <div className="row no-gutters ">
+          <div className="row">
             <div className="col l-12 m-12 c-12">
               <nav className={nav ? "navBar active" : "navBar"}>
                 <Link to="/" className="navBar__logo" onClick={closeMobileMenu}>
@@ -91,8 +87,14 @@ const NavBar = () => {
                       </Link>
                     </li>
                     <li className="navBar__item">
-                      <Link
-                        to="/signin"
+                      <a
+                        href={
+                          islogin
+                            ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
+                                window.location.href + "signin"
+                              }`
+                            : ""
+                        }
                         className="nav-links-mobile"
                         onClick={() => {
                           handleLogin();
@@ -100,7 +102,7 @@ const NavBar = () => {
                         }}
                       >
                         {islogin ? "LOG OUT" : "SIGN IN/UP"}
-                      </Link>
+                      </a>
                     </li>
                   </ul>
                   <div className="navBar__search">
@@ -132,7 +134,7 @@ const NavBar = () => {
                           ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
                               window.location.href + "signin"
                             }`
-                          : "#"
+                          : ""
                       }
                       className="button-link"
                     >

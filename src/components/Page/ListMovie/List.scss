@@ -2,9 +2,15 @@
 .list__container {
   padding-top: 8rem;
   background-color: #141414;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   min-height: 100vh;
+  .List__container-row {
+    padding: 3rem 0 0 0px;
+    // @include responsive($small_moblie) {
+    //   padding: 2rem 0 0 1px;
+    // }
+  }
   .list__tittle-wrapper {
     position: relative;
   }
@@ -43,40 +49,43 @@
       z-index: -10;
     }
   }
-  .slick-slider {
-    .slick-arrow.slick-next {
+  .list__movie {
+    margin: 0 0 36px 0;
+  }
+
+  .dashed-loading {
+    position: relative;
+    height: 20px;
+    &:after,
+    &:before {
+      content: "";
       position: absolute;
-      right: 0;
-      display: none;
-    }
-    .slick-arrow.slick-prev {
-      position: absolute;
+      top: 0;
       left: 0;
-      z-index: 99;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
     }
-    .slick-prev:before,
-    .slick-next:before {
-      font-family: "slick";
-      font-size: 40px;
-      line-height: 1;
-      color: #fff;
-      opacity: 0.75;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    &:before {
+      z-index: 5;
+      border: 3px dashed $primary;
+      border-left: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      -webkit-animation: dashed 1s linear infinite;
+      animation: dashed 1s linear infinite;
     }
-
-    .slick-prev:before {
-      content: "‹";
+    &:after {
+      z-index: 10;
+      border: 3px solid $primary;
+      border-left: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      -webkit-animation: dashed 1s ease infinite;
+      animation: dashed 1s ease infinite;
     }
-    [dir="rtl"] .slick-prev:before {
-      content: "›";
-    }
-
-    .slick-next:before {
-      content: "›";
-    }
-    [dir="rtl"] .slick-next:before {
-      content: "‹";
+  }
+  @keyframes dashed {
+    to {
+      transform: rotate(360deg);
     }
   }
 }

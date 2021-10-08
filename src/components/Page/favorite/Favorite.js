@@ -1,18 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import Slide2 from "../../Movie/Slide2";
 import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
 import { Redirect } from "react-router-dom";
-
-import "./Favorite.scss";
-
 import { MovieContext } from "../../../context/Context";
 import { AuthenContext } from "../../../context/authencontext";
+import "./Favorite.scss";
 
 function Favorite(props) {
   // loading contextdata
   const { state } = useContext(MovieContext);
   const { data } = state;
   const { islogin } = useContext(AuthenContext);
+  const favoriteRef = useRef(null);
   const [faroviteMovie, setFavoriteMovie] = useState([]);
   useEffect(() => {
     setFavoriteMovie(() => {
@@ -20,7 +19,6 @@ function Favorite(props) {
       return format;
     });
   }, [data]);
-
   if (!islogin) {
     return <Redirect to="/signin" />;
   }
@@ -29,7 +27,7 @@ function Favorite(props) {
       {" "}
       {faroviteMovie.length > 0 ? (
         <>
-          <div className="favorite__container">
+          <div className="favorite__container" ref={favoriteRef}>
             <div className="favorite__list">
               <div className=" grid wide">
                 <div className="row">

@@ -1,3 +1,4 @@
+import useAsync from "hooks/useAsync";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCast, getDetail, getTrailer } from "../../../context/FetchApi";
@@ -51,20 +52,22 @@ function VideoMovie() {
           <div className="grid wide abc">
             <div className="row">
               <div className="col l-12 m-12 c-12">
-                <div className="videoMovie__trailer">
-                  <iframe
-                    width="560"
-                    height="315"
-                    src={
-                      dataVideo.key &&
-                      `${process.env.REACT_APP_URL_YOUTUBE}${key}`
-                    }
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+                {key && (
+                  <div className="videoMovie__trailer">
+                    <iframe
+                      width="560"
+                      height="300"
+                      src={
+                        dataVideo.key &&
+                        `${process.env.REACT_APP_URL_YOUTUBE}${key}`
+                      }
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                )}
               </div>
               <div className="col l-12  m-12  c-12">
                 <div className="videoMovie__content">

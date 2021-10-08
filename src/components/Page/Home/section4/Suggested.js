@@ -7,7 +7,7 @@ function Suggested() {
   const { state } = useContext(MovieContext);
   const fomatData = state.data
     .filter((movie) => {
-      return movie.vote_average >= 8;
+      return movie.vote_average >= 7;
     })
     .sort((a, b) => {
       return b.vote_average - a.vote_average;
@@ -26,25 +26,25 @@ function Suggested() {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
-        },
+          dots: true
+        }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
-        },
+          initialSlide: 2
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <>
@@ -63,7 +63,7 @@ function Suggested() {
                   props={movie}
                   isChangeSize={false}
                   margin={{
-                    margin: "0 1rem",
+                    margin: "0 1rem"
                   }}
                 />
               );

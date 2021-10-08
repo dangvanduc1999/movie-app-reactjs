@@ -1,6 +1,10 @@
 import useAsync from "hooks/useAsync";
 import React, { useState, useEffect } from "react";
-import { postAuthentication } from "./FetchApi";
+import {
+  getAccoundDetail,
+  postAuthentication,
+  postCreateSession
+} from "./FetchApi";
 
 export const AuthenContext = React.createContext();
 
@@ -62,6 +66,7 @@ function AuthenProvider({ children }) {
     }
   }, [isSignUp]);
   const request_token = localStorage.getItem("request_token");
+  // const session_id = localStorage.getItem("session_id");
   const state = useAsync(
     postAuthentication,
     {
@@ -71,8 +76,20 @@ function AuthenProvider({ children }) {
     },
     islogin
   );
+  const state2 = useAsync(
+    postCreateSession,
+    {
+      request_token: request_token
+    },
+    state.check
+  );
+  const sessionId = localStorage.getItem("session_id");
+  const accounIdState = useAsync(getAccoundDetail, sessionId, state2.check);
+
   const AuthenData = {
+    accounIdState,
     state,
+    state2,
     users,
     errors,
     message,

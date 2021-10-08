@@ -2,27 +2,29 @@ import React, { useEffect, useReducer } from "react";
 
 import reducerMovie from "../Reducer/reducerMovie";
 import { CHANGE_FAVORITE, GET_MOVIE } from "../Reducer/type";
-import { getDramma, getHome, getSearch, getTheater } from "./FetchApi";
+import { getHome, getSearch } from "./FetchApi";
 export const MovieContext = React.createContext();
 
 const MovieContextProvider = ({ children }) => {
   const initialState = {
     likes: { id: "" },
     data: [],
+    indexInfinitieScroll: 1,
     query: "",
     play: false,
-    currentMovie: [],
+    currentMovie: []
   };
   const [state, dispatch] = useReducer(reducerMovie, initialState);
-  const { likes, data, query } = state;
+  const { likes, data, query, indexInfinitieScroll } = state;
   // ==== data favoriet movie with id
+
   const updateFavoriteMovie = async (data) => {
     let wait = await likes;
     let update = await data.reduce((x, y) => {
       if (y.id === wait.id) {
         x.push({
           ...y,
-          isLiked: !y.isLiked,
+          isLiked: !y.isLiked
         });
       } else {
         x.push(y);
@@ -31,27 +33,14 @@ const MovieContextProvider = ({ children }) => {
     }, []);
     return update;
   };
-
   useEffect(() => {
-    getHome().then((newData) => {
+    getHome(indexInfinitieScroll).then((newData) => {
       dispatch({
         type: GET_MOVIE,
-        payload: newData,
+        payload: newData
       });
     });
-    getTheater().then((newData) =>
-      dispatch({
-        type: GET_MOVIE,
-        payload: newData,
-      })
-    );
-    getDramma().then((newData) =>
-      dispatch({
-        type: GET_MOVIE,
-        payload: newData,
-      })
-    );
-  }, []);
+  }, [indexInfinitieScroll]);
 
   useEffect(() => {
     let check = data.filter((format) => {
@@ -66,7 +55,7 @@ const MovieContextProvider = ({ children }) => {
     });
     dispatch({
       type: GET_MOVIE,
-      payload: check,
+      payload: check
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
@@ -76,7 +65,7 @@ const MovieContextProvider = ({ children }) => {
       getSearch(query).then((data) => {
         dispatch({
           type: GET_MOVIE,
-          payload: data,
+          payload: data
         });
       });
     }
@@ -87,16 +76,16 @@ const MovieContextProvider = ({ children }) => {
       // setData(data)
       dispatch({
         type: CHANGE_FAVORITE,
-        payload: data,
+        payload: data
       })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [likes]);
 
-  // ========== context data
+  // ========== context data ==========
   const movieContextData = {
     state,
-    dispatch,
+    dispatch
   };
 
   return (

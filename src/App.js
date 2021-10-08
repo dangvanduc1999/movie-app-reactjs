@@ -20,8 +20,7 @@ import Policy from "components/Page/policy/Policy";
 import Faq from "components/Page/FAQ/Faq";
 import Scrolltotop from "components/scrollToTop/Scrolltotop";
 import VideoMovie from "components/Page/VideoMovie/VideoMovie";
-// const List = lazy(() => import("./Page/ListMovie/List"));
-// const Home = lazy(() => import("./Page/Home/Home"));
+import HandleChangeScrollToTop from "components/handleTopComponent/HandleChangeScrollToTop";
 
 function App() {
   return (
@@ -32,43 +31,44 @@ function App() {
             {/* <Intro /> */}
             <NavBar />
             <Scrolltotop />
-
-            <Switch>
-              <Route exact path="/listmovie">
-                <List />
-              </Route>
-              <Route path="/listmovie/:id" children={<VideoMovie />} />
-              <Route
-                path="/favorite"
-                component={(props) => {
-                  return <Favorite {...props} />;
-                }}
-              />
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route
-                exact
-                path="/Home"
-                component={() => {
-                  return <Home />;
-                }}
-              />
-              <Route path="/Home/:id" children={<VideoMovie />} />
-              <Route
-                exact
-                path="/yourserach"
-                component={() => {
-                  return <Search />;
-                }}
-              />
-              <Route path="/yourserach/:id" children={<VideoMovie />} />
-              <Route path="/term" component={() => <Term />} />
-              <Route path="/Policy" component={() => <Policy />} />
-              <Route path="/FAQ" component={() => <Faq />} />
-              <Route path="/signin" component={() => <SigninForm />} />
-              <Route path="/signup" component={() => <SignUpForm />} />
-            </Switch>
+            <HandleChangeScrollToTop>
+              <Switch>
+                <Route exact path="/listmovie">
+                  <List />
+                </Route>
+                <Route path="/listmovie/:id" children={<VideoMovie />} />
+                <Route
+                  path="/favorite"
+                  component={(props) => {
+                    return <Favorite {...props} />;
+                  }}
+                />
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route
+                  exact
+                  path="/Home"
+                  component={() => {
+                    return <Home />;
+                  }}
+                />
+                <Route path="/Home/:id" children={<VideoMovie />} />
+                <Route
+                  exact
+                  path="/yourserach"
+                  component={() => {
+                    return <Search />;
+                  }}
+                />
+                <Route path="/yourserach/:id" children={<VideoMovie />} />
+                <Route path="/term" component={() => <Term />} />
+                <Route path="/Policy" component={() => <Policy />} />
+                <Route path="/FAQ" component={() => <Faq />} />
+                <Route path="/signin" component={() => <SigninForm />} />
+                <Route path="/signup" component={() => <SignUpForm />} />
+              </Switch>
+            </HandleChangeScrollToTop>
           </AuthenProvider>
         </MovieContextProvider>
         <Footer />
