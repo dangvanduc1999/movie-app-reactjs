@@ -1,63 +1,57 @@
 import React, { useContext } from "react";
-import { MovieContext } from "../../../context/Context";
+import { MovieContext } from "context/Context";
 import Slide2 from "../../Movie/Slide2";
-import Slider from "react-slick";
 import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
-import { settings } from "./setting";
 import "./List.scss";
-
+import InfiniteScroll from "react-infinite-scroll-component";
+import { GET_INFINITY_PAGE_SCROLL } from "Reducer/type";
+const Loading = () => {
+  return (
+    <div>
+      <div className="dashed-loading" />
+    </div>
+  );
+};
 function List() {
-  const { state } = useContext(MovieContext);
-  let homeData = state.data.filter((data) => data.type === "home");
-  let theaterData = state.data.filter((data) => data.type === "theater");
-  let DrammaData = state.data.filter((data) => data.type === "dramma");
-
+  const { state, dispatch } = useContext(MovieContext);
+  const handleScrollInfiniti = () => {
+    setTimeout(() => {
+      dispatch({ type: GET_INFINITY_PAGE_SCROLL, payload: null });
+    }, 1500);
+  };
   return (
     <>
       <div className="list__container">
         <div className="grid wide">
-          <div className="row no-gutters">
-            <div className="list__tittle-wrapper col l-12 m-12 c-12">
-              <p className="list__tittle">Top trend</p>
-            </div>
-          </div>
-          <Slider className=" list__movie " {...settings}>
-            {homeData.map(function (movie, index) {
-              return (
-                <div key={movie.id} className="">
-                  <Slide2 props={movie} isChangeSize={true} />
-                </div>
-              );
-            })}
-          </Slider>
-          <div className="row no-gutters">
-            <div className="list__tittle-wrapper col l-12 m-12 c-12">
-              <p className="list__tittle">Movie in theater </p>
-            </div>
-          </div>
-          <Slider className=" list__movie " {...settings}>
-            {theaterData.map(function (movie, index) {
-              return (
-                <div key={movie.id} className="">
-                  <Slide2 props={movie} isChangeSize={true} />
-                </div>
-              );
-            })}
-          </Slider>
-          <div className="row no-gutters">
-            <div className="list__tittle-wrapper col l-12 m-12 c-12">
-              <p className="list__tittle">New Released </p>
-            </div>
-          </div>
-          <Slider className=" list__movie " {...settings}>
-            {DrammaData.map(function (movie, index) {
-              return (
-                <div key={movie.id} className="">
-                  <Slide2 props={movie} isChangeSize={true} />
-                </div>
-              );
-            })}
-          </Slider>
+          <InfiniteScroll
+            dataLength={state.data.length}
+            next={handleScrollInfiniti}
+            style={{ overflow: "visible" }}
+            hasMore={true}
+            loader={
+              <div
+                className="col l-o-6 l-12 m-o-6 m-12 c-o-6 c-12"
+                style={{
+                  color: "white",
+                  marginBottom: "1rem"
+                }}
+              >
+                <Loading />
+              </div>
+            }
+            className="row  List__container-row "
+          >
+            {state.data.map((movie) => (
+              <div key={movie.id} className="col l-2 m-3 c-6 list__movie">
+                <Slide2
+                  props={movie}
+                  isChangeSize={true}
+                  style={{ margin: 0 }}
+                  margin={{ margin: " 0" }}
+                />
+              </div>
+            ))}
+          </InfiniteScroll>
         </div>
       </div>
       {state.play ? <MovieInfor props={state.currentMovie} /> : <> </>}

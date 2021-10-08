@@ -3,7 +3,6 @@ import { MovieContext } from "../../../../context/Context";
 import Slider from "react-slick";
 import Slide2 from "../../../Movie/Slide2";
 import "./TopFilm.scss";
-
 function Slider1({ props: { backdrop_path } }) {
   return (
     <>
@@ -38,7 +37,7 @@ function Topfilm() {
     vertical: true,
     verticalSwiping: true,
     beforeChange: function (currentSlide, nextSlide) {},
-    afterChange: function (currentSlide) {},
+    afterChange: function (currentSlide) {}
   };
 
   useEffect(() => {

@@ -4,32 +4,43 @@ import { MovieContext } from "../../context/Context";
 import {
   CHANGE_PLAY,
   GET_CURRENT_MOVIE,
-  GET_ID_LIKES,
+  GET_ID_LIKES
 } from "../../Reducer/type";
-
+import { AuthenContext } from "context/authencontext";
 import "./Slide2.scss";
+import { postMovieFavorite } from "context/FetchApi";
 
 const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   // loading Context
   const { dispatch } = useContext(MovieContext);
+  const { state2, accounIdState } = useContext(AuthenContext);
   const [active, setActive] = useState(false);
   const [changeSize, setChangeSize] = useStateIfMounted(false);
-  let { id, poster_path, isLiked, backdrop_path, title } = props;
+  let { poster_path, isLiked, backdrop_path, title } = props;
   let checkActive =
     isLiked || isTrue || active ? "fas active fa-heart" : "far fa-heart";
 
-  //  handle event and submit data to state
   function activeClick() {
     setActive(!active);
-    dispatch({ type: GET_ID_LIKES, payload: id });
+    dispatch({ type: GET_ID_LIKES, payload: props.id });
+
+    postMovieFavorite({
+      accountId: accounIdState.data[0].id,
+      sessionId: state2.data[0],
+      request_body: {
+        media_type: "movie",
+        media_id: props.id,
+        favorite: true
+      }
+    });
   }
   function activePlay() {
     dispatch({
-      type: CHANGE_PLAY,
+      type: CHANGE_PLAY
     });
     dispatch({
       type: GET_CURRENT_MOVIE,
-      payload: props,
+      payload: props
     });
   }
   function changeSizeImg() {

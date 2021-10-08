@@ -1,8 +1,8 @@
 import movieApi from "../access/movie";
 
-export async function getHome(search = "non-active") {
+export async function getHome(data, search = "non-active") {
   try {
-    const results = await movieApi.getHome();
+    const results = await movieApi.getHome(data);
     const formatData = await results.map((fomatData) => {
       return {
         ...fomatData,
@@ -98,6 +98,41 @@ export async function postAuthentication(data) {
     const api = await movieApi.postAuthentication(data);
     localStorage.setItem("request_token", api);
     return api;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function postCreateSession(data) {
+  try {
+    const sessionId = await movieApi.postCreateSession(data);
+    localStorage.setItem("session_id", sessionId);
+    return sessionId;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getAccoundDetail(sessionId) {
+  try {
+    const res = await movieApi.getAccountId(sessionId);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getFavoriteMovie(id) {
+  try {
+    const res = await movieApi.getFavoriteMovie(id);
+    console.log("this is favorite movie ", res);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function postMovieFavorite(data) {
+  try {
+    const res = await movieApi.postMovieFavorite(data);
+    console.log(res);
+    return res;
   } catch (err) {
     console.log(err);
   }

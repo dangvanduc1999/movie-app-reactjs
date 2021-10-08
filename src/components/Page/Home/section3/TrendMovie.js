@@ -28,7 +28,7 @@ const TrendMovie = React.forwardRef((props, ref) => {
                 buttonStyle="btn--primary"
               />
             </div>
-            <div className="col l-6 home__siteMovie-imgcontainer ">
+            <div className="col l-6 m-12 c-12 home__siteMovie-imgcontainer ">
               <div className="home__siteMovie-imgWrap">
                 <div className="home__siteMovie-img">
                   <img src={image1} alt="" />

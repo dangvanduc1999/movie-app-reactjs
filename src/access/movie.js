@@ -1,13 +1,15 @@
 import {
   axiosAuthentication,
   axiosClient,
+  axiosGet,
+  axiosPostCreateSession,
   axiosPostValidateWithLogin,
   axiosSearch
 } from "./axiosClient";
 export const API__KEY = "api_key=7973b4eac4de19d61157e9fb0edfae5f";
 const movieApi = {
-  getHome: () => {
-    const url = `/trending/movie/day?${API__KEY}`;
+  getHome: (page) => {
+    const url = `/trending/movie/day?${API__KEY}&page=${page}`;
     return axiosClient.get(url);
   },
   getTheater: () => {
@@ -42,9 +44,25 @@ const movieApi = {
     const url = `/authentication/token/new?${API__KEY}`;
     return axiosAuthentication.get(url);
   },
+  getAccountId: (sessionId) => {
+    const url = `/account?${API__KEY}&session_id=${sessionId}`;
+    return axiosGet.get(url);
+  },
+  getFavoriteMovie: (params) => {
+    const url = `/account/${params.id}/favorite/movies?${API__KEY}&session_id=${params.sessionId}&language=en-US&sort_by=created_at.asc&page=1`;
+    return axiosGet.get(url);
+  },
+  postMovieFavorite: (data) => {
+    const url = `/account/${data.accountId}/favorite?${API__KEY}&session_id=${data.sessionId}`;
+    return axiosGet.post(url, data.request_body);
+  },
   postAuthentication: (data) => {
     const url = `/authentication/token/validate_with_login?${API__KEY}`;
     return axiosPostValidateWithLogin.post(url, data);
+  },
+  postCreateSession: (data) => {
+    const url = `/authentication/session/new?${API__KEY}`;
+    return axiosPostCreateSession.post(url, data);
   }
 };
 

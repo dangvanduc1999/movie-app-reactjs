@@ -100,3 +100,31 @@ axiosPostValidateWithLogin.interceptors.response.use((response) => {
   }
   return response;
 });
+export const axiosPostCreateSession = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  headers: {
+    "content-type": "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OTczYjRlYWM0ZGUxOWQ2MTE1N2U5ZmIwZWRmYWU1ZiIsInN1YiI6IjYwOWNlMzRmMjhkN2ZlMDAyOTY5MTBmZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q0VrULduhSj-0W4CH3hEZphTTvb5F_kH8WeONc1mFS4"
+  }
+});
+axiosPostCreateSession.interceptors.response.use((response) => {
+  if (response && response.data) {
+    return response.data.session_id;
+  }
+  return response;
+});
+export const axiosGet = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  headers: {
+    "content-type": "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OTczYjRlYWM0ZGUxOWQ2MTE1N2U5ZmIwZWRmYWU1ZiIsInN1YiI6IjYwOWNlMzRmMjhkN2ZlMDAyOTY5MTBmZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q0VrULduhSj-0W4CH3hEZphTTvb5F_kH8WeONc1mFS4"
+  }
+});
+axiosGet.interceptors.response.use((response) => {
+  if (response && response.data) {
+    return response.data;
+  }
+  return response;
+});

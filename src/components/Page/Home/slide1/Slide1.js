@@ -58,15 +58,20 @@ function Slide1({ props }) {
     handleStarStyle();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    try {
-      getCast(id).then((cast) => {
+  const Actor = useCallback(
+    async function getActor() {
+      try {
+        const cast = await getCast(id);
         cast.cast && setCast(cast.cast);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [id]
+  );
+  useEffect(() => {
+    Actor();
+  }, [Actor]);
   window.addEventListener("resize", () => {
     handleBackground();
     handleStarStyle();
