@@ -6,14 +6,18 @@ function useAsync(api, data, condition = true) {
     status: "idle",
     isLoading: false,
     check: false,
-    data: []
+    data: [],
+    error: ""
   };
   const postApi = useCallback(async () => {
     try {
       const result = await api(data);
       dispatch({ type: "fullfilled", payload: result });
     } catch (err) {
-      dispatch({ type: "rejected", payload: err });
+      dispatch({
+        type: "rejected",
+        payload: "your account or passowrd is incorrect !!"
+      });
       throw new Error(" rejected your api ");
     }
   }, []);

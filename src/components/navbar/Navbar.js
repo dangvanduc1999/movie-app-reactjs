@@ -12,7 +12,7 @@ import useAsync from "hooks/useAsync";
 const NavBar = () => {
   // loading context
   const { dispatch } = useContext(MovieContext);
-  const { islogin, handleLogin } = useContext(AuthenContext);
+  const { islogin, handleLogin, state } = useContext(AuthenContext);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [nav, setNav] = useState(false);
@@ -50,6 +50,7 @@ const NavBar = () => {
   }, []);
   window.addEventListener("resize", showButton);
   window.addEventListener("scroll", changeBackground);
+
   return (
     <>
       <header
@@ -91,7 +92,7 @@ const NavBar = () => {
                         href={
                           islogin
                             ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
-                                window.location.href + "signin"
+                                window.location.origin + "signin"
                               }`
                             : ""
                         }
@@ -101,7 +102,7 @@ const NavBar = () => {
                           closeMobileMenu();
                         }}
                       >
-                        {islogin ? "LOG OUT" : "SIGN IN/UP"}
+                        {islogin && state.check ? "LOG OUT" : "SIGN IN/UP"}
                       </a>
                     </li>
                   </ul>
@@ -132,7 +133,7 @@ const NavBar = () => {
                       href={
                         islogin
                           ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
-                              window.location.href + "signin"
+                              window.location.origin + "/signin"
                             }`
                           : ""
                       }
@@ -141,7 +142,7 @@ const NavBar = () => {
                       <Button
                         buttonStyle="btn--outline"
                         buttonSize="btn--medium"
-                        text={islogin ? "LOG OUT" : "SIGN IN"}
+                        text={islogin && state.check ? "LOG OUT" : "SIGN IN"}
                         onclick={() => {
                           handleLogin();
                         }}

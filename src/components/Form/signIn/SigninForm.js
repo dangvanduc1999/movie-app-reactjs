@@ -13,10 +13,13 @@ function SignupForm() {
   const { islogin, state, getValuesForm } = useContext(AuthenContext);
   const [redirect, setRedirect] = useState(false);
   const { handleChange, values } = useForm();
+  const [click, setClick] = useState(false);
   const { isLoading, check } = state;
+
   const handleclick = (e) => {
     e.preventDefault();
     getValuesForm(values);
+    setClick(true);
   };
   useEffect(() => {
     if (islogin) {
@@ -71,7 +74,16 @@ function SignupForm() {
           </form>
         </div>
         {isLoading && <Loading />}
-        {check ? <FormMessage /> : <></>}
+        {check || click ? (
+          <FormMessage
+            handlePopup={() => {
+              setClick(false);
+            }}
+          />
+        ) : (
+          <></>
+        )}
+        {/* {errors !== "" ? <FormMessage /> : <></>} */}
       </div>
     </>
   );

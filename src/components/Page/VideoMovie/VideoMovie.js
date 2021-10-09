@@ -1,4 +1,3 @@
-import useAsync from "hooks/useAsync";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCast, getDetail, getTrailer } from "../../../context/FetchApi";

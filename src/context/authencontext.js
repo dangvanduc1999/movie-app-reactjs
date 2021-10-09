@@ -12,7 +12,7 @@ function AuthenProvider({ children }) {
   const [islogin, setIslogin] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState(" ");
   const [users, setUsers] = useState([
     {
       username: "vanduclipi",
