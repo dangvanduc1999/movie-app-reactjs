@@ -151,7 +151,17 @@ const NavBar = () => {
                   )}
                 </div>
                 <div className="menu-icon" onClick={handleClick}>
-                  <i className={click ? "fas fa-times" : "fas fa-bars"} />
+                  <div
+                    className={click ? "icon-bar top active" : "icon-bar top"}
+                  ></div>
+                  <div
+                    className={click ? "icon-bar mid active " : "icon-bar mid"}
+                  ></div>
+                  <div
+                    className={
+                      click ? "icon-bar bottom active" : "icon-bar bottom"
+                    }
+                  ></div>
                 </div>
               </nav>
             </div>

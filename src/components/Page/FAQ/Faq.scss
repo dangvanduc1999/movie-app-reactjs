@@ -63,6 +63,18 @@
     @include textStyle("Poppins", 2.5rem);
     text-transform: capitalize;
   }
+  @include responsive($phablet) {
+    padding: 2rem 2rem 2rem;
+    .Faq__QA-quetion-title {
+      font-size: 1.8rem;
+    }
+  }
+  @include responsive($small_moblie) {
+    padding: 2rem 2rem 2rem;
+    .Faq__QA-quetion-title {
+      font-size: 1.5rem;
+    }
+  }
 
   .Faq__QA-quetion-btn {
     padding: 1rem 1.2rem;
@@ -88,18 +100,21 @@
   padding: 0;
   height: 0;
   border: none;
-  transform-origin: top top;
-  transition: all 0.8s ease-in-out;
+  transition: height 0.8s ease-in-out;
   overflow: hidden;
   p {
-    opacity: 0;
-    transition: all 1s ease;
-    width: 100%;
+    display: block;
+    transition: padding-top 1s ease;
+    width: 93%;
+    margin: 2rem auto;
     @include textStyle("Poppins", 1.4rem, $color-text);
     letter-spacing: 1px;
     line-height: 2rem;
     @include responsive($small_tablet) {
       font-size: 1.2rem;
+    }
+    @include responsive($phablet) {
+      padding-left: 1rem;
     }
   }
   &.active p {
@@ -107,13 +122,18 @@
   }
 
   &.active {
-    height: 100%;
-    padding: 5.2rem 5.9rem 3.6rem 3rem;
+    height: 150px;
     border-top: 1px solid;
     border-color: $primary;
     @include responsive($small_tablet) {
-      padding: 2.4rem 1rem 2rem 2rem;
       border-color: #e7bc51;
+    }
+    @include responsive($phablet) {
+      height: 180px;
+    }
+    @include responsive($small_moblie) {
+      height: 222px;
+      padding-bottom: 5px;
     }
   }
 }

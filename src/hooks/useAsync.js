@@ -20,6 +20,7 @@ function useAsync(api, data, condition = true) {
       });
       throw new Error(" rejected your api ");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [state, dispatch] = useReducer(reducerAuthentication, initialData);
   useEffect(() => {

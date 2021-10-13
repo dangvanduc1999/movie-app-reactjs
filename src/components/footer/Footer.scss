@@ -2,6 +2,7 @@
 $margin: 3rem;
 $magin940px: 1.5rem;
 .footer {
+  width: 100vw;
   position: relative;
   bottom: 0;
   background-color: rgb(25, 25, 25);
@@ -14,181 +15,200 @@ $magin940px: 1.5rem;
   @include responsive($small_tablet) {
     padding: 2rem 1rem 2rem;
   }
-}
-.footer__content {
-  width: 100%;
-  &-link {
-    margin-bottom: $margin;
-    @include flexBox(center, flex-start);
-    a {
-      text-decoration: none;
-      color: inherit;
-      font-size: 1.5rem;
-      margin-right: 3.4rem;
-      @include css3-compatible(transition, all 0.3s ease);
-      &:hover {
-        color: $primary;
-        @include responsive($hover) {
+  .footer__content {
+    width: 100%;
+    &-link {
+      margin-bottom: $margin;
+      @include flexBox(center, flex-start);
+      a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 1.5rem;
+        margin-right: 3.4rem;
+        @include css3-compatible(transition, all 0.3s ease);
+        &:hover {
           color: $primary;
+          @include responsive($hover) {
+            color: $primary;
+          }
         }
       }
-    }
-    @include responsive($small_tablet) {
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      a {
-        font-size: 1.4rem;
-        margin: 1rem 1.5rem 0 0;
-      }
-    }
-  }
-  .footer__content-info {
-    font-size: 1.2rem;
-    letter-spacing: 0.8px;
-    line-height: 1.4rem;
-  }
-
-  @include responsive($laptop) {
-    margin-bottom: $magin940px;
-    &-link {
-      margin-bottom: $magin940px;
-      a {
-        font-size: 1.5rem;
-        margin-right: 2rem;
+      @include responsive($small_tablet) {
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        a {
+          font-size: 1.4rem;
+          margin: 1rem 1.5rem 0 0;
+        }
       }
     }
     .footer__content-info {
       font-size: 1.2rem;
-      line-height: 1.8rem;
+      letter-spacing: 0.8px;
+      line-height: 1.4rem;
     }
-  }
-  @include responsive($tablet) {
-    &-link {
-      justify-content: center;
-    }
-    .footer__content-info {
-      text-align: center;
-    }
-  }
-}
-.footer__social {
-  p {
-    text-transform: capitalize;
-    color: inherit;
-    font-size: 1.5rem;
-    margin-bottom: $margin;
-  }
-  &-icon {
-    width: 100%;
-    a {
-      display: inline-block;
-      text-decoration: none;
-      color: white;
-      padding-top: 1rem;
-    }
-    .icon {
-      $lenght: 5rem;
-      @include flexBox(center, center);
-      background-color: rgb(37, 37, 37);
-      background: rgba(41, 41, 41, 0.76);
-      margin: 0 1.2rem 1rem 0;
 
-      width: $lenght;
-      height: $lenght;
-
-      text-align: center;
-      font-size: 2rem;
-      border-radius: 50%;
-      @include css3-compatible(transition, all 0.4s ease 0s);
-
-      &:hover {
-        color: $primary;
-        @include css3-compatible(text-shadow, 0 0 0.125em $primary);
-        @include css3-compatible(text-shadow, 0 0 0.125em $primary);
-        @include css3-compatible(transition, all 0.4s ease);
-        @include responsive($hover) {
-          color: $primary;
-          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
-          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
-          @include css3-compatible(transition, all 0.4s ease);
+    @include responsive($laptop) {
+      margin-bottom: $magin940px;
+      &-link {
+        margin-bottom: $magin940px;
+        a {
+          font-size: 1.5rem;
+          margin-right: 2rem;
         }
+      }
+      .footer__content-info {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+      }
+    }
+    @include responsive($tablet) {
+      &-link {
+        justify-content: center;
+      }
+      .footer__content-info {
+        text-align: center;
       }
     }
   }
-  @include responsive($laptop) {
-    margin-bottom: 2rem;
+  .footer__social {
     p {
       text-transform: capitalize;
       color: inherit;
       font-size: 1.5rem;
-      margin-bottom: 1.8rem;
+      margin-bottom: $margin;
     }
     &-icon {
-      @include flexBox(center, space-around);
+      width: 100%;
       a {
         display: inline-block;
         text-decoration: none;
-        color: $color-text;
+        color: white;
+        padding-top: 1rem;
+      }
+      .icon {
+        $lenght: 5rem;
+        @include flexBox(center, center);
+        background-color: rgb(37, 37, 37);
+        background: rgba(41, 41, 41, 0.76);
+        margin: 0 1.2rem 1rem 0;
+
+        width: $lenght;
+        height: $lenght;
+
+        text-align: center;
+        font-size: 2rem;
+        border-radius: 50%;
+        @include css3-compatible(transition, all 0.4s ease 0s);
+
+        &:hover {
+          color: $primary;
+          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
+          @include css3-compatible(text-shadow, 0 0 0.125em $primary);
+          @include css3-compatible(transition, all 0.4s ease);
+          @include responsive($hover) {
+            color: $primary;
+            @include css3-compatible(text-shadow, 0 0 0.125em $primary);
+            @include css3-compatible(text-shadow, 0 0 0.125em $primary);
+            @include css3-compatible(transition, all 0.4s ease);
+          }
+        }
+      }
+    }
+    @include responsive($laptop) {
+      margin-bottom: 2rem;
+      p {
+        text-transform: capitalize;
+        color: inherit;
+        font-size: 1.5rem;
+        margin-bottom: 1.8rem;
+      }
+      &-icon {
+        @include flexBox(center, space-around);
+        a {
+          display: inline-block;
+          text-decoration: none;
+          color: $color-text;
+        }
+      }
+    }
+    @include responsive($tablet) {
+      p {
+        text-align: center;
+        font-size: 2.2rem;
+      }
+      &-icon {
+        @include flexBox(center, center);
+      }
+    }
+    @include responsive($small_tablet) {
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      &-icon {
+        @include flexBox(center, space-around);
       }
     }
   }
-  @include responsive($tablet) {
+  .footer__app {
+    width: 100%;
     p {
-      text-align: center;
-      font-size: 2.2rem;
-    }
-    &-icon {
-      @include flexBox(center, center);
-    }
-  }
-  @include responsive($small_tablet) {
-    p {
+      text-transform: capitalize;
+      color: inherit;
       font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    &-icon {
-      @include flexBox(center, space-around);
-    }
-  }
-}
-.footer__app {
-  width: 100%;
-  p {
-    text-transform: capitalize;
-    color: inherit;
-    font-size: 1.5rem;
-    margin-bottom: $margin;
-  }
-  .footer__app-img {
-    @include flexBox(center, space-between);
-  }
-  @include responsive($laptop) {
-    p {
-      font-size: 2rem;
+      margin-bottom: $margin;
     }
     .footer__app-img {
-      justify-content: space-around;
+      width: 100%;
+      @include flexBox(center, space-between);
       img {
-        margin: 0 5px;
+        display: block;
+        flex: 0;
       }
     }
-  }
-  @include responsive($tablet) {
-    p {
-      margin-bottom: 3rem;
-      text-align: center;
+    @include responsive($small-pc) {
+      p {
+        text-align: center;
+      }
+      .footer__app-img {
+        flex-direction: column;
+        @include flexBox(center, space-between);
+        img {
+          display: block;
+          margin-bottom: 2rem;
+        }
+      }
     }
-    .footer__app-img {
-      justify-content: center;
+    @include responsive($laptop) {
+      p {
+        font-size: 2rem;
+      }
+      .footer__app-img {
+        flex-direction: row;
+        justify-content: space-around;
+        img {
+          margin: 0 5px;
+        }
+      }
     }
-  }
-  @include responsive($small_tablet) {
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 1.8rem;
+    @include responsive($tablet) {
+      p {
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+      .footer__app-img {
+        justify-content: center;
+      }
     }
-    .footer__app-img {
-      justify-content: space-around;
+    @include responsive($small_tablet) {
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 1.8rem;
+      }
+      .footer__app-img {
+        justify-content: space-around;
+      }
     }
   }
 }

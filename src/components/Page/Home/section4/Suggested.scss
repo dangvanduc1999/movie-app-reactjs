@@ -2,6 +2,46 @@
 .suggest-container {
   width: 100%;
   padding: 3rem 0;
+  .slick-arrow {
+    z-index: 2;
+    @include responsive($laptop) {
+      display: none !important;
+    }
+  }
+  .slick-arrow.slick-prev {
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    &::before {
+      content: "❮";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-100%, -56%);
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  }
+  .slick-arrow.slick-next {
+    right: 15px;
+    width: 33px;
+    height: 33px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    &::before {
+      content: "❯";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(50%, -56%);
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  }
   .suggest__header {
     @include flexBox(center, space-between);
     margin-bottom: 2rem;

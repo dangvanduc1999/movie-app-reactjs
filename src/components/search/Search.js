@@ -9,7 +9,7 @@ function Search() {
   // loading data context
   const { state } = useContext(MovieContext);
   const { data, query } = state;
-  console.log(state.currentMovie);
+
   const [loading, setLoading] = useState(false);
   //loading before show result of searching moive
   useEffect(() => {

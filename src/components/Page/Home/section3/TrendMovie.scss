@@ -13,9 +13,9 @@ $max: 100%;
   position: relative;
   z-index: 100;
   @include responsive($Large-pc) {
-    // max-height: $max;
+    max-height: $max;
     height: $max;
-    padding: 3rem 1rem;
+    padding: 3rem 0rem;
     margin: 5rem 0 0;
   }
   @include responsive($laptop) {
