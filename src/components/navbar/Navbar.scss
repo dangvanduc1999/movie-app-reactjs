@@ -10,239 +10,256 @@ input {
   &.active {
     background-image: linear-gradient(to right, #434343 0%, black 100%);
   }
-}
-.navBar {
-  @include flexBox(flex-start, space-between);
-  @include css3-compatible(transition, all 0.3s ease-out);
-  padding: 2.5rem 0;
-  @include responsive($laptop) {
-    @include flexBox(center, space-between);
-  }
-  &.active {
-    padding: 1.5rem 0;
-  }
-
-  &__logo {
-    display: flex;
-    text-decoration: none;
-    flex-grow: 10;
-    @include textStyle("Lobster", 3.4rem, #f7a32e, 500);
-    @include css3-compatible(appearance, none);
-
-    @include responsive($tablet) {
-      font-size: 2.8rem;
+  .navBar {
+    @include flexBox(flex-start, space-between);
+    @include css3-compatible(transition, all 0.3s ease-out);
+    padding: 2.5rem 0;
+    @include responsive($laptop) {
+      @include flexBox(center, space-between);
     }
-    .navBar__logo-icon {
-      display: block;
-      margin-left: 1rem;
+    &.active {
+      padding: 1.5rem 0;
     }
-  }
 
-  .navBar__menu {
-    @include flexBox(center, space-around);
-    .navBar__list {
-      list-style: none;
+    &__logo {
       display: flex;
-      @include responsive($laptop) {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 97vh;
-        opacity: 1;
-        @include position(absolute, 69px, -100%);
-        @include css3-compatible(transition, all 0.5s ease);
-        &.active {
-          background: #242222;
-          left: 0;
-          opacity: 1;
-          @include css3-compatible(transition, all 0.5s ease);
-          z-index: 9999;
-        }
-      }
-      .navBar__item {
-        font-family: "Poppins", sans-serif;
-        margin-right: 3rem;
-        @include responsive($laptop) {
-          width: 100%;
-        }
-        a {
-          display: inline-block;
-          text-decoration: none;
-          position: relative;
-          @include textStyle("Poppins", 2.2rem, $color-text);
-          &::before {
-            content: "";
-            @include position(absolute, 100%, 0);
-            background-color: #d0a748;
+      text-decoration: none;
+      flex-grow: 10;
+      @include textStyle("Lobster", 3.4rem, #f7a32e, 500);
+      @include css3-compatible(appearance, none);
 
-            width: 0;
-            height: 2px;
-            border-radius: 2px;
+      @include responsive($tablet) {
+        font-size: 2.8rem;
+      }
+      .navBar__logo-icon {
+        display: block;
+        margin-left: 1rem;
+      }
+    }
+
+    .navBar__menu {
+      @include flexBox(center, space-around);
+      .navBar__list {
+        list-style: none;
+        display: flex;
+        @include responsive($laptop) {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 97vh;
+          opacity: 1;
+          @include position(absolute, 69px, -100%);
+          @include css3-compatible(transition, all 0.5s ease);
+          &.active {
+            background: #242222;
+            left: 0;
+            opacity: 1;
+            @include css3-compatible(transition, all 0.5s ease);
+            z-index: 9999;
           }
-          &:hover::before {
+        }
+        .navBar__item {
+          font-family: "Poppins", sans-serif;
+          margin-right: 3rem;
+          @include responsive($laptop) {
             width: 100%;
-            @include css3-compatible(transition, width 0.4s ease-in-out);
-            @include responsive($hover) {
+          }
+          a {
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            @include textStyle("Poppins", 2.2rem, $color-text);
+            &::before {
+              content: "";
+              @include position(absolute, 100%, 0);
+              background-color: #d0a748;
+
+              width: 0;
+              height: 2px;
+              border-radius: 2px;
+            }
+            &:hover::before {
               width: 100%;
               @include css3-compatible(transition, width 0.4s ease-in-out);
+              @include responsive($hover) {
+                width: 100%;
+                @include css3-compatible(transition, width 0.4s ease-in-out);
+              }
+            }
+
+            @include responsive($laptop) {
+              display: inline-block;
+              text-align: center;
+              padding: 2rem;
+              width: 100%;
+
+              &:before {
+                display: none;
+              }
+              &:hover {
+                background-color: $color-text;
+                color: #242424 !important;
+                border-radius: 0;
+              }
             }
           }
-
-          @include responsive($laptop) {
-            display: inline-block;
-            text-align: center;
-            padding: 2rem;
-            width: 100%;
-
-            &:before {
-              display: none;
+          .nav-links-mobile {
+            display: none;
+            @include responsive($laptop) {
+              display: block;
             }
-            &:hover {
-              background-color: $color-text;
-              color: #242424 !important;
-              border-radius: 0;
-            }
-          }
-        }
-        .nav-links-mobile {
-          display: none;
-          @include responsive($laptop) {
-            display: block;
           }
         }
       }
     }
   }
-}
-.button-link {
-  text-decoration: none;
-}
-.mobie-navBar__search-input {
-  display: none;
-  @include responsive($laptop) {
-    display: block;
-    margin-right: 50px;
-    background: #4d4c4e73
-      url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat
-      90% center;
+  .button-link {
+    text-decoration: none;
   }
-}
-.menu-icon {
-  display: none;
-
-  @include responsive($laptop) {
-    display: block;
-    margin-right: 7px;
-    font-size: 1.8rem;
-    cursor: pointer;
-    @include css3-compatible(transition, all 0.3s ease-out);
-  }
-}
-.fa-bars {
-  color: $color-text;
-}
-
-.navBar__search-input {
-  color: $color-text;
-  padding: 5px 10px;
-  border-radius: 40px;
-  font-size: 1.8rem;
-  outline: none;
-  border: 1px solid #ccc;
-  margin-right: 3rem;
-
-  background-color: #4d4c4e73;
-  outline: none;
-  border: 1px solid #4d4c4e83;
-  outline: $primary;
-
-  &::placeholder {
-    font-size: 1.4rem;
-    font-style: italic;
-    color: #ccc;
-  }
-  &:focus {
-    border-color: $color-text;
-  }
-  @include responsive($tablet) {
+  .mobie-navBar__search-input {
     display: none;
-  }
-}
-.search-box {
-  display: none;
-  @include responsive($hover) {
-    &:hover > .search-txt {
-      width: 10rem;
-      padding: 0px 5px;
-    }
-
-    &:hover > .search-btn {
-      color: $color-text;
+    @include responsive($laptop) {
+      display: block;
+      margin-right: 50px;
+      background: #4d4c4e73
+        url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png)
+        no-repeat 90% center;
     }
   }
-  @include responsive($tablet) {
+  .menu-icon {
     display: block;
-    background: #2f3640;
-    height: 40px;
-    margin-right: 15px;
+    @include responsive($laptop) {
+      display: block;
+      margin-right: 7px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      @include css3-compatible(transition, all 0.3s ease-out);
+      .icon-bar {
+        width: 2.5rem;
+        height: 3px;
+        background-color: $color-text;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        transition: all 0.5s ease-in-out;
+      }
+      .top.active {
+        transform: rotate(-45deg) translate(-20%, 186%);
+      }
+      .bottom.active {
+        transform: rotate(45deg) translate(-20%, -180%);
+      }
+      .mid.active {
+        transform: rotateY(90deg);
+        width: 0;
+      }
+    }
+  }
+  .fa-bars {
+    color: $color-text;
+  }
+
+  .navBar__search-input {
+    color: $color-text;
+    padding: 5px 10px;
     border-radius: 40px;
-    padding: 10px;
+    font-size: 1.8rem;
+    outline: none;
+    border: 1px solid #ccc;
+    margin-right: 3rem;
+
+    background-color: #4d4c4e73;
+    outline: none;
+    border: 1px solid #4d4c4e83;
+    outline: $primary;
+
+    &::placeholder {
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #ccc;
+    }
     &:focus {
       border-color: $color-text;
     }
-    &:hover > .search-txt {
-      width: 10rem;
-      padding: 0px 5px;
-    }
-
-    &:hover > .search-btn {
-      color: $color-text;
-    }
-    .search-btn {
-      $lenght: 2rem;
-      color: #e84118;
-      float: right;
-      width: $lenght;
-      height: $lenght;
-      border-radius: 50%;
-      background: #2f3640;
-      color: $color-text;
-      cursor: pointer;
-      @include flexBox(center, center);
-      @include css3-compatible(transition, 0.4s);
-    }
-
-    .search-btn > i {
-      font-size: 1.6rem;
-    }
-
-    .search-txt {
-      border: none;
-      background: none;
-      outline: none;
-      float: left;
-      padding: 0;
-      line-height: 1.6rem;
-      width: 0px;
-      @include css3-compatible(transition, 0.4s);
-      @include textStyle("Poppins", 1.6rem, $color-text, bold);
+    @include responsive($tablet) {
+      display: none;
     }
   }
-}
-.fa-times {
-  @include responsive($laptop) {
-    color: $color-text;
-    font-size: 2rem;
-  }
-  .navBar__search-icon {
-    @include responsive($laptop) {
+  .search-box {
+    display: none;
+    @include responsive($hover) {
+      &:hover > .search-txt {
+        width: 10rem;
+        padding: 0px 5px;
+      }
+
+      &:hover > .search-btn {
+        color: $color-text;
+      }
+    }
+    @include responsive($tablet) {
       display: block;
-      color: $color-text;
-      font-size: 1.4rem;
-      text-decoration: none;
+      background: #2f3640;
+      height: 40px;
+      margin-right: 15px;
+      border-radius: 40px;
+      padding: 10px;
+      &:focus {
+        border-color: $color-text;
+      }
+      &:hover > .search-txt {
+        width: 10rem;
+        padding: 0px 5px;
+      }
 
-      position: relative;
-      right: 80px;
+      &:hover > .search-btn {
+        color: $color-text;
+      }
+      .search-btn {
+        $lenght: 2rem;
+        color: #e84118;
+        float: right;
+        width: $lenght;
+        height: $lenght;
+        border-radius: 50%;
+        background: #2f3640;
+        color: $color-text;
+        cursor: pointer;
+        @include flexBox(center, center);
+        @include css3-compatible(transition, 0.4s);
+      }
+
+      .search-btn > i {
+        font-size: 1.6rem;
+      }
+
+      .search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        line-height: 1.6rem;
+        width: 0px;
+        @include css3-compatible(transition, 0.4s);
+        @include textStyle("Poppins", 1.6rem, $color-text, bold);
+      }
+    }
+  }
+  .fa-times {
+    @include responsive($laptop) {
+      color: $color-text;
+      font-size: 2rem;
+    }
+    .navBar__search-icon {
+      @include responsive($laptop) {
+        display: block;
+        color: $color-text;
+        font-size: 1.4rem;
+        text-decoration: none;
+
+        position: relative;
+        right: 80px;
+      }
     }
   }
 }

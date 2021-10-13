@@ -184,3 +184,16 @@
     }
   }
 }
+.videoMovie__notfound {
+  text-align: center;
+  @include textStyle("Poppins", 2rem, #ccc);
+  padding: 2rem;
+}
+.imgsorry {
+  overflow: hidden;
+  img {
+    border-radius: $border-radius;
+    width: 100%;
+    object-fit: cover;
+  }
+}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import REplace from "../asset/image/REplace.jpg";
+import replacePoster from "../asset/image/replacePoster.jpg";
 const API__IMG = "https://image.tmdb.org/t/p/w500";
 
 export const axiosClient = axios.create({
@@ -15,9 +16,10 @@ axiosClient.interceptors.response.use(
       const result = response.data.results.map((fomatData) => {
         const imgPoster = fomatData.poster_path;
         const imgBack = fomatData.backdrop_path;
+
         return {
           ...fomatData,
-          poster_path: API__IMG + imgPoster,
+          poster_path: imgPoster ? API__IMG + imgPoster : REplace,
           backdrop_path: imgBack ? API__IMG + imgBack : REplace,
           isLiked: false
         };
@@ -29,7 +31,7 @@ axiosClient.interceptors.response.use(
       const imgBack = response.data.backdrop_path;
       const result = {
         ...response.data,
-        poster_path: API__IMG + imgPoster,
+        poster_path: imgPoster ? API__IMG + imgPoster : replacePoster,
         backdrop_path: imgBack ? API__IMG + imgBack : REplace,
         isLiked: false
       };

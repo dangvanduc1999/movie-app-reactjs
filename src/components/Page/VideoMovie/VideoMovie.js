@@ -36,7 +36,29 @@ function VideoMovie() {
       console.log(err);
     }
   }, [id]);
-
+  if (!dataVideo) {
+    return (
+      <section className="videoMovie">
+        <div className="videoMovie__video-wrapper ">
+          <div className="grid wide abc">
+            <div className="row">
+              <div className="col l-12 m-12 c-12">
+                <p className="videoMovie__notfound">
+                  Sorry! video for this movie is not available
+                </p>
+              </div>
+              <div className="col l-o-3 l-6 m-12 c-12 imgsorry">
+                <img
+                  src="https://www.nicereply.com/blog/wp-content/uploads/2017/03/pic-1-2.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
   const { key } = dataVideo;
   const { runtime, title, overview, release_date, vote_average } = currentMovie;
   const time =
@@ -44,6 +66,7 @@ function VideoMovie() {
       ? `${(runtime - (runtime % 60)) / 60}hr : ${runtime % 60}mins`
       : `${runtime}hr`;
   const formatCast = cast.splice(0, 6);
+
   return (
     <>
       <section className="videoMovie">

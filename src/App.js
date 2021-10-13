@@ -28,7 +28,7 @@ function App() {
       <Router basename="/">
         <MovieContextProvider>
           <AuthenProvider>
-            {/* <Intro /> */}
+            <Intro />
             <NavBar />
             <Scrolltotop />
             <HandleChangeScrollToTop>

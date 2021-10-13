@@ -12,7 +12,7 @@ function Suggested() {
     .sort((a, b) => {
       return b.vote_average - a.vote_average;
     });
-  const viewFomatData = fomatData.splice(0, 4);
+  const viewFomatData = fomatData.splice(0, 10);
   const settings = {
     dots: false,
     infinite: true,
