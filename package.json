@@ -10,6 +10,7 @@
     "font-awesome": "^4.7.0",
     "gsap": "^3.6.1",
     "homepage": ".",
+    "netlify-cli": "^6.12.3",
     "node-sass": "^6.0.0",
     "query-string": "^7.0.1",
     "react": "^17.0.2",

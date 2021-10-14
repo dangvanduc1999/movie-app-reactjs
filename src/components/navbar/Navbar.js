@@ -4,7 +4,7 @@ import { AuthenContext } from "../../context/authencontext";
 import Button from "../buttton/Button";
 import "./Navbar.scss";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { GET_QUERY } from "../../Reducer/type";
 import { getAuthorize } from "context/FetchApi";
 import useAsync from "hooks/useAsync";
@@ -19,6 +19,8 @@ const NavBar = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const history = useHistory();
+  const location = useLocation();
+  console.log(location);
   const handleChange = (e) => {
     if (e.keyCode === 13) {
       dispatch({
@@ -142,7 +144,7 @@ const NavBar = () => {
                       <Button
                         buttonStyle="btn--outline"
                         buttonSize="btn--medium"
-                        text={islogin && state.check ? "LOG OUT" : "SIGN IN"}
+                        text={islogin && state.check ? "Log out" : "Sign in"}
                         onclick={() => {
                           handleLogin();
                         }}
