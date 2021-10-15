@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Slide2 from "../../../Movie/Slide2";
+import Slide2 from "../../../Movie/slide2";
 import Slider from "react-slick";
 import { MovieContext } from "../../../../context/Context";
 import "./Suggested.scss";
@@ -40,7 +40,7 @@ function Suggested() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1
         }
       }

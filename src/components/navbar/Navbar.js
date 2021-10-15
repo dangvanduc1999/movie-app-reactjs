@@ -4,7 +4,7 @@ import { AuthenContext } from "../../context/authencontext";
 import Button from "../buttton/Button";
 import "./Navbar.scss";
 
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { GET_QUERY } from "../../Reducer/type";
 import { getAuthorize } from "context/FetchApi";
 import useAsync from "hooks/useAsync";
@@ -19,9 +19,9 @@ const NavBar = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const history = useHistory();
-  const location = useLocation();
-  console.log(location);
+
   const handleChange = (e) => {
+    closeMobileMenu();
     if (e.keyCode === 13) {
       dispatch({
         type: GET_QUERY,

@@ -2,9 +2,16 @@
 $max: 100%;
 .home__topFilm {
   position: relative;
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   height: $max;
   width: 100vw;
+  padding: 0rem 1.2rem 0;
+  @include responsive($laptop) {
+    padding: 0 1.2rem;
+  }
+  @include responsive($phablet) {
+    padding: 3rem 1.2rem 0;
+  }
   .home__topFilm-container {
     @include position();
   }
@@ -24,7 +31,7 @@ $max: 100%;
       object-fit: cover;
       display: block;
       filter: brightness(50%);
-      border-radius: 2rem;
+      border-radius: $border-radius;
       background-color: $color-text;
     }
   }
@@ -54,9 +61,19 @@ $max: 100%;
     @include css3-compatible(transform, translateY(-40%));
   }
   .home__topFilm-title {
-    @include textStyle("Poppins", 3rem, $color-text, 500);
+    @include textStyle("Poppins", 2.3rem, $color-text, 500);
     margin-bottom: 2rem;
     padding-left: 1rem;
+    @include responsive($laptop) {
+      margin-bottom: 1.8rem;
+      font-size: 1.8rem;
+    }
+    @include responsive($tablet) {
+      margin: 2rem 0 1.8rem;
+    }
+    @include responsive($phablet) {
+      margin: 0 0 1.8rem;
+    }
   }
 
   @media screen and(max-width: 940px) {

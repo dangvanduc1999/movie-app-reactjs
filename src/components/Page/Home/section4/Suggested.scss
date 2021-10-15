@@ -2,6 +2,12 @@
 .suggest-container {
   width: 100%;
   padding: 3rem 0;
+  @include responsive($laptop) {
+    padding: 0;
+  }
+  @include responsive($phablet) {
+    padding: 3rem 0 0;
+  }
   .slick-arrow {
     z-index: 2;
     @include responsive($laptop) {
@@ -45,56 +51,34 @@
   .suggest__header {
     @include flexBox(center, space-between);
     margin-bottom: 2rem;
-
+    @include responsive($laptop) {
+      margin-bottom: 2.5rem;
+    }
+    @include responsive($tablet) {
+      margin: 2rem 0 0;
+    }
+    @include responsive($phablet) {
+      margin: 0rem;
+    }
     .suggest__title {
-      @include textStyle("Poppins", 3rem, $color-text, 500);
+      @include textStyle("Poppins", 2.3rem, $color-text, 500);
       text-transform: capitalize;
       padding-left: 1rem;
+      @include responsive($laptop) {
+        margin-bottom: 1.8rem;
+      }
+      @include responsive($tablet) {
+        font-size: 1.8rem;
+      }
     }
     p {
       @include textStyle("Poppins", 1.8rem $primary);
       text-transform: capitalize;
       padding-right: 1rem;
-    }
-  }
-}
-@media screen and (max-width: 739px) {
-  .suggest-container {
-    padding: 0;
-    .suggest__header {
-      margin-bottom: 3rem;
-      .suggest__title {
-        font-size: 2rem;
+      @include responsive($laptop) {
+        margin-bottom: 1.2rem;
       }
-      p {
-        font-size: 1.2rem;
-      }
-    }
-  }
-}
-@media screen and (max-width: 939px) {
-  .suggest-container {
-    padding-top: 0;
-    .suggest__header {
-      margin-bottom: 2.5rem;
-      .suggest__title {
-        font-size: 1.8rem;
-      }
-      p {
-        font-size: 1.2rem;
-      }
-    }
-  }
-}
-@media screen and (max-width: 550px) {
-  .suggest-container {
-    padding: 3rem 0;
-    .suggest__header {
-      margin-bottom: 2.5rem;
-      .suggest__title {
-        font-size: 1.8rem;
-      }
-      p {
+      @include responsive($tablet) {
         font-size: 1.2rem;
       }
     }

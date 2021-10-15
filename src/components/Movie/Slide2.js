@@ -7,13 +7,11 @@ import {
   GET_ID_LIKES
 } from "../../Reducer/type";
 import { AuthenContext } from "context/authencontext";
-import "./Slide2.scss";
-import { postMovieFavorite } from "context/FetchApi";
+import "./slide2.scss";
 
 const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   // loading Context
   const { dispatch } = useContext(MovieContext);
-  const { state2, accounIdState } = useContext(AuthenContext);
   const [active, setActive] = useState(false);
   const [changeSize, setChangeSize] = useStateIfMounted(false);
   let { poster_path, isLiked, backdrop_path, title } = props;
@@ -25,16 +23,6 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   function activeClick() {
     setActive(!active);
     dispatch({ type: GET_ID_LIKES, payload: props.id });
-
-    postMovieFavorite({
-      accountId: accounIdState.data[0].id,
-      sessionId: state2.data[0],
-      request_body: {
-        media_type: "movie",
-        media_id: props.id,
-        favorite: true
-      }
-    });
   }
   function activePlay() {
     dispatch({

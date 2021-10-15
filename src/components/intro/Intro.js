@@ -23,14 +23,14 @@ function Intro() {
         scale: 2,
         duration: 1,
         ease: Power3.easeOut,
-        stagger: 0.25,
+        stagger: 0.25
       }
     )
       .to(Text.children[0], {
         x: 0,
         scale: 1,
         duration: 1,
-        ease: Power3.easeOut,
+        ease: Power3.easeOut
       })
       .from(
         Text.children[1],
@@ -38,7 +38,7 @@ function Intro() {
           x: -50,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=0.5"
       )
@@ -48,7 +48,7 @@ function Intro() {
           x: -80,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=0.8"
       )
@@ -58,7 +58,7 @@ function Intro() {
           x: -100,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=1"
       )
@@ -68,7 +68,7 @@ function Intro() {
           x: -110,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=1"
       )
@@ -78,7 +78,7 @@ function Intro() {
           x: -120,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=1"
       )
@@ -88,7 +88,7 @@ function Intro() {
           x: -130,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=1"
       )
@@ -98,7 +98,7 @@ function Intro() {
           x: -140,
           opacity: 0,
           ease: Power3.easeOut,
-          duration: 1.2,
+          duration: 1.2
         },
         "-=1"
       )
@@ -109,7 +109,7 @@ function Intro() {
           opacity: 0,
           ease: Power3.easeOut,
 
-          duration: 1.2,
+          duration: 1.2
         },
         "-=1"
       )

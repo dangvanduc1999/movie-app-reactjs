@@ -71,16 +71,10 @@
         padding-left: 0rem;
       }
       p {
-        font-size: 10rem;
+        font-size: 9.5rem;
       }
     }
-    @include responsive(380) {
-      &:nth-child(3) {
-        padding-right: 11rem;
-      }
-      &:nth-child(4) {
-        padding-left: 1rem;
-      }
+    @include responsive($small_moblie) {
       p {
         font-size: 8rem;
       }
@@ -89,6 +83,10 @@
   @include responsive($tablet) {
     width: 100%;
     flex-wrap: wrap;
+  }
+  @include responsive($phablet) {
+    padding-left: $pad-mer;
+    @include flexBox(flex-start, flex-start);
   }
 }
 

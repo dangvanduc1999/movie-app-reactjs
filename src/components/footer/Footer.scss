@@ -162,9 +162,15 @@ $magin940px: 1.5rem;
     .footer__app-img {
       width: 100%;
       @include flexBox(center, space-between);
-      img {
-        display: block;
-        flex: 0;
+      div {
+        width: calc(100% / 2);
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+        img {
+          display: block;
+          width: 100%;
+        }
       }
     }
     @include responsive($small-pc) {

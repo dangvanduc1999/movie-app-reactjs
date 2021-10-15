@@ -14,11 +14,15 @@ input {
     @include flexBox(flex-start, space-between);
     @include css3-compatible(transition, all 0.3s ease-out);
     padding: 2.5rem 0;
-    @include responsive($laptop) {
-      @include flexBox(center, space-between);
-    }
     &.active {
       padding: 1.5rem 0;
+    }
+    @include responsive($laptop) {
+      padding: 0.9rem 0;
+      @include flexBox(center, space-between);
+      &.active {
+        padding: 1.3rem 0;
+      }
     }
 
     &__logo {
@@ -33,7 +37,7 @@ input {
       }
       .navBar__logo-icon {
         display: block;
-        margin-left: 1rem;
+        margin-left: $gap;
       }
     }
 
@@ -48,7 +52,7 @@ input {
           width: 100%;
           height: 97vh;
           opacity: 1;
-          @include position(absolute, 69px, -100%);
+          @include position(absolute, 66px, -100%);
           @include css3-compatible(transition, all 0.5s ease);
           &.active {
             background: #242222;
@@ -59,7 +63,6 @@ input {
           }
         }
         .navBar__item {
-          font-family: "Poppins", sans-serif;
           margin-right: 3rem;
           @include responsive($laptop) {
             width: 100%;
@@ -68,7 +71,7 @@ input {
             display: inline-block;
             text-decoration: none;
             position: relative;
-            @include textStyle("Poppins", 2.2rem, $color-text);
+            @include textStyle("Poppins", $pad-mer, $color-text);
             &::before {
               content: "";
               @include position(absolute, 100%, 0);
@@ -92,7 +95,7 @@ input {
               text-align: center;
               padding: 2rem;
               width: 100%;
-
+              top: 66px;
               &:before {
                 display: none;
               }
@@ -160,11 +163,11 @@ input {
 
   .navBar__search-input {
     color: $color-text;
-    padding: 5px 10px;
+    padding: 7px 10px;
     border-radius: 40px;
     font-size: 1.8rem;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid;
     margin-right: 3rem;
 
     background-color: #4d4c4e73;
@@ -178,7 +181,7 @@ input {
       color: #ccc;
     }
     &:focus {
-      border-color: $color-text;
+      border-color: $primary;
     }
     @include responsive($tablet) {
       display: none;
@@ -203,12 +206,20 @@ input {
       margin-right: 15px;
       border-radius: 40px;
       padding: 10px;
+      @include responsive($small_moblie) {
+        height: 30px;
+        padding: 8px;
+      }
       &:focus {
         border-color: $color-text;
       }
       &:hover > .search-txt {
         width: 10rem;
         padding: 0px 5px;
+        @include responsive($small_moblie) {
+          width: 7rem;
+          padding: 0px 3px;
+        }
       }
 
       &:hover > .search-btn {
@@ -216,7 +227,6 @@ input {
       }
       .search-btn {
         $lenght: 2rem;
-        color: #e84118;
         float: right;
         width: $lenght;
         height: $lenght;
@@ -226,10 +236,14 @@ input {
         cursor: pointer;
         @include flexBox(center, center);
         @include css3-compatible(transition, 0.4s);
+        @include responsive($small_moblie) {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
 
       .search-btn > i {
-        font-size: 1.6rem;
+        font-size: 1rem;
       }
 
       .search-txt {
@@ -242,6 +256,9 @@ input {
         width: 0px;
         @include css3-compatible(transition, 0.4s);
         @include textStyle("Poppins", 1.6rem, $color-text, bold);
+        @include responsive($small_moblie) {
+          font-size: 1.2rem;
+        }
       }
     }
   }

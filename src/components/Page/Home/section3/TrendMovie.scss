@@ -6,10 +6,10 @@ $max: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // max-height: 61.6rem;
+
   width: $max;
   padding: 10rem 0;
-  margin: 10rem 0 3rem;
+  margin: 3rem 0 0rem;
   position: relative;
   z-index: 100;
   @include responsive($Large-pc) {
@@ -52,15 +52,19 @@ $max: 100%;
       background: url(https://wordpress.iqonic.design/streamit_wp/wp-content/themes/streamit/assets/images/texure.jpg);
       background-repeat: repeat-x;
       background-position: 100% 100%;
-      margin-top: 2rem;
-      margin-bottom: 1.6rem;
+      margin-top: 2rem 0 1.6rem;
       font-style: italic;
       color: transparent;
       text-transform: uppercase;
       @include css3-compatible(background-clip, text);
       @include css3-compatible(text-fill-color, transparent);
       @include css3-compatible(font-smoothing, antialiased);
-
+      @include responsive($phablet) {
+        margin-bottom: 8px;
+      }
+      @include responsive($small_moblie) {
+        font-size: 8.2rem;
+      }
       @include orientation {
         font-size: 5rem;
       }
@@ -73,6 +77,9 @@ $max: 100%;
     .home__siteMovie-tagPoint {
       @include flexBox(center, flex-start);
       margin: 2rem 0 3rem;
+      @include responsive($phablet) {
+        margin: 1.3rem 0;
+      }
       .home__siteMovie-tag {
         display: inline-block;
         @include textStyle("Poppins", 1.4rem, $color-text, 500);
@@ -100,6 +107,10 @@ $max: 100%;
       @include textStyle("Poppins", 3rem, $color-text, 500);
       text-transform: capitalize;
       margin-bottom: 2rem;
+      @include responsive($phablet) {
+        margin-bottom: $gap;
+        font-size: 2.2rem;
+      }
       @include orientation {
         font-size: 2.5rem;
         margin-bottom: 1.6rem;
