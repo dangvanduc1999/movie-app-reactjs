@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { MovieContext } from "../../context/Context";
-import Slide2 from "../Movie/slide2";
+import Slide2 from "../Movie/Slide2";
 import MovieInfor from "../Movie/MovieInfor/MovieInfor";
 import "./Search.scss";
 import Loading from "../loading/Loading";

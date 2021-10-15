@@ -7,7 +7,7 @@ import {
   GET_ID_LIKES
 } from "../../Reducer/type";
 import { AuthenContext } from "context/authencontext";
-import "./slide2.scss";
+import "./Slide2.scss";
 
 const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   // loading Context

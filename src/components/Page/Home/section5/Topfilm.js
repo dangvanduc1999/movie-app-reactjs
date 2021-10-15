@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useMemo } from "react";
 import { MovieContext } from "../../../../context/Context";
 import Slider from "react-slick";
-import Slide2 from "../../../Movie/slide2";
+import Slide2 from "../../../Movie/Slide2";
 import "./TopFilm.scss";
 function Slider1({ props: { backdrop_path } }) {
   return (

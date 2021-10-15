@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Slide2 from "../../../Movie/slide2";
+import Slide2 from "../../../Movie/Slide2";
 import Slider from "react-slick";
 import { MovieContext } from "../../../../context/Context";
 import "./Suggested.scss";

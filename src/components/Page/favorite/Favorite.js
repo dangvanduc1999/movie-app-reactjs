@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import Slide2 from "../../Movie/slide2.js";
+import Slide2 from "../../Movie/Slide2";
 import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
 import { Redirect } from "react-router-dom";
 import { MovieContext } from "../../../context/Context";

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { MovieContext } from "context/Context";
-import Slide2 from "../../Movie/slide2";
+import Slide2 from "../../Movie/Slide2";
 import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
 import "./List.scss";
 import InfiniteScroll from "react-infinite-scroll-component";
