@@ -1,3 +1,4 @@
+@import "style/base.scss";
 $max: 100%;
 * {
   box-sizing: border-box;
@@ -8,6 +9,9 @@ $max: 100%;
   width: $max;
   height: $max;
   min-height: 100vh;
+  @include responsive($phablet) {
+    padding: 5.7rem 0.8rem;
+  }
   .favorite__list {
     width: $max;
     height: $max;

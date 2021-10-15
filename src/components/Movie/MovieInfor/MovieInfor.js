@@ -17,7 +17,7 @@ function MovieInfor({ props }) {
   let fommatURL = url === "/" ? "/Home" : url;
   function activePlay() {
     dispatch({
-      type: CHANGE_PLAY,
+      type: CHANGE_PLAY
     });
   }
   const handleBackground = () => {
@@ -49,7 +49,7 @@ function MovieInfor({ props }) {
               <div className="movie__detail-btn">
                 <Link
                   to={{
-                    pathname: `${fommatURL}/${id}`,
+                    pathname: `${fommatURL}/${id}`
                   }}
                 >
                   <Button

@@ -1,12 +1,9 @@
 @import "./pattern/responsive";
 @import "./pattern/animation";
-$primary: #e7bc51;
-$color-text: #fff;
-$black-color: #020101;
-$border-radius: 5px;
-$pad-mer: 2rem;
+@import "./pattern/_variable.scss";
 html {
   font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
 }
 //============== MIXIN =========================
 @mixin position($position: relative, $top: 0, $left: 0) {

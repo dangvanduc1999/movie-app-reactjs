@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import Slide2 from "../../Movie/Slide2";
+import Slide2 from "../../Movie/slide2.js";
 import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
 import { Redirect } from "react-router-dom";
 import { MovieContext } from "../../../context/Context";
@@ -32,8 +32,11 @@ function Favorite(props) {
               <div className=" grid wide">
                 <div className="row">
                   {faroviteMovie.map((movie, index) => (
-                    <div className="favorite__item col l-3 m-3 c-6">
-                      <Slide2 key={index} props={movie} isTrue="true" />
+                    <div
+                      key={index}
+                      className=" favorite__item col l-3 m-3 c-6"
+                    >
+                      <Slide2 props={movie} isTrue="true" />
                     </div>
                   ))}
                 </div>

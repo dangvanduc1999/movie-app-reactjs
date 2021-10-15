@@ -17,6 +17,14 @@ $max: 100%;
     );
     @include css3-compatible(transform-origin, 50% 50%);
     @include css3-compatible(transition, transform 0.3s ease);
+    @include responsive($phablet) {
+      @include css3-compatible(
+        transform,
+        scale3d(1.01, 1.01, 1) translate3d(-5%, -2%, 0) perspective(500px)
+      );
+      @include css3-compatible(transform-origin, 50% 50%);
+      @include css3-compatible(transition, transform 0.3s ease);
+    }
     @include responsive($hover) {
       @include css3-compatible(
         transform,
@@ -55,17 +63,26 @@ $max: 100%;
   margin-left: 2rem;
   z-index: 500;
   @include css3-compatible(transform, translateY(-50%));
-
   h2 {
     @include textStyle("Poppins", 2rem, $color-text, 600);
     display: block;
     max-width: 19rem;
     text-transform: capitalize;
     margin-bottom: 1rem;
+    @include responsive($phablet) {
+      font-size: 1.2rem;
+      max-width: 10.5rem;
+    }
   }
   p {
     color: $color-text;
     font-size: 1.4rem;
+    @include responsive($phablet) {
+      font-size: 1rem;
+    }
+  }
+  @include responsive($phablet) {
+    margin-left: $gap;
   }
 }
 .over__item-background {
@@ -125,13 +142,17 @@ $max: 100%;
     &:not(:last-child) {
       margin-right: 2rem;
     }
+
     i {
       font-size: 1.5rem;
       color: #fff;
       text-align: center;
-      .active {
-        color: red;
+      @include responsive($phablet) {
+        font-size: 1.2rem;
       }
+    }
+    i.active {
+      color: $primary;
     }
   }
 }
