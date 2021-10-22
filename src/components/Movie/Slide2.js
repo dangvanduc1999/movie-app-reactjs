@@ -6,7 +6,6 @@ import {
   GET_CURRENT_MOVIE,
   GET_ID_LIKES
 } from "../../Reducer/type";
-import { AuthenContext } from "context/authencontext";
 import "./Slide2.scss";
 
 const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {

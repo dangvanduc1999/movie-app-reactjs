@@ -8,22 +8,22 @@ import {
 } from "./axiosClient";
 export const API__KEY = "api_key=7973b4eac4de19d61157e9fb0edfae5f";
 const movieApi = {
-  getHome: (page) => {
+  getHome: (page = 1) => {
     const url = `/trending/movie/day?${API__KEY}&page=${page}`;
     return axiosClient.get(url);
   },
-  getTheater: () => {
-    const url =
-      "/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22&" +
-      API__KEY;
+  getFilterData: (data, pages = 1) => {
+    const { Genres, Year, Time, Sort } = data;
+    const genres = Genres === "all" ? "" : `&with_genres=${Genres}`;
+    const year = Year === "all" ? "" : `&year=${Year}`;
+
+    const time = Time === "all" ? "" : `&with_runtime.gte =${Time}`;
+    const sort = Sort === "all" ? "" : `&sort_by=${Sort}`;
+    const url = `/discover/movie?${API__KEY}${genres}${year}${time}${sort}&page=${pages}`;
+
     return axiosClient.get(url);
   },
-  getDramma: () => {
-    const url =
-      "/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&" +
-      API__KEY;
-    return axiosClient.get(url);
-  },
+
   getSearch: (query) => {
     const url = `/movie?${API__KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
     return axiosSearch.get(url);

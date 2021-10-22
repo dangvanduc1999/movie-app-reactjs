@@ -2,10 +2,13 @@ import {
   CHANGE_FAVORITE,
   CHANGE_PLAY,
   GET_CURRENT_MOVIE,
+  GET_FILTERED_DATA,
+  GET_FILTERED_DATA_NEW,
   GET_ID_LIKES,
   GET_INFINITY_PAGE_SCROLL,
   GET_MOVIE,
-  GET_QUERY
+  GET_QUERY,
+  GET_SELECTED_CONDITION_FILTER
 } from "./type";
 
 const reducerMovie = (state, action) => {
@@ -45,6 +48,29 @@ const reducerMovie = (state, action) => {
       };
 
       return newState;
+    case GET_SELECTED_CONDITION_FILTER:
+      let newSelected = {
+        ...state,
+        select: {
+          ...state.select,
+          ...payload
+        }
+      };
+      console.log(newSelected);
+      return newSelected;
+    case GET_FILTERED_DATA:
+      let newFilteredData = {
+        ...state,
+        filteredData: [...state.filteredData, ...payload]
+      };
+
+      return newFilteredData;
+    case GET_FILTERED_DATA_NEW:
+      let newFilteredDataNEW = {
+        ...state,
+        filteredData: [...payload]
+      };
+      return newFilteredDataNEW;
     case CHANGE_PLAY:
       let newPlayState = {
         ...state,

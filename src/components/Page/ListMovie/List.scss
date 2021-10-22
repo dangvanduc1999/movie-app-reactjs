@@ -14,44 +14,7 @@
       padding: 1rem 0 0 px;
     }
   }
-  .list__tittle-wrapper {
-    position: relative;
-  }
-  .list__tittle {
-    position: relative;
-    margin: 3rem 0;
-    text-align: center;
-    z-index: 3;
-    @include textStyle("Poppins", 2rem, $color-text);
-    &::after {
-      content: "";
-      width: 200px;
-      height: 100%;
-      background-color: transparent;
-      @include position(absolute, 50%, 50%);
-      z-index: 3;
-      @include css3-compatible(transform, translate(-50%, -50%));
-    }
-    &::before {
-      content: "";
-      @include position(absolute, 50%, 0);
-      @include css3-compatible(transform, translateY(-50%));
 
-      height: 1px;
-      width: 100%;
-      border-radius: 2px;
-      background-image: linear-gradient(
-        to right,
-        transparent,
-        #fff,
-        transparent,
-        transparent,
-        #fff,
-        transparent
-      );
-      z-index: -10;
-    }
-  }
   .list__movie {
     margin: 0 0 36px 0;
     @include responsive($phablet) {

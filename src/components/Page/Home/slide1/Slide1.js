@@ -91,7 +91,7 @@ function Slide1({ props }) {
         >
           <div className="grid wide">
             <div className="row">
-              <div className="col l-12 m-12 c-12">
+              <div className="col l-9 m-12 c-12">
                 <div className="main  ">
                   <div className="main__infor">
                     <div className="main__tag">
@@ -132,6 +132,11 @@ function Slide1({ props }) {
                       />
                     </div>
                   </div>
+                </div>
+              </div>
+              <div className="col l-3">
+                <div className="slide__demo-container">
+                  <img className="slide__demo" src={poster_path} alt="" />
                 </div>
               </div>
             </div>

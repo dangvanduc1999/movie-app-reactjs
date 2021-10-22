@@ -5,6 +5,9 @@ import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
 import "./List.scss";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { GET_INFINITY_PAGE_SCROLL } from "Reducer/type";
+
+import SelectForm from "./sectionSelectForm/SelectForm";
+
 const Loading = () => {
   return (
     <div>
@@ -19,9 +22,11 @@ function List() {
       dispatch({ type: GET_INFINITY_PAGE_SCROLL, payload: null });
     }, 1500);
   };
+
   return (
     <>
       <div className="list__container">
+        <SelectForm />
         <div className="grid wide">
           <InfiniteScroll
             dataLength={state.data.length}
@@ -41,7 +46,7 @@ function List() {
             }
             className="row  List__container-row "
           >
-            {state.data.map((movie) => (
+            {state.filteredData.map((movie) => (
               <div key={movie.id} className="col l-2 m-3 c-6 list__movie">
                 <Slide2
                   props={movie}

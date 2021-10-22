@@ -15,7 +15,21 @@ export async function getHome(data, search = "non-active") {
     console.log(err);
   }
 }
-
+export async function getFilterData(data, pages, filter = "non-active") {
+  try {
+    const results = await movieApi.getFilterData(data, pages);
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: "filter",
+        select: filter
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
 export async function getSearch(query) {
   try {
     const results = await movieApi.getSearch(query);
