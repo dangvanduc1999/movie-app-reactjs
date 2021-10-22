@@ -9,15 +9,13 @@ import "./Favorite.scss";
 function Favorite(props) {
   // loading contextdata
   const { state } = useContext(MovieContext);
-  const { data } = state;
+  const { data, likes } = state;
   const { islogin } = useContext(AuthenContext);
   const favoriteRef = useRef(null);
   const [faroviteMovie, setFavoriteMovie] = useState([]);
   useEffect(() => {
-    setFavoriteMovie(() => {
-      let format = data.filter((likemovie) => likemovie.isLiked === true);
-      return format;
-    });
+    let fmtdata = data.filter((likemovie) => likemovie.isLiked === true);
+    setFavoriteMovie(fmtdata);
   }, [data]);
   if (!islogin) {
     return <Redirect to="/signin" />;
