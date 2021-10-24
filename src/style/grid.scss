@@ -335,7 +335,11 @@
     max-width: 860px;
   }
 }
-
+@media screen and (max-width: 1024px) {
+  .hide-on-tablet-moblie {
+    display: none;
+  }
+}
 @media (min-width: 1024px) and (max-width: 1239px) {
   .wide {
     width: 984px;

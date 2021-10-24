@@ -7,7 +7,7 @@ import "./Slide1.scss";
 import { changeAnotherRange } from "ulities/ChangeRange";
 import StarRatings from "react-star-ratings";
 import { getCast } from "context/FetchApi";
-function Slide1({ props }) {
+const Slide1 = ({ props }) => {
   const { dispatch } = useContext(MovieContext);
   const [cast, setCast] = useState(null);
   const [starStyle, setStarStyle] = useState({
@@ -92,7 +92,7 @@ function Slide1({ props }) {
           <div className="grid wide">
             <div className="row">
               <div className="col l-9 m-12 c-12">
-                <div className="main  ">
+                <div className="main">
                   <div className="main__infor">
                     <div className="main__tag">
                       <i className="fab logo-icon fa-typo3"></i>
@@ -134,7 +134,7 @@ function Slide1({ props }) {
                   </div>
                 </div>
               </div>
-              <div className="col l-3">
+              <div className="col l-3 hide-on-tablet-moblie ">
                 <div className="slide__demo-container">
                   <img className="slide__demo" src={poster_path} alt="" />
                 </div>
@@ -145,6 +145,6 @@ function Slide1({ props }) {
       </div>
     </>
   );
-}
+};
 
 export default Slide1;

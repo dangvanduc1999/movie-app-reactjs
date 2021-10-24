@@ -1,7 +1,7 @@
 export const optionGenres = [
   {
-    label: "all",
-    value: "all"
+    label: "All",
+    value: "All"
   },
   {
     id: 28,
@@ -61,8 +61,8 @@ export const optionGenres = [
 ];
 export const yearOptions = [
   {
-    label: "all",
-    value: "all"
+    label: "All",
+    value: "All"
   },
   {
     label: 2021,
@@ -95,8 +95,8 @@ export const yearOptions = [
 ];
 export const runTimeOptions = [
   {
-    label: "all",
-    value: "all"
+    label: "All",
+    value: "All"
   },
   {
     value: 120,
@@ -113,8 +113,8 @@ export const runTimeOptions = [
 ];
 export const sortByOptions = [
   {
-    label: "all",
-    value: "all"
+    label: "All",
+    value: "All"
   },
   {
     value: "popularity.desc",

@@ -9,7 +9,7 @@ import "./Favorite.scss";
 function Favorite(props) {
   // loading contextdata
   const { state } = useContext(MovieContext);
-  const { data, likes } = state;
+  const { data } = state;
   const { islogin } = useContext(AuthenContext);
   const favoriteRef = useRef(null);
   const [faroviteMovie, setFavoriteMovie] = useState([]);

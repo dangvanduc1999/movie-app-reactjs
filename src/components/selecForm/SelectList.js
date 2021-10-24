@@ -5,17 +5,17 @@ import { GET_SELECTED_CONDITION_FILTER } from "Reducer/type";
 const controlStyles = {
   color: "white",
   fontFamily: "Poppins",
-  marginBottom: "1rem",
+  margin: "1rem 0rem",
   fontSize: "1.4rem"
 };
 const selectStyle = {
   fontFamily: "Poppins",
-  fontSize: "1.4rem"
+  fontSize: "1.5rem"
 };
 function SelectList({ options, label }) {
   const { dispatch } = useContext(MovieContext);
   const ControlComponent = (props) => (
-    <div>
+    <div style={selectStyle}>
       <p style={controlStyles}>{label}</p>
       <components.Control {...props} />
     </div>
@@ -24,7 +24,6 @@ function SelectList({ options, label }) {
     const selectedOptionValue = selectedOption.id
       ? selectedOption.id
       : selectedOption.value;
-    console.log(selectedOptionValue);
     dispatch({
       type: GET_SELECTED_CONDITION_FILTER,
       payload: {

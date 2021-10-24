@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import SliderSection from "./section1/SliderSection";
 import LiveArea from "./section2/LiveArea";
@@ -15,7 +15,20 @@ gsap.registerPlugin(ScrollTrigger);
 function Home() {
   const ref = useRef(null);
   const ref2 = useRef(null);
-
+  const sliderRef = useRef(null);
+  const [check, setCheck] = useState(0);
+  const handle = (data) => {
+    setCheck(() => {
+      if (data * 1 - 1 + 2 > 9) return 0;
+      return data * 1 - 1 + 2;
+    });
+  };
+  const handlePrev = (data) => {
+    setCheck(() => {
+      if (data - 1 < 0) return 9;
+      return data - 1;
+    });
+  };
   useEffect(() => {
     if (ref && ref.current) {
       let tl = new TimelineLite({
@@ -125,10 +138,58 @@ function Home() {
         );
     }
   }, []);
+  // let ele;
+  // if (sliderRef && sliderRef.current) {
+  //   ele = sliderRef.current;
+  // }
+  useEffect(() => {
+    if (sliderRef && sliderRef.current) {
+      const ele = sliderRef.current;
+      const slideActive = ele.querySelector(
+        ".slick-slide.slick-active.slick-current"
+      );
+
+      const imgDemo = slideActive && slideActive.querySelector(".slide__demo");
+      const main = slideActive && slideActive.querySelector(".main__infor");
+      let tl = new TimelineLite();
+      tl.from(
+        imgDemo,
+        {
+          scale: 0,
+          duration: 1,
+          ease: Power3.easeOut,
+          delay: 0.5
+        },
+        "start"
+      ).from(
+        slideActive && [
+          slideActive && main.children[0],
+          slideActive && main.children[1],
+          slideActive && main.children[2],
+          slideActive && main.children[3],
+          slideActive && main.children[4],
+          slideActive && main.children[5],
+          slideActive && main.children[6],
+          slideActive && main.children[7],
+          slideActive && main.children[8],
+          slideActive && main.children[9],
+          slideActive && main.children[10],
+          slideActive && main.children[11]
+        ],
+        {
+          opacity: 0,
+          duration: 1.2,
+          y: 100,
+          stagger: 0.1
+        },
+        "start"
+      );
+    }
+  }, [check]);
   return (
     <>
       <div style={{ overflow: "hidden" }}>
-        <SliderSection />
+        <SliderSection ref={sliderRef} checkButton={handle} prev={handlePrev} />
         {/* <Suspense fallback={<div>Loading</div>}> */}
         <LiveArea ref={ref} />
         <TrendMovie ref={ref2} />
