@@ -36,15 +36,16 @@ const settings = {
     }
   ]
 };
-function Suggested() {
+function Suggested(props) {
   const { state } = useContext(MovieContext);
+
   return (
     <>
       <section className="suggest-container">
         <div className="grid wide">
           <div className="row no-gutters">
             <div className="col l-12 m-12 c-12 suggest__header ">
-              <h2 className="suggest__title">suggested for you</h2>
+              <h2 className="suggest__title">{props.name}</h2>
             </div>
           </div>
           <Slider {...settings}>

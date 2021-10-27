@@ -52,12 +52,16 @@ const MovieContextProvider = ({ children }) => {
     [likes]
   );
   useEffect(() => {
-    getHome(indexInfinitieScroll).then((newData) => {
-      dispatch({
-        type: GET_MOVIE,
-        payload: newData
+    try {
+      getHome(indexInfinitieScroll).then((newData) => {
+        dispatch({
+          type: GET_MOVIE,
+          payload: newData
+        });
       });
-    });
+    } catch (e) {
+      console.log(e);
+    }
   }, [indexInfinitieScroll]);
 
   useEffect(() => {

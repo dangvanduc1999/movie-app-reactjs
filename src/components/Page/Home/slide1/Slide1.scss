@@ -86,14 +86,7 @@ $currentlenght: 3rem;
         width: 18rem;
       }
       @include orientation() {
-        margin-left: 0;
-        margin-bottom: 1rem;
-        max-width: 20rem;
-        padding: 5px;
-        i.logo-icon,
-        p.logo-tag {
-          font-size: 1.9rem;
-        }
+        display: none;
       }
       &::before {
         content: "";
@@ -155,7 +148,7 @@ $currentlenght: 3rem;
       @include orientation() {
         padding-left: 0rem;
         font-size: 3rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         font-weight: normal;
         // -webkit-text-stroke-width: 1.5px;
       }
@@ -212,12 +205,11 @@ $currentlenght: 3rem;
       }
       @include orientation() {
         display: block;
-        padding-left: 0rem;
-        padding-right: 1rem;
-        margin-bottom: 2rem;
-        font-size: 1.4rem;
+        padding: 0;
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
         max-width: 50rem;
-        @include LineandClaim(3);
+        @include LineandClaim(2);
       }
     }
     .text-primary {
@@ -233,6 +225,17 @@ $currentlenght: 3rem;
         font-size: 1.4rem;
         span {
           font-size: 1.4rem;
+        }
+      }
+      @include orientation() {
+        display: block;
+        padding: 0;
+        margin-bottom: 0.7rem;
+        font-size: 1.1rem;
+        max-width: 50rem;
+        span {
+          font-size: 1.1rem;
+          margin-left: 0;
         }
       }
     }

@@ -8,10 +8,7 @@ import Topfilm from "./section5/Topfilm.js";
 import { TimelineLite, Power3, gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-// const LiveArea = lazy(() => import("./section2/LiveArea"));
-// const Suggested = lazy(() => import("./section4/Suggested"));
-// const Topfilm = lazy(() => import("./section5/Topfilm.js"));
-// const TrendMovie = lazy(() => import("./section3/TrendMovie"));
+
 function Home() {
   const ref = useRef(null);
   const ref2 = useRef(null);
@@ -138,10 +135,7 @@ function Home() {
         );
     }
   }, []);
-  // let ele;
-  // if (sliderRef && sliderRef.current) {
-  //   ele = sliderRef.current;
-  // }
+
   useEffect(() => {
     if (sliderRef && sliderRef.current) {
       const ele = sliderRef.current;
@@ -190,10 +184,9 @@ function Home() {
     <>
       <div style={{ overflow: "hidden" }}>
         <SliderSection ref={sliderRef} checkButton={handle} prev={handlePrev} />
-        {/* <Suspense fallback={<div>Loading</div>}> */}
         <LiveArea ref={ref} />
         <TrendMovie ref={ref2} />
-        <Suggested />
+        <Suggested name={"suggested for you"} />
         <Topfilm />
         {/* </Suspense> */}
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext, useMemo, memo } from "react";
 import { MovieContext } from "../../../../context/Context";
 import Slider from "react-slick";
 import Slide2 from "../../../Movie/Slide2";
@@ -24,7 +24,11 @@ function Topfilm() {
 
   const fomatData = state.data
     .filter((movie) => {
-      return movie.type !== state.query && movie.vote_count >= 8;
+      return (
+        movie.type !== state.query &&
+        movie.type !== "filter" &&
+        movie.vote_count >= 8
+      );
     })
     .sort((a, b) => {
       return b.vote_count - a.vote_count;
@@ -96,4 +100,4 @@ function Topfilm() {
   );
 }
 
-export default Topfilm;
+export default memo(Topfilm);
