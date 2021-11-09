@@ -1,7 +1,7 @@
 @import "style/base.scss";
 .suggest-container {
-  width: 100%;
-  padding: 3rem 0;
+  width: 100vw;
+  padding: 3rem 0 0;
   @include responsive($laptop) {
     padding: 0;
   }
@@ -10,16 +10,16 @@
   }
   .slick-arrow {
     z-index: 2;
-    @include responsive($laptop) {
-      display: none !important;
-    }
   }
   .slick-arrow.slick-prev {
-    left: 10px;
+    left: -2px;
     width: 30px;
     height: 30px;
     border-radius: 100%;
     border: 2px solid transparent;
+    @include responsive($laptop) {
+      left: 0px;
+    }
     &::before {
       content: "❮";
       display: inline-block;
@@ -32,11 +32,14 @@
     }
   }
   .slick-arrow.slick-next {
-    right: 15px;
+    right: 2px;
     width: 33px;
     height: 33px;
     border-radius: 100%;
     border: 2px solid transparent;
+    @include responsive($laptop) {
+      right: 4px;
+    }
     &::before {
       content: "❯";
       display: inline-block;
@@ -61,7 +64,7 @@
       margin: 0rem;
     }
     .suggest__title {
-      @include textStyle("Poppins", 2.3rem, $color-text, 500);
+      @include textStyle("Poppins", 2.3rem, $primary, 500);
       text-transform: capitalize;
       padding-left: 1rem;
       @include responsive($laptop) {

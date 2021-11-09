@@ -115,6 +115,15 @@ $max: 100%;
       margin-right: 3rem;
       margin-bottom: 2rem;
     }
+    @include responsive($phablet) {
+      width: 20px;
+      height: 20px;
+      margin-right: 2rem;
+      &:first-child {
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
   }
 }
 .contaner__slide2-item:hover > .over__item-background {
@@ -144,6 +153,7 @@ $max: 100%;
     }
 
     i {
+      z-index: 2000;
       font-size: 1.5rem;
       color: #fff;
       text-align: center;

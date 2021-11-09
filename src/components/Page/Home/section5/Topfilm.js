@@ -27,6 +27,7 @@ function Topfilm() {
       return (
         movie.type !== state.query &&
         movie.type !== "filter" &&
+        movie.type === "home" &&
         movie.vote_count >= 8
       );
     })

@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import Slide2 from "../../../Movie/Slide2";
 import Slider from "react-slick";
 import { MovieContext } from "../../../../context/Context";
+import { formatData } from "ulities/filter";
 import "./Suggested.scss";
 const settings = {
   dots: false,
   infinite: true,
-  speed: 500,
+  speed: 800,
   slidesToShow: 4,
   slidesToScroll: 3,
+  pauseOnHover: true,
   responsive: [
     {
       breakpoint: 1024,
@@ -16,7 +18,8 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true
+        dots: true,
+        autoplay: true
       }
     },
     {
@@ -24,21 +27,27 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2
+        initialSlide: 2,
+        autoplay: true
       }
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay: true
       }
     }
   ]
 };
 function Suggested(props) {
   const { state } = useContext(MovieContext);
-
+  const fmtData = formatData(
+    state.data,
+    { type: "filter", payload: props.type },
+    "type"
+  );
   return (
     <>
       <section className="suggest-container">
@@ -49,7 +58,7 @@ function Suggested(props) {
             </div>
           </div>
           <Slider {...settings}>
-            {state.data.map((movie) => {
+            {fmtData.map((movie) => {
               return (
                 <Slide2
                   key={movie.id}

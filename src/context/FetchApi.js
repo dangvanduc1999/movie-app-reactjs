@@ -15,6 +15,51 @@ export async function getHome(data, search = "non-active") {
     console.log(err);
   }
 }
+export async function getAnimation(data, search = "non-active") {
+  try {
+    const results = await movieApi.getAnimation(data);
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: "animation",
+        search: search
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getAction(data, search = "non-active") {
+  try {
+    const results = await movieApi.getAction();
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: "action",
+        search: search
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+export async function getFamily(data, search = "non-active") {
+  try {
+    const results = await movieApi.getFamily();
+    const formatData = await results.map((fomatData) => {
+      return {
+        ...fomatData,
+        type: "horror",
+        search: search
+      };
+    });
+    return formatData;
+  } catch (err) {
+    console.log(err);
+  }
+}
 export async function getFilterData(data, pages, filter = "non-active") {
   try {
     const results = await movieApi.getFilterData(data, pages);

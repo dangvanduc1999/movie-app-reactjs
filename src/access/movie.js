@@ -12,6 +12,18 @@ const movieApi = {
     const url = `/trending/movie/day?${API__KEY}&page=${page}`;
     return axiosClient.get(url);
   },
+  getAnimation: () => {
+    const url = `/discover/movie?${API__KEY}&with_genres=16`;
+    return axiosClient.get(url);
+  },
+  getAction: () => {
+    const url = `/discover/movie?${API__KEY}&with_genres=28`;
+    return axiosClient.get(url);
+  },
+  getFamily: () => {
+    const url = `/discover/movie?${API__KEY}&with_genres=27`;
+    return axiosClient.get(url);
+  },
   getFilterData: (data, pages = 1) => {
     const { Genres, Year, Time, Sort } = data;
     const genres = Genres === "all" ? "" : `&with_genres=${Genres}`;

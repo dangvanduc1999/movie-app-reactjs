@@ -31,7 +31,8 @@ const reducerMovie = (state, action) => {
       let newStateId = {
         ...state,
         likes: {
-          id: payload
+          id: payload.id,
+          type: payload.type
         }
       };
       return newStateId;
@@ -56,7 +57,6 @@ const reducerMovie = (state, action) => {
           ...payload
         }
       };
-      console.log(newSelected);
       return newSelected;
     case GET_FILTERED_DATA:
       let newFilteredData = {

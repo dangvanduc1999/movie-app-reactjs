@@ -186,8 +186,12 @@ function Home() {
         <SliderSection ref={sliderRef} checkButton={handle} prev={handlePrev} />
         <LiveArea ref={ref} />
         <TrendMovie ref={ref2} />
-        <Suggested name={"suggested for you"} />
+        <Suggested name={"suggested for you"} type="home" />
         <Topfilm />
+        <Suggested name={"suggested for kid"} type="animation" />
+        <Suggested name={"action movie"} type="action" />
+        <Suggested name={"Horror movie"} type="horror" />
+
         {/* </Suspense> */}
       </div>
     </>

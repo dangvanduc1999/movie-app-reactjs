@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { MovieContext } from "context/Context";
 import Slide2 from "../../Movie/Slide2";
 import MovieInfor from "../../Movie/MovieInfor/MovieInfor";
@@ -15,14 +15,19 @@ const Loading = () => {
     </div>
   );
 };
-function List() {
-  const { state, dispatch } = useContext(MovieContext);
+const List = (props) => {
+  const { state, dispatch, handleMounted } = useContext(MovieContext);
   const handleScrollInfiniti = () => {
     setTimeout(() => {
       dispatch({ type: GET_INFINITY_PAGE_SCROLL, payload: null });
     }, 1500);
   };
-
+  useEffect(() => {
+    handleMounted(true);
+    return () => {
+      handleMounted(false);
+    };
+  }, [handleMounted]);
   return (
     <>
       <div className="list__container">
@@ -62,6 +67,6 @@ function List() {
       {state.play ? <MovieInfor props={state.currentMovie} /> : <> </>}
     </>
   );
-}
+};
 
 export default React.memo(List);
