@@ -94,7 +94,7 @@ const NavBar = () => {
                         href={
                           islogin
                             ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
-                                window.location.origin + "signin"
+                                window.location.origin + "/signin"
                               }`
                             : ""
                         }
@@ -134,9 +134,7 @@ const NavBar = () => {
                     <a
                       href={
                         islogin
-                          ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${
-                              window.location.origin + "/signin"
-                            }`
+                          ? `https://www.themoviedb.org/authenticate/${data}?redirect_to=${window.location.origin}/signin`
                           : ""
                       }
                       className="button-link"

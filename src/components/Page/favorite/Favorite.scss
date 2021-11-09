@@ -6,7 +6,7 @@ $max: 100%;
 .favorite__container {
   padding-top: 5.7rem;
   background-color: #141414;
-  width: $max;
+  width: 100vw;
   height: $max;
   min-height: 100vh;
   @include responsive($phablet) {
@@ -30,4 +30,7 @@ $max: 100%;
   text-transform: capitalize;
   text-align: center;
   margin-top: 5rem;
+  @include responsive($phablet) {
+    font-size: 1.4rem;
+  }
 }

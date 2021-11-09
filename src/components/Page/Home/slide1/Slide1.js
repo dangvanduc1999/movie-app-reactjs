@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useRef
+} from "react";
 import Button from "components/buttton/Button";
 import { useStateIfMounted } from "use-state-if-mounted";
 import { CHANGE_PLAY, GET_CURRENT_MOVIE } from "Reducer/type";
@@ -14,6 +20,7 @@ const Slide1 = ({ props }) => {
     starDimension: "24px",
     starSpacing: "4.5px"
   });
+  const ref = useRef(null);
   const [background, setBackground] = useStateIfMounted(false);
   const { overview, title, backdrop_path, poster_path, id, vote_average } =
     props;
@@ -54,8 +61,10 @@ const Slide1 = ({ props }) => {
     }
   };
   useEffect(() => {
-    handleBackground();
-    handleStarStyle();
+    if (ref && ref.current) {
+      handleBackground();
+      handleStarStyle();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const Actor = useCallback(
@@ -70,7 +79,9 @@ const Slide1 = ({ props }) => {
     [id]
   );
   useEffect(() => {
-    Actor();
+    if (ref && ref.current) {
+      Actor();
+    }
   }, [Actor]);
   window.addEventListener("resize", () => {
     handleBackground();
@@ -80,7 +91,7 @@ const Slide1 = ({ props }) => {
 
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper" ref={ref}>
         <div
           className="container-main"
           style={

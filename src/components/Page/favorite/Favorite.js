@@ -15,6 +15,7 @@ function Favorite(props) {
   const [faroviteMovie, setFavoriteMovie] = useState([]);
   useEffect(() => {
     let fmtdata = data.filter((likemovie) => likemovie.isLiked === true);
+
     setFavoriteMovie(fmtdata);
   }, [data]);
   if (!islogin) {

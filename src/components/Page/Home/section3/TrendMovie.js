@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Button from "../../../buttton/Button";
 import image1 from "../../../../asset/image/image1.jpg";
 import "./TrendMovie.scss";
@@ -41,4 +41,4 @@ const TrendMovie = React.forwardRef((props, ref) => {
     </>
   );
 });
-export default TrendMovie;
+export default memo(TrendMovie);

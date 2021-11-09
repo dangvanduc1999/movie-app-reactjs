@@ -70,6 +70,9 @@
     object-fit: cover;
     background-color: $color-text;
   }
+  &-icon {
+    z-index: 2000;
+  }
 }
 .movie__detail {
   margin: $pad-mer 1.2rem $pad-mer 0;
@@ -154,6 +157,14 @@
         margin-top: 3rem;
         padding: 0 1rem 0 2rem;
       }
+      @include responsive($phablet) {
+        margin-top: 0.5rem;
+        padding-left: 0.5rem;
+      }
+      @include responsive($small_moblie) {
+        margin-top: 0.5rem;
+        padding-left: 0.5rem;
+      }
       p {
         @include textStyle("Poppins", 1.4rem);
         letter-spacing: 0.8px;
@@ -166,6 +177,13 @@
         @include responsive($tablet) {
           font-size: 1.4rem;
           line-height: 2rem;
+        }
+        @include responsive($phablet) {
+          font-size: 1.4rem;
+        }
+        @include responsive($small_moblie) {
+          font-size: 1.1rem;
+          line-height: 1.6rem;
         }
       }
     }
@@ -186,6 +204,9 @@
         }
         @include responsive($tablet) {
           line-height: 2.1rem;
+        }
+        @include responsive($small_moblie) {
+          font-size: 1rem;
         }
       }
     }

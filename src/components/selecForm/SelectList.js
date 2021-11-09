@@ -23,7 +23,7 @@ function SelectList({ options, label }) {
   const handleSelectedOptionChange = (selectedOption) => {
     const selectedOptionValue = selectedOption.id
       ? selectedOption.id
-      : selectedOption.value;
+      : selectedOption.value.toLowerCase();
     dispatch({
       type: GET_SELECTED_CONDITION_FILTER,
       payload: {

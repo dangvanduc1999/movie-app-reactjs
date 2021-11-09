@@ -2,14 +2,12 @@ import React, { useContext } from "react";
 import { MovieContext } from "../../../../context/Context";
 import Slider from "react-slick";
 import Slide1 from "../slide1/Slide1";
-// import { setting2 } from "./setting";
 import MovieInfor from "../../../Movie/MovieInfor/MovieInfor";
 import { formatData } from "ulities/filter";
 import "./SliderSection1.scss";
-// import StarRatings from " react-star-ratings";
 const SliderSection = React.forwardRef((props, ref) => {
   const { state } = useContext(MovieContext);
-  const { checkButton, prev } = props;
+  const { checkButton } = props;
   const data = formatData(
     state.data,
     { type: "filter", payload: "home" },
@@ -17,25 +15,25 @@ const SliderSection = React.forwardRef((props, ref) => {
   ).splice(0, 10);
 
   function SampleNextArrow(props) {
-    const { className, onClick, currentSlide } = props;
+    const { className, onClick } = props;
     return (
       <div
         className={className}
         onClick={() => {
           onClick();
-          checkButton(currentSlide);
+          // checkButton(currentSlide);
         }}
       />
     );
   }
   function SamplePrevArrow(props) {
-    const { className, onClick, currentSlide } = props;
+    const { className, onClick } = props;
     return (
       <div
         className={className}
         onClick={() => {
           onClick();
-          prev(currentSlide);
+          // prev(currentSlide);
         }}
       />
     );
@@ -47,8 +45,7 @@ const SliderSection = React.forwardRef((props, ref) => {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
+
     nextArrow: <SampleNextArrow className="ghensjdna" />,
     prevArrow: <SamplePrevArrow />,
     appendDots: (dots) => (
@@ -57,6 +54,11 @@ const SliderSection = React.forwardRef((props, ref) => {
       </div>
     ),
     customPaging: (i) => <div className="custom-dots"></div>,
+    beforeChange: function (currentSlide, nextSlide) {
+      console.log(currentSlide);
+      checkButton(currentSlide);
+    },
+    afterChange: function (currentSlide) {},
     responsive: [
       {
         breakpoint: 1025,

@@ -7,7 +7,14 @@ import {
   GET_FILTERED_DATA_NEW,
   GET_MOVIE
 } from "../Reducer/type";
-import { getFilterData, getHome, getSearch } from "./FetchApi";
+import {
+  getAction,
+  getAnimation,
+  getFamily,
+  getFilterData,
+  getHome,
+  getSearch
+} from "./FetchApi";
 export const MovieContext = React.createContext();
 
 const MovieContextProvider = ({ children }) => {
@@ -31,13 +38,14 @@ const MovieContextProvider = ({ children }) => {
     state;
   const [flag, setFlag] = useState(select);
   const [check, setCheck] = useState([]);
+  const [mount, setMount] = useState(null);
   // ==== data favoriet movie with id
 
   const updateFavoriteMovie = useCallback(
     async (data) => {
       let wait = await likes;
       let update = await data.reduce((x, y) => {
-        if (y.id === wait.id) {
+        if (y.id === wait.id && y.type === wait.type) {
           x.push({
             ...y,
             isLiked: !y.isLiked
@@ -63,7 +71,30 @@ const MovieContextProvider = ({ children }) => {
       console.log(e);
     }
   }, [indexInfinitieScroll]);
-
+  useEffect(() => {
+    try {
+      getAnimation().then((newData) => {
+        dispatch({
+          type: GET_MOVIE,
+          payload: newData
+        });
+      });
+      getAction().then((newData) => {
+        dispatch({
+          type: GET_MOVIE,
+          payload: newData
+        });
+      });
+      getFamily().then((newData) => {
+        dispatch({
+          type: GET_MOVIE,
+          payload: newData
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
   useEffect(() => {
     let check = data.filter((format) => {
       let arr = [];
@@ -106,16 +137,18 @@ const MovieContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (check.indexOf(likes.id) === -1) {
-      updateFavoriteMovie(filteredData).then((dataMovie) => {
-        const fmdata = dataMovie.filter((movie) => movie.isLiked === true);
-        const dataUpdate = [...data, ...dataMovie];
-        localStorage.setItem("filteredData", JSON.stringify(fmdata));
-        dispatch({
-          type: CHANGE_FAVORITE,
-          payload: dataUpdate
+      if (mount) {
+        updateFavoriteMovie(filteredData).then((dataMovie) => {
+          const fmdata = dataMovie.filter((movie) => movie.isLiked === true);
+          const dataUpdate = [...data, ...dataMovie];
+          localStorage.setItem("filteredData", JSON.stringify(fmdata));
+          dispatch({
+            type: CHANGE_FAVORITE,
+            payload: dataUpdate
+          });
         });
         setCheck((prev) => [...prev, likes.id]);
-      });
+      }
     } else {
       updateFavoriteMovie(filteredData).then((dataMovie) => {
         const fmdata = data.filter((movie) => movie.id !== likes.id);
@@ -131,6 +164,7 @@ const MovieContextProvider = ({ children }) => {
         });
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [likes]);
   // =============== filter data ===========================
 
@@ -152,11 +186,12 @@ const MovieContextProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [select, indexInfinitieScroll]);
   // ========== context data ==========
+  const handleMounted = (check) => setMount(check);
   const movieContextData = {
     state,
-    dispatch
+    dispatch,
+    handleMounted
   };
-
   return (
     <MovieContext.Provider value={movieContextData}>
       {children}

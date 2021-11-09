@@ -21,7 +21,10 @@ const Slide2 = ({ props, isTrue, isChangeSize, margin }) => {
   }
   function activeClick() {
     setActive(!active);
-    dispatch({ type: GET_ID_LIKES, payload: props.id });
+    dispatch({
+      type: GET_ID_LIKES,
+      payload: { id: props.id, type: props.type }
+    });
   }
   function activePlay() {
     dispatch({
